@@ -1,0 +1,62 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import
+  "minima";
+
+
+  // 自定义暗黑模式样式
+body {
+  background-color: #121212 !important; // 背景纯黑
+  color: #e0e0e0 !important;             // 全局文字纯白
+}
+
+.site-title {
+  color: #fff !important;          // 强制改为纯白
+  font-weight: bold;               // 加粗，更显眼
+}
+.site-title:hover {
+  color: #fff !important;          // 鼠标放上去也不变色
+}
+
+.page-link {
+  color: #e0e0e0 !important;       // 文字变亮白
+}
+.page-link:hover {
+  color: #fff !important;          // 悬停时变纯白
+  text-decoration: underline;
+}
+
+// 导航栏样式
+.site-header {
+  background-color: #1f1f1f !important;  // 导航栏深灰黑
+  border-bottom: 1px solid #333;      // 底部边框
+}
+
+// 文章列表和页脚
+.page-content,
+.site-footer {
+  background-color: #000 !important;
+  color: #eee !important;
+}
+
+// 链接颜色 (青色在暗黑模式下很亮眼)
+a {
+  color: #4db6ac; // 柔和的青色
+}
+a:hover {
+  color: #80cbc4; // 悬停时变亮
+  text-decoration: underline;
+}
+
+// 文章标题 (让它更显眼一点)
+h1, h2, h3, h4, h5, h6 {
+  color: #fff !important; // 标题用纯白，突出层级
+}
+
+// 代码块高亮 (防止代码看不清)
+.highlight {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333;
+}
