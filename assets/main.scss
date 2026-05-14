@@ -60,3 +60,25 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #1e1e1e !important;
   border: 1px solid #333;
 }
+
+pre {
+  background-color: #1e1e1e !important; // 统一为深灰背景
+  color: #d4d4d4 !important;            // 统一为浅灰文字
+  border: 1px solid #333;               // 加个边框更有质感
+}
+
+// 2. 修复行内代码 (比如文中提到的 `command`)
+code {
+  background-color: #333 !important;    // 深灰胶囊背景
+  color: #ff9d00 !important;            // 橙黄色文字，模仿终端
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+// 3. 确保代码块内部的高亮颜色也能看清
+.highlight {
+  .c { color: #608b4e; } // 注释 (绿色)
+  .k { color: #569cd6; } // 关键字 (蓝色)
+  .s { color: #ce9178; } // 字符串 (橙色)
+  .nb { color: #4ec9b0; } // 内置函数 (青色)
+}
