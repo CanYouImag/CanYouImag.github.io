@@ -8,18 +8,45 @@ layout: page
     margin: 10px auto;
     max-width: 600px;
     text-align: center;
+    padding: 50px 20px;
   }
   h1 {
     margin: 30px 0;
-    font-size: 4em;
+    font-size: 5em;
     line-height: 1;
     letter-spacing: -1px;
+    color: #4db6ac !important;
+  }
+  .container .sub {
+    font-size: 1.5em;
+    margin: 20px 0;
+  }
+  .container .taiji {
+    font-size: 4em;
+    margin: 20px 0;
+    display: block;
+  }
+  .container .back-home {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: #4db6ac;
+    color: #000 !important;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  .container .back-home:hover {
+    background: #80cbc4;
   }
 </style>
 
 <div class="container">
+  <span class="taiji">☯</span>
   <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
+  <p class="sub">道友，此路不通</p>
+  <p>贫道掐指一算，施主怕是误入了时空乱流。<br>
+  前方既无洞府，也无机缘，不如回头是岸。</p>
+  <a class="back-home" href="{{ "/" | relative_url }}"><i class="fas fa-home"></i> 回洞府</a>
 </div>
