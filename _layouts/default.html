@@ -5,6 +5,8 @@
 
   <body>
 
+    <div id="reading-progress"></div>
+
     {%- include header.html -%}
 
     <main class="page-content" aria-label="Content">
@@ -15,7 +17,18 @@
 
     {%- include footer.html -%}
 
-    <a href="#" id="back-to-top" title="回到顶部"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" id="back-to-top" title="回到顶部"><img src="/assets/maonaingQ.png" alt="回到顶部"></a>
+    <div id="cat-speech">
+      <span id="cat-speech-text"></span>
+      <div class="speech-tail"></div>
+    </div>
+
+    <div id="lightbox-overlay" class="lightbox-overlay">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-image" id="lightbox-image" src="" alt="">
+    </div>
+
+    <canvas id="particle-canvas"></canvas>
 
     <script src="{{ "/assets/main.js" | relative_url }}"></script>
 

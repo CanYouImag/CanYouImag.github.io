@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header animate-on-scroll">
+  <header class="post-header flip-in">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
@@ -19,6 +19,12 @@ layout: default
           <a class="post-category" href="/categories/#{{ category | slugify }}">{{ category }}</a>{%- unless forloop.last -%}, {%- endunless -%}
         {%- endfor -%}
       {%- endif -%}
+      {%- if page.tags.size > 0 -%}
+        •
+        {%- for tag in page.tags -%}
+          <a class="post-tag" href="/tags/#{{ tag | slugify }}">#{{ tag }}</a>{%- unless forloop.last -%} {%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
       {%- assign words = content | number_of_words -%}
       • <span class="reading-time">
         {%- if words < 360 -%}
@@ -30,27 +36,45 @@ layout: default
     </p>
   </header>
 
-  <div class="post-content e-content animate-on-scroll" itemprop="articleBody">
-    {{ content }}
-  </div>
+  <div class="post-layout">
+    <div class="post-main">
+      <div class="post-content e-content flip-in" itemprop="articleBody">
+        {{ content }}
+      </div>
 
-  {%- if site.related_posts.size > 0 -%}
-  <div class="related-posts animate-on-scroll">
-    <h3>相关文章</h3>
-    <ul>
-      {%- for post in site.related_posts limit:4 -%}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-      </li>
-      {%- endfor -%}
-    </ul>
-  </div>
-  {%- endif -%}
+      {%- if site.related_posts.size > 0 -%}
+      <div class="related-posts flip-in">
+        <h3>相关文章</h3>
+        <ul>
+          {%- for post in site.related_posts limit:4 -%}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+          </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      {%- endif -%}
 
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
+      <div class="share-buttons flip-in">
+        <span class="share-label"><i class="fas fa-share-alt"></i> 分享：</span>
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" class="share-btn share-twitter" title="分享到 Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://service.weibo.com/share/share.php?title={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" class="share-btn share-weibo" title="分享到微博"><i class="fab fa-weibo"></i></a>
+        <button class="share-btn share-copy" title="复制链接" onclick="navigator.clipboard.writeText('{{ page.url | absolute_url }}').then(function(){var btn=event.currentTarget;btn.innerHTML='<i class=\\\'fas fa-check\\\'></i>';setTimeout(function(){btn.innerHTML='<i class=\\\'fas fa-link\\\'></i>'},2000)})"><i class="fas fa-link"></i></button>
+      </div>
+
+      {%- if site.disqus.shortname -%}
+        {%- include disqus_comments.html -%}
+      {%- endif -%}
+    </div>
+
+    <aside class="post-toc flip-in" id="post-toc">
+      <div class="toc-sticky">
+        <h3 class="toc-title"><i class="fas fa-list"></i> 目录</h3>
+        <nav id="toc-nav"></nav>
+      </div>
+    </aside>
+  </div>
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>

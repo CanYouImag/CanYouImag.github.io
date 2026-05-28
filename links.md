@@ -8,13 +8,15 @@ permalink: /links/
   <p>以下是与贫道交好的道友洞府，排名不分先后：</p>
 
   <div class="friend-links">
-    <a class="friend-link" href="https://canyouimag.github.io/" target="_blank" rel="noopener">
-      <img src="/assets/touxiang.png" alt="三清道人" class="friend-avatar">
+    {%- for link in site.data.links -%}
+    <a class="friend-link" href="{{ link.url }}" target="_blank" rel="noopener">
+      <img src="{{ link.avatar }}" alt="{{ link.name }}" class="friend-avatar">
       <span class="friend-info">
-        <span class="friend-name">三清道人</span>
-        <span class="friend-desc">贫道自己的洞府</span>
+        <span class="friend-name">{{ link.name }}</span>
+        <span class="friend-desc">{{ link.description }}</span>
       </span>
     </a>
+    {%- endfor -%}
   </div>
 
   <div class="links-note">

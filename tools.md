@@ -5,6 +5,12 @@ permalink: /tools/
 ---
 
 <div class="tools-page">
+  {%- for tool in site.data.tools -%}
+  <div class="tool-card">
+    <h3><i class="fas fa-{{ tool.icon }}"></i> {{ tool.name }}</h3>
+    <p>{{ tool.description }}</p>
+  </div>
+  {%- endfor -%}
   <div class="tool-card">
     <h3><i class="fas fa-cloud-sun"></i> 天气查询</h3>
     <p>输入城市名称，查询当地实时天气</p>

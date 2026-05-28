@@ -10,21 +10,37 @@ layout: default
   {{ content }}
 
   <div class="hero">
-    <div class="hero-avatar animate-on-scroll">
+    <div class="hero-avatar flip-in">
       <img src="/assets/touxiang.png" alt="avatar" loading="lazy">
     </div>
-    <h1 class="hero-title animate-on-scroll">三清道人的小窝</h1>
-    <p class="hero-desc animate-on-scroll">无根之水难解渴，遇到Bug莫上火。</p>
-    <div class="hero-links animate-on-scroll">
+    <h1 class="hero-title flip-in">三清道人的小窝</h1>
+    <p class="hero-desc flip-in" id="typewriter-text"></p>
+    <div class="hero-links flip-in">
       <a href="/about/" class="hero-btn"><i class="fas fa-user"></i> 关于站主</a>
       <a href="/categories/" class="hero-btn"><i class="fas fa-folder"></i> 分类</a>
+      <a href="/tags/" class="hero-btn"><i class="fas fa-tag"></i> 标签</a>
       <a href="/archive/" class="hero-btn"><i class="fas fa-archive"></i> 归档</a>
       <a href="/links/" class="hero-btn"><i class="fas fa-link"></i> 友链</a>
     </div>
-    <div class="hero-search animate-on-scroll">
+    <div class="hero-search flip-in">
       <i class="fas fa-search search-icon"></i>
       <input type="text" id="search-input" placeholder="搜索文章...">
       <ul id="search-results"></ul>
+    </div>
+
+    <div class="stats-bar flip-in">
+      <div class="stat-item">
+        <span class="stat-number">{{ site.posts.size }}</span>
+        <span class="stat-label">功法数</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ site.data.tools.size }}</span>
+        <span class="stat-label">法宝数</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ site.data.links.size }}</span>
+        <span class="stat-label">道友数</span>
+      </div>
     </div>
   </div>
 
@@ -32,17 +48,35 @@ layout: default
     <h2 class="post-list-heading">{{ page.list_title | default: "最新文章" }}</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
-      <li class="animate-on-scroll">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
+      <li class="flip-in">
+        <div class="post-card">
+          {%- if post.cover_image -%}
+          <div class="post-card-image">
+            <a href="{{ post.url | relative_url }}">
+              <img src="{{ post.cover_image }}" alt="{{ post.title | escape }}" loading="lazy">
+            </a>
+          </div>
+          {%- endif -%}
+          <div class="post-card-content">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <span class="post-meta">{{ post.date | date: date_format }}</span>
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if post.tags.size > 0 -%}
+            <div class="post-card-tags">
+              {%- for tag in post.tags -%}
+              <span class="tag-badge">{{ tag }}</span>
+              {%- endfor -%}
+            </div>
+            {%- endif -%}
+            {%- if site.show_excerpts -%}
+              <div class="post-card-excerpt">{{ post.excerpt }}</div>
+            {%- endif -%}
+          </div>
+        </div>
       </li>
       {%- endfor -%}
     </ul>
