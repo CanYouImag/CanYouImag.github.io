@@ -10,18 +10,18 @@ layout: default
   {{ content }}
 
   <div class="hero">
-    <div class="hero-avatar">
+    <div class="hero-avatar animate-on-scroll">
       <img src="/assets/touxiang.png" alt="avatar" loading="lazy">
     </div>
-    <h1 class="hero-title">三清道人的小窝</h1>
-    <p class="hero-desc">无根之水难解渴，遇到Bug莫上火。</p>
-    <div class="hero-links">
+    <h1 class="hero-title animate-on-scroll">三清道人的小窝</h1>
+    <p class="hero-desc animate-on-scroll">无根之水难解渴，遇到Bug莫上火。</p>
+    <div class="hero-links animate-on-scroll">
       <a href="/about/" class="hero-btn"><i class="fas fa-user"></i> 关于站主</a>
       <a href="/categories/" class="hero-btn"><i class="fas fa-folder"></i> 分类</a>
       <a href="/archive/" class="hero-btn"><i class="fas fa-archive"></i> 归档</a>
       <a href="/links/" class="hero-btn"><i class="fas fa-link"></i> 友链</a>
     </div>
-    <div class="hero-search">
+    <div class="hero-search animate-on-scroll">
       <i class="fas fa-search search-icon"></i>
       <input type="text" id="search-input" placeholder="搜索文章...">
       <ul id="search-results"></ul>
@@ -32,7 +32,7 @@ layout: default
     <h2 class="post-list-heading">{{ page.list_title | default: "最新文章" }}</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
-      <li>
+      <li class="animate-on-scroll">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>

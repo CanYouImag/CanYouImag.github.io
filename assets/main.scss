@@ -541,3 +541,216 @@ body {
   color: #888;
   font-size: 0.9em;
 }
+
+// === 滚动入场动画 ===
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// 列表项依次延迟入场
+.post-list .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+.post-list .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.post-list .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.post-list .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+.post-list .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+.post-list .animate-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+.post-list .animate-on-scroll:nth-child(7) { transition-delay: 0.6s; }
+.post-list .animate-on-scroll:nth-child(8) { transition-delay: 0.7s; }
+.post-list .animate-on-scroll:nth-child(9) { transition-delay: 0.8s; }
+.post-list .animate-on-scroll:nth-child(10) { transition-delay: 0.9s; }
+
+// === 工具页面 ===
+.tools-page {
+  padding: 10px 0;
+}
+
+.tool-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.tool-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.2em;
+}
+
+.tool-card > p {
+  color: #888;
+  margin: 0 0 20px;
+  font-size: 0.9em;
+}
+
+// === 天气组件 ===
+.weather-input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.weather-input-group input {
+  flex: 1;
+  padding: 10px 14px;
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.weather-input-group input:focus {
+  border-color: #4db6ac;
+}
+
+.weather-input-group button {
+  padding: 10px 20px;
+  background: #4db6ac;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.weather-input-group button:hover {
+  background: #80cbc4;
+}
+
+#weather-result {
+  min-height: 100px;
+}
+
+.weather-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 0.95em;
+}
+
+.weather-placeholder i {
+  font-size: 1.5em;
+}
+
+.weather-loading {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+  font-size: 1em;
+}
+
+.weather-error {
+  text-align: center;
+  padding: 30px 20px;
+  color: #e57373;
+  font-size: 0.95em;
+}
+
+.weather-card {
+  padding: 20px;
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.weather-location {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-location strong {
+  font-size: 1.3em;
+  color: #e0e0e0;
+}
+
+.weather-region {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 2px;
+}
+
+.weather-temp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-emoji {
+  font-size: 2.2em;
+}
+
+.weather-temp-value {
+  font-size: 2em;
+  font-weight: 700;
+  color: #4db6ac;
+}
+
+.weather-desc {
+  font-size: 1em;
+  color: #aaa;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.weather-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  background: #1a1a1a;
+  border-radius: 6px;
+}
+
+.detail-label {
+  font-size: 0.75em;
+  color: #888;
+}
+
+.weather-detail-item span:last-child {
+  font-size: 0.95em;
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .weather-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .weather-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .weather-input-group {
+    flex-direction: column;
+  }
+}

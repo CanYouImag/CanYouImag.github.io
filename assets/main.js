@@ -59,6 +59,22 @@
     }
   });
 
+  // === 滚动入场动画 ===
+  var scrollElements = document.querySelectorAll('.animate-on-scroll');
+  if (scrollElements.length > 0 && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    scrollElements.forEach(function(el) { observer.observe(el); });
+  } else {
+    scrollElements.forEach(function(el) { el.classList.add('animate-in'); });
+  }
+
   // === 搜索功能 ===
   var searchInput = document.getElementById('search-input');
   var searchResults = document.getElementById('search-results');
