@@ -24,5 +24,5 @@ permalink: /about/
 
 哦对了，在这里放一只猫娘，它叫小玄，是贫道豢养的灵兽，你们不要欺负它哦：
 
-![猫娘](/../assets/maoniang.jpg)
+![猫娘](/../assets/maoniang1.jpg)
 
