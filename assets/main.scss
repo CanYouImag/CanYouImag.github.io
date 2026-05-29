@@ -1227,3 +1227,121 @@ body {
     flex-direction: column;
   }
 }
+
+// === Language Ranking ===
+.langrank-toolbar {
+  margin-bottom: 16px;
+}
+
+.langrank-toolbar button {
+  padding: 8px 18px;
+  background: #4db6ac;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.langrank-toolbar button:hover {
+  background: #80cbc4;
+}
+
+#langrank-result {
+  min-height: 200px;
+}
+
+.langrank-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 0.95em;
+}
+
+.langrank-placeholder i {
+  font-size: 1.8em;
+}
+
+.langrank-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 1em;
+}
+
+.langrank-error {
+  text-align: center;
+  padding: 40px 20px;
+  color: #e57373;
+  font-size: 0.95em;
+}
+
+.langrank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.langrank-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 0.9em;
+}
+
+.langrank-rank {
+  color: #888;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.langrank-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.langrank-name {
+  color: #e0e0e0;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.langrank-count {
+  color: #e0e0e0;
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.langrank-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.langrank-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.langrank-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #2a2a2a;
+  font-size: 0.78em;
+  color: #666;
+  text-align: center;
+}
