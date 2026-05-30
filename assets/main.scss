@@ -142,9 +142,11 @@ body {
   align-items: center;
   gap: 6px;
   padding: 8px 18px;
-  background: #1f1f1f;
+  background: rgba(31, 31, 31, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #e0e0e0 !important;
-  border: 1px solid #333;
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 6px;
   text-decoration: none !important;
   font-size: 0.9em;
@@ -164,8 +166,10 @@ body {
   gap: 40px;
   margin-top: 25px;
   padding: 16px 20px;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 10px;
   max-width: 500px;
   margin-left: auto;
@@ -210,8 +214,10 @@ body {
 #search-input {
   width: 100%;
   padding: 10px 14px 10px 40px;
-  background: #1f1f1f;
-  border: 1px solid #333;
+  background: rgba(31, 31, 31, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 8px;
   color: #e0e0e0;
   font-size: 0.95em;
@@ -234,8 +240,10 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background: #1f1f1f;
-  border: 1px solid #333;
+  background: rgba(31, 31, 31, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-top: none;
   border-radius: 0 0 8px 8px;
   list-style: none;
@@ -300,8 +308,10 @@ body {
 
 .post-card {
   display: flex;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s;
@@ -375,9 +385,11 @@ body {
 .tag-badge {
   display: inline-block;
   padding: 2px 8px;
-  background: #1f1f1f;
+  background: rgba(31, 31, 31, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #4db6ac;
-  border: 1px solid #333;
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 4px;
   font-size: 0.75em;
 }
@@ -792,6 +804,52 @@ body {
   transform: perspective(600px) rotateY(0deg);
 }
 
+// === Categories Summary Box ===
+.categories-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+  padding: 16px 20px;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+
+.category-summary-item {
+  color: #4db6ac;
+  font-size: 0.95em;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.category-summary-item:hover {
+  color: #80cbc4;
+}
+
+.category-summary-count {
+  font-size: 0.75em;
+  color: #80cbc4;
+  font-weight: 600;
+}
+
+.categories-divider {
+  width: 100%;
+  height: 0.5cm;
+  background: #4db6ac;
+  margin: 18px 0 0;
+  border: none;
+  border-radius: 2px;
+}
+
 // === Categories ===
 .categories-page {
   padding: 10px 0;
@@ -842,8 +900,10 @@ body {
   gap: 10px;
   margin: 20px 0 30px;
   padding: 20px;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 10px;
   justify-content: center;
 }
@@ -949,8 +1009,10 @@ body {
   align-items: center;
   gap: 12px;
   padding: 16px;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 8px;
   text-decoration: none !important;
   transition: all 0.3s;
@@ -999,8 +1061,10 @@ body {
 .links-note {
   margin-top: 30px;
   padding: 20px;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 8px;
   color: #ccc;
 }
@@ -1045,8 +1109,10 @@ body {
 }
 
 .tool-card {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 10px;
   padding: 24px;
   margin-bottom: 20px;
@@ -1137,8 +1203,10 @@ body {
 
 .weather-card {
   padding: 20px;
-  background: #1f1f1f;
-  border: 1px solid #333;
+  background: rgba(31, 31, 31, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
   border-radius: 8px;
 }
 

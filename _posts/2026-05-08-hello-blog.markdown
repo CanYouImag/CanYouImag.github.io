@@ -2,9 +2,9 @@
 layout: post
 title:  "搭建博客：从入门到入土（划掉）到飞升"
 date:   2026-05-08 9:17:41 +0800
-categories: jekyll update
+categories: technology
 tags: [blog, tutorial, jekyll]
-cover_image: /assets/wangye.png
+cover_image: /../assets/wangye.png
 ---
 贫道今日心血来潮，欲在互联网这方天地开辟一处洞府（博客）。本以为要经历九九八十一难，未曾想今日运势极佳，竟是一路绿灯。
 
