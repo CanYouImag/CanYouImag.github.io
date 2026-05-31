@@ -227,6 +227,36 @@
     el.style.transitionDelay = (i * 0.1) + 's';
   });
 
+  // === Animated Counter for Stats Bar ===
+  var statsBar = document.getElementById('stats-bar');
+  if (statsBar && 'IntersectionObserver' in window) {
+    var counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var targets = entry.target.querySelectorAll('.stat-number[data-target]');
+          targets.forEach(function(el) {
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            if (isNaN(target) || target <= 0) { el.textContent = target || 0; return; }
+            var current = 0;
+            var step = Math.max(1, Math.floor(target / 40));
+            var duration = 1200;
+            var interval = duration / Math.ceil(target / step);
+            var timer = setInterval(function() {
+              current += step;
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+              el.textContent = current;
+            }, interval);
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    counterObserver.observe(statsBar);
+  }
+
   // === Typewriter Effect for Hero Description ===
   var typewriterEl = document.getElementById('typewriter-text');
   if (typewriterEl) {
@@ -375,5 +405,102 @@
       }
     });
   }
+
+  // === Quick Search ===
+  var searchToggle = document.getElementById('search-toggle');
+  var quickSearch = document.getElementById('quick-search');
+  var quickSearchInput = document.getElementById('quick-search-input');
+  var quickSearchResults = document.getElementById('quick-search-results');
+  if (searchToggle && quickSearch) {
+    var quickPosts = [];
+    fetch('/search.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { quickPosts = data; });
+
+    searchToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      quickSearch.classList.toggle('active');
+      if (quickSearch.classList.contains('active')) {
+        quickSearchInput.focus();
+      } else {
+        quickSearchInput.value = '';
+        quickSearchResults.innerHTML = '';
+        quickSearchResults.classList.remove('active');
+      }
+    });
+
+    quickSearchInput.addEventListener('input', function() {
+      var q = this.value.toLowerCase().trim();
+      if (!q) {
+        quickSearchResults.innerHTML = '';
+        quickSearchResults.classList.remove('active');
+        return;
+      }
+      var matches = quickPosts.filter(function(p) {
+        return p.title.toLowerCase().includes(q) ||
+               (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
+               (p.categories && p.categories.some(function(c) { return c.toLowerCase().includes(q); })) ||
+               (p.tags && p.tags.some(function(t) { return t.toLowerCase().includes(q); }));
+      });
+      if (matches.length === 0) {
+        quickSearchResults.innerHTML = '<li class="quick-search-no-result">未找到相关内容</li>';
+      } else {
+        quickSearchResults.innerHTML = matches.slice(0, 10).map(function(p) {
+          return '<li><a href="' + p.url + '">' + p.title + '</a></li>';
+        }).join('');
+      }
+      quickSearchResults.classList.add('active');
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && quickSearch.classList.contains('active')) {
+        quickSearch.classList.remove('active');
+        quickSearchResults.innerHTML = '';
+        quickSearchResults.classList.remove('active');
+        quickSearchInput.value = '';
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (quickSearch.classList.contains('active') &&
+          !quickSearch.contains(e.target) &&
+          e.target !== searchToggle &&
+          !searchToggle.contains(e.target)) {
+        quickSearch.classList.remove('active');
+        quickSearchResults.innerHTML = '';
+        quickSearchResults.classList.remove('active');
+        quickSearchInput.value = '';
+      }
+    });
+  }
+
+  // === Theme Toggle ===
+  var themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    var savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    themeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('light-mode');
+      var isLight = document.body.classList.contains('light-mode');
+      themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  }
+
+  // === Ripple Click Effect ===
+  document.addEventListener('click', function(e) {
+    var ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    document.body.appendChild(ripple);
+    ripple.addEventListener('animationend', function() {
+      ripple.parentNode.removeChild(ripple);
+    });
+  });
 
 })();

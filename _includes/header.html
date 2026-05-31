@@ -27,5 +27,21 @@
         </div>
       </nav>
     {%- endif -%}
+    <div class="header-actions">
+      <button id="search-toggle" class="header-icon-btn" title="搜索文章" aria-label="搜索文章">
+        <i class="fas fa-search"></i>
+      </button>
+      <button id="theme-toggle" class="header-icon-btn" title="切换主题" aria-label="切换主题">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+    <div id="quick-search" class="quick-search">
+      <div class="quick-search-inner">
+        <i class="fas fa-search"></i>
+        <input type="text" id="quick-search-input" placeholder="搜索文章..." autocomplete="off">
+        <span class="quick-search-esc">ESC</span>
+      </div>
+      <ul id="quick-search-results" class="quick-search-results"></ul>
+    </div>
   </div>
 </header>

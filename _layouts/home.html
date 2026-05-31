@@ -28,17 +28,17 @@ layout: default
       <ul id="search-results"></ul>
     </div>
 
-    <div class="stats-bar flip-in">
+    <div class="stats-bar flip-in" id="stats-bar">
       <div class="stat-item">
-        <span class="stat-number">{{ site.posts.size }}</span>
+        <span class="stat-number" data-target="{{ site.posts.size }}">0</span>
         <span class="stat-label">功法数</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">{{ site.data.tools.size }}</span>
+        <span class="stat-number" data-target="{{ site.data.tools.size }}">0</span>
         <span class="stat-label">法宝数</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">{{ site.data.links.size }}</span>
+        <span class="stat-number" data-target="{{ site.data.links.size }}">0</span>
         <span class="stat-label">道友数</span>
       </div>
     </div>

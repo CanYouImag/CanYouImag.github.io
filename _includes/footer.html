@@ -16,7 +16,7 @@
             {%- endif -%}
             </li>
             {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li>联络站主：<a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
             {%- endif -%}
         </ul>
       </div>
@@ -26,6 +26,7 @@
       </div>
 
       <div class="footer-col footer-col-3">
+        <p class="footer-heading">网站简介：</p>
         <p>{{- site.description | escape -}}</p>
       </div>
     </div>
