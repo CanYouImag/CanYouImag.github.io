@@ -167,14 +167,14 @@
   // === Table of Contents ===
   var tocNav = document.getElementById('toc-nav');
   if (tocNav) {
-    var headings = document.querySelectorAll('.post-content h2, .post-content h3');
+    var headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3');
     if (headings.length > 1) {
       var tocHtml = '';
       headings.forEach(function(h, index) {
         if (!h.id) {
           h.id = 'heading-' + index;
         }
-        var level = h.tagName.toLowerCase() === 'h2' ? 'h2' : 'h3';
+        var level = h.tagName.toLowerCase();
         tocHtml += '<a href="#' + h.id + '" class="toc-' + level + '">' + h.textContent + '</a>';
       });
       tocNav.innerHTML = tocHtml;

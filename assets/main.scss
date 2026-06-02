@@ -459,6 +459,21 @@ body {
 .toc-sticky {
   position: sticky;
   top: 30px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.toc-sticky::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-sticky::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-sticky::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 2px;
 }
 
 .toc-title {
@@ -490,11 +505,20 @@ body {
   border-left-color: #4db6ac;
 }
 
+#toc-nav .toc-h1 { padding-left: 0; font-weight: 600; }
 #toc-nav .toc-h2 { padding-left: 8px; }
 #toc-nav .toc-h3 { padding-left: 20px; font-size: 0.9em; }
 
 @media (min-width: 900px) {
   .post-toc { display: block; }
+}
+
+// === KaTeX overflow fix ===
+.post-content .katex-display,
+.post-content .kdmath {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
 }
 
 // === Related Posts ===

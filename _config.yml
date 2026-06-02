@@ -33,6 +33,8 @@ disqus:
 
 # Build settings
 # theme: minima
+kramdown:
+  math_engine: null
 plugins:
   - jekyll-feed
   - jekyll-sitemap
