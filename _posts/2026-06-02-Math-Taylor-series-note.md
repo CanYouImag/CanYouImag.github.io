@@ -84,7 +84,8 @@ $$
 ## 三角正切函数
 
 $$
-\tan x = \sum_{n=1}^{\infty} \frac{B_{2n}(-4)^n(1-4^n)}{(2n)!} x^{2n-1}, \quad |x| < \frac{\pi}{2}
+\tan x = x + \frac{x^3}{3} + \frac{2x^5}{15} + \cdots
+= \sum_{n=1}^{\infty} \frac{B_{2n}(-4)^n(1-4^n)}{(2n)!} x^{2n-1}, \quad |x| < \frac{\pi}{2}
 $$
 **注：$\tan x$展开式中字母B代表伯努利数，以下为前几个非零的伯努利数：**
 $$
