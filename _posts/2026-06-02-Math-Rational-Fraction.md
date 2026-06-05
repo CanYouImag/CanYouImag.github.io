@@ -124,7 +124,8 @@ $$
 > 
 > $$
 > \begin{cases}
-> A + B = 3
+> A + B = 3\\
+> 
 > 2A - 3B = 2
 > \end{cases}
 > $$
@@ -133,7 +134,8 @@ $$
 > 
 > $$
 > \begin{cases}
-> A = \frac{11}{5}
+> A = \frac{11}{5}\\
+> 
 > B = \frac{4}{5}
 > \end{cases}
 > $$
