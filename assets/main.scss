@@ -984,6 +984,83 @@ body {
   font-size: 0.85em;
 }
 
+// === Category & Tag Cards ===
+.category-grid, .tag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 25px 0;
+}
+
+.category-card, .tag-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 28px 20px 22px;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.6);
+  border-radius: 10px;
+  transition: all 0.3s;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.category-card:hover, .tag-card:hover {
+  border-color: #4db6ac;
+  background: #1f1f1f;
+  transform: translateY(-2px);
+}
+
+.category-card-icon, .tag-card-icon {
+  font-size: 2.2em;
+  color: #4db6ac;
+  margin-bottom: 12px;
+}
+
+.category-card h3, .tag-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.05em;
+  color: #e0e0e0;
+}
+
+.category-card p, .tag-card p {
+  color: #888;
+  margin: 0;
+  font-size: 0.85em;
+}
+
+// === Category/Tag Detail ===
+.category-detail, .tag-detail {
+  padding: 10px 0;
+}
+
+.category-detail-title, .tag-detail-title {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #4db6ac;
+  display: inline-block;
+}
+
+.category-detail-list, .tag-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-detail-list li, .tag-detail-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.category-detail-list .post-meta, .tag-detail-list .post-meta {
+  margin-right: 10px;
+  color: #888;
+  font-size: 0.85em;
+}
+
 // === Archive ===
 .archive-page {
   padding: 10px 0;
