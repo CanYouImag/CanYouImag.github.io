@@ -23,7 +23,7 @@ email: 1183164237@qq.com
 description: >- # this means to ignore newlines until "baseurl:"
   无根之水难解渴，遇到Bug莫上火。欢迎来到我的blog。
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://canyouimag.github.io/" # the base hostname & protocol for your site
+url: "https://canyouimag.github.io" # the base hostname & protocol for your site
 twitter_username: PlagueDoct1664
 github_username:  CanYouImag
 
