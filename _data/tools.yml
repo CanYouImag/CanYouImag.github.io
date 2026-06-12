@@ -1,7 +1,14 @@
 - name: 天气查询
   icon: cloud-sun
   description: 输入城市名称，查询当地实时天气
+  permalink: /tools/weather/
 
 - name: 编程语言排行榜
   icon: chart-bar
   description: 基于 GitHub 高星项目，实时统计编程语言热度排名
+  permalink: /tools/langrank/
+
+- name: 随机二次元图片
+  icon: images
+  description: 从 Nekosia API 随机获取一张二次元图片，支持多种分类筛选
+  permalink: /tools/random-anime/

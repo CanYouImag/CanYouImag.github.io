@@ -503,4 +503,21 @@
     });
   });
 
+  // === Site Running Time ===
+  var siteStartDate = new Date('2026-05-07T18:36:40+08:00');
+  var ageDisplay = document.getElementById('site-age-display');
+  if (ageDisplay) {
+    function updateSiteAge() {
+      var now = new Date();
+      var diff = now - siteStartDate;
+      var seconds = Math.floor(diff / 1000) % 60;
+      var minutes = Math.floor(diff / (1000 * 60)) % 60;
+      var hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      ageDisplay.textContent = days + ' 天 ' + hours + ' 时 ' + minutes + ' 分 ' + seconds + ' 秒';
+    }
+    updateSiteAge();
+    setInterval(updateSiteAge, 1000);
+  }
+
 })();
