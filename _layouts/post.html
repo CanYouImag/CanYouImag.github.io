@@ -63,9 +63,7 @@ layout: default
         <button class="share-btn share-copy" title="复制链接" onclick="navigator.clipboard.writeText('{{ page.url | absolute_url }}').then(function(){var btn=event.currentTarget;btn.innerHTML='<i class=\\\'fas fa-check\\\'></i>';setTimeout(function(){btn.innerHTML='<i class=\\\'fas fa-link\\\'></i>'},2000)})"><i class="fas fa-link"></i></button>
       </div>
 
-      {%- if site.disqus.shortname -%}
-        {%- include disqus_comments.html -%}
-      {%- endif -%}
+      {%- include giscus.html -%}
     </div>
 
     <aside class="post-toc flip-in" id="post-toc">

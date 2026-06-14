@@ -27,10 +27,6 @@ url: "https://canyouimag.github.io" # the base hostname & protocol for your site
 twitter_username: PlagueDoct1664
 github_username:  CanYouImag
 
-# Comments
-disqus:
-  shortname: sanqingdaoren
-
 # Build settings
 # theme: minima
 kramdown:
