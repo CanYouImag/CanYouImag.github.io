@@ -1763,6 +1763,112 @@ body.light-mode {
   padding-right: 70px;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+}
+
+.dropdown-trigger .fa-chevron-down {
+  font-size: 0.7em;
+  margin-left: 2px;
+  transition: transform 0.2s;
+}
+
+.dropdown:hover .dropdown-trigger .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 90px;
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 3px 0;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 2px 14px;
+  line-height: 1.6;
+  color: #aaa !important;
+  text-decoration: none !important;
+  font-size: 0.9em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+  background: rgba(77, 182, 172, 0.15);
+  color: #4db6ac !important;
+}
+
+@include media-query($on-palm) {
+  .dropdown {
+    display: block;
+  }
+
+  .dropdown-trigger {
+    display: block;
+    margin-left: 20px;
+    padding: 5px 10px;
+    cursor: default;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  .dropdown-trigger .fa-chevron-down {
+    display: none;
+  }
+
+  .dropdown-menu {
+    display: block;
+    position: static;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none !important;
+    white-space: normal;
+  }
+
+  .dropdown-item {
+    margin-left: 32px;
+    padding: 5px 10px;
+    font-size: 0.95em;
+  }
+}
+
+body.light-mode {
+  .dropdown-menu {
+    background: #f5f5f5;
+    border-color: #e0e0e0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  .dropdown-item {
+    color: #555 !important;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(77, 182, 172, 0.1);
+    color: #4db6ac !important;
+  }
+}
+
 .header-actions {
   position: absolute;
   right: 0;

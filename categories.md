@@ -2,6 +2,7 @@
 layout: page
 title: 分类
 permalink: /categories/
+nav_exclude: true
 ---
 
 <div id="category-page">

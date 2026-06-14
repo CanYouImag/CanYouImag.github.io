@@ -2,6 +2,7 @@
 layout: page
 title: 标签
 permalink: /tags/
+nav_exclude: true
 ---
 
 <div id="tag-page">

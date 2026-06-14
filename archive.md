@@ -2,6 +2,7 @@
 layout: page
 title: 归档
 permalink: /archive/
+nav_exclude: true
 ---
 
 <div class="archive-page">
