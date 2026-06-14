@@ -488,6 +488,13 @@
       var isLight = document.body.classList.contains('light-mode');
       themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+      var giscusFrame = document.querySelector('iframe.giscus-frame');
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage({
+          giscus: { setConfig: { theme: isLight ? 'light' : 'dark' } }
+        }, 'https://giscus.app');
+      }
     });
   }
 

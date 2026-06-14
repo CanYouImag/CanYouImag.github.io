@@ -2002,6 +2002,14 @@ body.light-mode {
   .copy-btn { background: #e0e0e0; color: #666; border-color: #ccc; }
   .copy-btn:hover { background: #4db6ac; color: #000; }
 
+  .share-buttons { border-top-color: #ddd; }
+  .share-btn { background: #e0e0e0; border-color: #ccc; color: #666 !important; }
+  .share-btn:hover { background: #4db6ac; color: #000 !important; border-color: #4db6ac; }
+
+  .toc-sticky::-webkit-scrollbar-thumb { background: #bbb; }
+  .toc-title { color: #666 !important; border-bottom-color: #ddd; }
+  #toc-nav a { color: #666 !important; }
+
   .stat-label, .search-meta, .weather-region, .weather-desc,
   .detail-label, .friend-desc, .reading-time, .post-count,
   .share-label, .links-note, .archive-list .post-meta {
