@@ -38,6 +38,10 @@ body {
   color: #eee !important;
 }
 
+.page-content .wrapper {
+  max-width: 900px;
+}
+
 a {
   color: #4db6ac;
 }
@@ -2128,6 +2132,7 @@ body.light-mode {
   .weather-input-group input { color: #333 !important; }
   .weather-desc { border-bottom-color: #ddd; }
 
+  .friend-name { color: #333 !important; }
   .friend-link:hover { background: #e8e8e8 !important; }
 
   #reading-progress { background: linear-gradient(90deg, #4db6ac, #64b5f6); }
