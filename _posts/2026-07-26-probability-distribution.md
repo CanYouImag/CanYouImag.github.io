@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "考研数学个人笔记（三）——随机变量基础（概率论与数理统计）"
 date: 2026-07-26 15:30:00 +0800
@@ -25,7 +24,7 @@ cover_image: /../assets/formula.png
 ### 公式
 
 $$
-F(x) = P\{ X \ leq x\}, x \in (-\infty, +\infty)
+F(x) = P\{ X \leq x\}, x \in (-\infty, +\infty)
 $$
 
 ### 性质
@@ -45,8 +44,9 @@ $$
 ## 分布律（PMF）
 
 $$
-P\{ X = x_k \} = p_k, k = 1,2,\dots（满足\Sigma p_k = 1,p_k \geq 0）
+P\{ X = x_k \} = p_k, k = 1,2,\dots
 $$
+（满足 $\Sigma p_k = 1$，$p_k \geq 0$）
 
 ## 分布函数
 
@@ -78,7 +78,7 @@ $$
 
 ## 概率密度（PDF）
 
-​	$f(x)$，满足 $\int_{-\infty}^{+\infty}f(x)dx = 1，f(x) \geq 0$
+​	$f(x)$，满足 $\int_{-\infty}^{+\infty}f(x)dx = 1$，$f(x) \geq 0$
 
 ## 分布函数
 
@@ -112,7 +112,7 @@ $$
 ### 分布律$P(X = k)$
 
 $$
-p^k(1 - p)^{1 - k}，k = 0,1
+p^k(1 - p)^{1 - k},\quad k = 0,1
 $$
 
 ### 分布函数$F(x)$
@@ -121,9 +121,9 @@ $$
 
 $$
 F(x) = \begin{cases}
-0，x \le 0 \\
-1 - p，0 \leq x \le 1 \\
-1，x \geq 1
+0, & x \le 0 \\
+1 - p, & 0 \leq x \le 1 \\
+1, & x \geq 1
 \end{cases}
 $$
 
@@ -148,7 +148,7 @@ $$
 ### 分布律$P(X = k)$
 
 $$
-C_n^kp^k(1 - p)^{n - k}，k = 0,1,\dots,n
+C_n^kp^k(1 - p)^{n - k},\quad k = 0,1,\dots,n
 $$
 
 ### 分布函数$F(x)$
@@ -184,7 +184,7 @@ $$
 ### 分布律$P(X = k)$
 
 $$
-\frac{\lambda^k}{k!}e^{-\lambda}，k = 0,1,2,\dots
+\frac{\lambda^k}{k!}e^{-\lambda},\quad k = 0,1,2,\dots
 $$
 
 ### 分布函数$F(x)$
@@ -265,8 +265,8 @@ $$
 
 $$
 f(x) = \begin{cases}
-\frac{1}{b - a}，a \le x \le b \\\\
-0，其他
+\frac{1}{b - a}, & a \le x \le b \\\\
+0, & \text{其他}
 \end{cases}
 $$
 
@@ -274,9 +274,9 @@ $$
 
 $$
 F(x) = \begin{cases}
-0，x \leq a \\\\
-\frac{x - a}{b - a}，a \le x \le b \\\\
-1，x \geq b
+0, & x \leq a \\\\
+\frac{x - a}{b - a}, & a \le x \le b \\\\
+1, & x \geq b
 \end{cases}
 $$
 
@@ -302,8 +302,8 @@ $$
 
 $$
 f(x) = \begin{cases}
-\lambda e^{-\lambda x}，x \ge 0\\\\
-0，x \leq 0
+\lambda e^{-\lambda x}, & x \ge 0\\\\
+0, & x \leq 0
 \end{cases}
 $$
 
@@ -311,8 +311,8 @@ $$
 
 $$
 F(x) = \begin{cases}
-1 - e^{-\lambda x}，x \geq 0 \\\\
-0，x \le x
+1 - e^{-\lambda x}, & x \geq 0 \\\\
+0, & x < 0
 \end{cases}
 $$
 
@@ -343,7 +343,7 @@ $$
 ### 分布函数$F(x)$
 
 $$
-F(x) = P\{X \leq x\} = \frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{x}e^{-\frac{(t - \mu)^2}{2\sigma^2}dt}
+F(x) = P\{X \leq x\} = \frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{x}e^{-\frac{(t - \mu)^2}{2\sigma^2}}\, dt
 $$
 
 ​	但是，可但是，但可是，考研的时候绝对不可能考你这个公式的计算，因为正态分布的概率密度$f(x)$的原函数不是初等函数，不能用指数函数，对数函数，幂函数，三角函数等初等函数表示，所以我们可以不记这个东西。
@@ -376,7 +376,7 @@ $$
 
 **概率密度：**$\phi(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$
 
-**分布函数：**$\Phi(x) = \int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}dt}$
+**分布函数：**$\Phi(x) = \int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}\, dt$
 
 **标准化公式（任何正态分布转换成标准正态分布）：**
 
