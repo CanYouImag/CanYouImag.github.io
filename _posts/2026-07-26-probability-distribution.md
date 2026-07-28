@@ -63,8 +63,10 @@ $$
 ## 方差
 
 $$
-D(X) = \Sigma_k(x_k - E(X))^2 \\
-       = E(X^2) - [E(X)]^2
+\begin{aligned}
+D(X) &= \Sigma_k(x_k - E(X))^2 \\
+     &= E(X^2) - [E(X)]^2
+\end{aligned}
 $$
 
 # 连续型随机变量
@@ -86,7 +88,7 @@ $$
 F(x) = \int_{-\infty}^xf(t)dt
 $$
 
-​	其中$F'(x) = f(x)$
+​	其中$F^\prime(x) = f(x)$
 
 ## 期望
 
@@ -97,8 +99,10 @@ $$
 ## 方差
 
 $$
-D(X) = \int_{-\infty}^{+\infty}(x - E(X))^2f(x)dx \\
-     = E(X^2) - [E(X)]^2
+\begin{aligned}
+D(X) &= \int_{-\infty}^{+\infty}(x - E(X))^2f(x)dx \\
+     &= E(X^2) - [E(X)]^2
+\end{aligned}
 $$
 
 # 常用离散型随机变量

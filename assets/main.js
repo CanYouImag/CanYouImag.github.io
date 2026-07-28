@@ -221,6 +221,12 @@
     animElements.forEach(function(el) { el.classList.add('animate'); });
   }
 
+  // Safety: force-show any flip-in elements after 3s if animation didn't trigger
+  setTimeout(function() {
+    var stuck = document.querySelectorAll('.flip-in:not(.animate)');
+    stuck.forEach(function(el) { el.classList.add('animate'); });
+  }, 3000);
+
   // Stagger delay for flip-in elements in post list
   var postItems = document.querySelectorAll('.post-list .flip-in');
   postItems.forEach(function(el, i) {
