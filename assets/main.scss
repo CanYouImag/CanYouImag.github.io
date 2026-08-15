@@ -1743,6 +1743,16 @@ body.light-mode {
   font-weight: 500;
 }
 
+.moe-icp a {
+  color: #888;
+  text-decoration: none;
+}
+
+.moe-icp a:hover {
+  color: #4db6ac;
+  text-decoration: underline;
+}
+
 body.light-mode {
   .footer-bottom {
     border-top-color: #e0e0e0;
@@ -1751,6 +1761,12 @@ body.light-mode {
   .site-age #site-age-display,
   .site-visitors span {
     color: #444;
+  }
+  .moe-icp a {
+    color: #999;
+  }
+  .moe-icp a:hover {
+    color: #4db6ac;
   }
 }
 
