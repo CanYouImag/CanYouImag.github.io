@@ -22,7 +22,7 @@ nav_exclude: true
   <div id="tag-detail" class="tag-detail" style="display:none">
     <a href="/tags/" class="back-to-tools"><i class="fas fa-arrow-left"></i> 返回标签列表</a>
     <h2 id="tag-detail-title" class="tag-detail-title"></h2>
-    <ul id="tag-detail-list" class="tag-detail-list"></ul>
+    <ul id="tag-detail-list" class="post-list"></ul>
   </div>
 </div>
 
@@ -37,13 +37,36 @@ nav_exclude: true
           {
             title: {{ post.title | jsonify }},
             url: {{ post.url | relative_url | jsonify }},
-            date: {{ post.date | date: "%Y-%m-%d" | jsonify }}
+            date: {{ post.date | date: "%Y-%m-%d" | jsonify }},
+            cover_image: {{ post.cover_image | jsonify }},
+            tags: {{ post.tags | jsonify }}
           }{%- unless forloop.last -%},{%- endunless -%}
           {%- endfor -%}
         ]
       }{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
     };
+
+    function renderCard(post) {
+      var tagsHtml = '';
+      if (post.tags && post.tags.length > 0) {
+        tagsHtml = '<div class="post-card-tags">';
+        post.tags.forEach(function(tag) {
+          tagsHtml += '<span class="tag-badge">' + tag + '</span>';
+        });
+        tagsHtml += '</div>';
+      }
+      var imageHtml = '';
+      if (post.cover_image) {
+        imageHtml = '<div class="post-card-image"><a href="' + post.url + '"><img src="' + post.cover_image + '" alt="' + post.title + '" loading="lazy"></a></div>';
+      }
+      return '<li><div class="post-card">' + imageHtml +
+        '<div class="post-card-content">' +
+        '<span class="post-meta">' + post.date + '</span>' +
+        '<h3><a class="post-link" href="' + post.url + '">' + post.title + '</a></h3>' +
+        tagsHtml +
+        '</div></div></li>';
+    }
 
     function showTag(key) {
       var grid = document.getElementById('tag-grid');
@@ -60,9 +83,7 @@ nav_exclude: true
       var list = document.getElementById('tag-detail-list');
       list.innerHTML = '';
       entry.posts.forEach(function(post) {
-        var li = document.createElement('li');
-        li.innerHTML = '<span class="post-meta">' + post.date + '</span><a class="post-link" href="' + post.url + '">' + post.title + '</a>';
-        list.appendChild(li);
+        list.innerHTML += renderCard(post);
       });
     }
 

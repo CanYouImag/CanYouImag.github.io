@@ -5,7 +5,7 @@
 
 - name: wanrenhuifu
   url: https://wanrenhuifu.github.io/
-  avatar: /assets/wanrenhuifu.png
+  avatar: https://wanrenhuifu.github.io/avatar.webp
   description: 随处可见的笨蛋
 
 

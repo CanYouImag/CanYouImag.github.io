@@ -46,9 +46,11 @@ layout: default
 
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "最新文章" }}</h2>
-    <ul class="post-list">
+    <ul class="post-list" id="home-post-list">
       {%- for post in site.posts -%}
-      <li class="flip-in">
+      {%- assign page_index = forloop.index -%}
+      {%- assign page_num = page_index | divided_by: 10 | plus: 1 -%}
+      <li class="flip-in" data-page="{{ page_num }}">
         <div class="post-card">
           {%- if post.cover_image -%}
           <div class="post-card-image">
@@ -80,6 +82,50 @@ layout: default
       </li>
       {%- endfor -%}
     </ul>
+
+    <nav class="pagination" id="home-pagination"></nav>
+
+    <script>
+    (function() {
+      var POSTS_PER_PAGE = 10;
+      var list = document.getElementById('home-post-list');
+      var items = list.querySelectorAll('li[data-page]');
+      var nav = document.getElementById('home-pagination');
+      var totalPages = Math.ceil(items.length / POSTS_PER_PAGE);
+      var currentPage = 1;
+
+      function showPage(page) {
+        currentPage = page;
+        for (var i = 0; i < items.length; i++) {
+          items[i].style.display = items[i].getAttribute('data-page') == page ? '' : 'none';
+        }
+        renderNav();
+        window.scrollTo({ top: list.offsetTop - 60, behavior: 'smooth' });
+      }
+
+      function renderNav() {
+        if (totalPages <= 1) { nav.innerHTML = ''; return; }
+        var html = '';
+        html += currentPage > 1
+          ? '<a class="pagination-btn" href="javascript:void(0)" onclick="window._homePaginate(' + (currentPage - 1) + ')">&laquo; 上一页</a>'
+          : '<span class="pagination-btn disabled">&laquo; 上一页</span>';
+        for (var p = 1; p <= totalPages; p++) {
+          if (p === currentPage) {
+            html += '<span class="pagination-btn active">' + p + '</span>';
+          } else {
+            html += '<a class="pagination-btn" href="javascript:void(0)" onclick="window._homePaginate(' + p + ')">' + p + '</a>';
+          }
+        }
+        html += currentPage < totalPages
+          ? '<a class="pagination-btn" href="javascript:void(0)" onclick="window._homePaginate(' + (currentPage + 1) + ')">下一页 &raquo;</a>'
+          : '<span class="pagination-btn disabled">下一页 &raquo;</span>';
+        nav.innerHTML = html;
+      }
+
+      window._homePaginate = showPage;
+      showPage(1);
+    })();
+    </script>
   {%- endif -%}
 
 </div>
