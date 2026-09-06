@@ -94,13 +94,15 @@ layout: default
       var totalPages = Math.ceil(items.length / POSTS_PER_PAGE);
       var currentPage = 1;
 
-      function showPage(page) {
+      function showPage(page, shouldScroll) {
         currentPage = page;
         for (var i = 0; i < items.length; i++) {
           items[i].style.display = items[i].getAttribute('data-page') == page ? '' : 'none';
         }
         renderNav();
-        window.scrollTo({ top: list.offsetTop - 60, behavior: 'smooth' });
+        if (shouldScroll) {
+          window.scrollTo({ top: list.offsetTop - 60, behavior: 'smooth' });
+        }
       }
 
       function renderNav() {
@@ -122,8 +124,8 @@ layout: default
         nav.innerHTML = html;
       }
 
-      window._homePaginate = showPage;
-      showPage(1);
+      window._homePaginate = function(page) { showPage(page, true); };
+      showPage(1, false);
     })();
     </script>
   {%- endif -%}
