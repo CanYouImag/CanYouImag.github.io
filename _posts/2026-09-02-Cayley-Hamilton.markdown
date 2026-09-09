@@ -88,7 +88,7 @@ $$
 特征多项式
 
 $$
-|\lambda E - A| = (\lambda-1)^2 = \lambda^2 - 2\lambda + 1 = 0.
+\lvert\lambda E - A\rvert = (\lambda-1)^2 = \lambda^2 - 2\lambda + 1 = 0.
 $$
 
 所以
@@ -133,7 +133,7 @@ $$
 特征多项式
 
 $$
-|\lambda E - A| = (\lambda-2)^3 = \lambda^3 - 6\lambda^2 + 12\lambda - 8 = 0.
+\lvert\lambda E - A\rvert = (\lambda-2)^3 = \lambda^3 - 6\lambda^2 + 12\lambda - 8 = 0.
 $$
 
 所以
@@ -176,7 +176,7 @@ $$
 该矩阵为循环位移矩阵，特征多项式：
 
 $$
-|\lambda E - A| = \lambda^4 - 1 = 0.
+\lvert\lambda E - A\rvert = \lambda^4 - 1 = 0.
 $$
 
 所以
@@ -220,7 +220,7 @@ $$
 特征多项式
 
 $$
-|\lambda E - A| = (\lambda-1)^5 = \lambda^5 - 5\lambda^4 + 10\lambda^3 - 10\lambda^2 + 5\lambda - 1 = 0.
+\lvert\lambda E - A\rvert = (\lambda-1)^5 = \lambda^5 - 5\lambda^4 + 10\lambda^3 - 10\lambda^2 + 5\lambda - 1 = 0.
 $$
 
 所以

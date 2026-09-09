@@ -36,7 +36,7 @@ cover_image: /../assets/formula.png
 遇到 $$\sum \frac{a_n}{2^n} x^{2n+1}$$ 这种缺项级数，直接用**比值判别法**令极限小于1：
 
 $$
-\lim \left| \frac{\frac{a_{n+1}}{2^{n+1}} x^{2n+3}}{\frac{a_n}{2^n} x^{2n+1}} \right| = \frac{|x|^2}{2} \lim \left| \frac{a_{n+1}}{a_n} \right| < 1
+\lim \left\lvert \frac{\frac{a_{n+1}}{2^{n+1}} x^{2n+3}}{\frac{a_n}{2^n} x^{2n+1}} \right\rvert = \frac{\lvert x\rvert^2}{2} \lim \left\lvert \frac{a_{n+1}}{a_n} \right\rvert < 1
 $$
 
 已知原级数半径为 $$R$$，即 $$\lim \left\vert \frac{a_{n+1}}{a_n} \right\vert = \frac{1}{R}$$。代入得 $$\frac{\vert x\vert^2}{2R} < 1 \implies \vert x\vert < \sqrt{2R}$$。**需要注意的是，提取出来的公因式 $$x$$ 在比值法求极限时必定会被约掉或趋近于1，所以它不改变收敛半径，可以直接忽略。**

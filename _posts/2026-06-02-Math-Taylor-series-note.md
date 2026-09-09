@@ -85,7 +85,7 @@ $$
 
 $$
 \tan x = x + \frac{x^3}{3} + \frac{2x^5}{15} + \cdots
-= \sum_{n=1}^{\infty} \frac{B_{2n}(-4)^n(1-4^n)}{(2n)!} x^{2n-1}, \quad |x| < \frac{\pi}{2}
+= \sum_{n=1}^{\infty} \frac{B_{2n}(-4)^n(1-4^n)}{(2n)!} x^{2n-1}, \quad \lvert x\rvert < \frac{\pi}{2}
 $$
 **注：$\tan x$展开式中字母B代表伯努利数，以下为前几个非零的伯努利数：**
 $$
@@ -108,13 +108,13 @@ $$
 
 $$
 \arcsin x = x + \frac{1}{2} \cdot \frac{x^3}{3} + \frac{1 \times 3}{2 \times 4} \cdot \frac{x^5}{5} + \frac{1 \times 3 \times 5}{2 \times 4 \times 6} \cdot \frac{x^7}{7} + o(x^7)
- = \sum_{n=0}^{\infty} \frac{(2n)!}{4^n (n!)^2 (2n+1)} x^{2n+1}, \quad |x| < 1
+ = \sum_{n=0}^{\infty} \frac{(2n)!}{4^n (n!)^2 (2n+1)} x^{2n+1}, \quad \lvert x\rvert < 1
 $$
 
 ## 反三角余弦函数
 
 $$
-\arccos x = \frac{\pi}{2} - \sum_{n=0}^{\infty} \frac{(2n)!}{4^n (n!)^2 (2n+1)} x^{2n+1}, \quad |x| < 1
+\arccos x = \frac{\pi}{2} - \sum_{n=0}^{\infty} \frac{(2n)!}{4^n (n!)^2 (2n+1)} x^{2n+1}, \quad \lvert x\rvert < 1
 $$
 
 ​	**注：$\arccos x$的泰勒展开式的推导是基于反三角函数之间的恒等关系而来：**
@@ -127,7 +127,7 @@ $$
 
 $$
 \arctan x = x - \frac{x^3}{3} + \frac{x^5}{5} - \cdots + (-1)^k \frac{x^{2k+1}}{2k+1} + o(x^{2k+1})
- = \sum_{n=0}^{\infty} \frac{(-1)^n}{2n+1} x^{2n+1}, \quad |x| < 1
+ = \sum_{n=0}^{\infty} \frac{(-1)^n}{2n+1} x^{2n+1}, \quad \lvert x\rvert < 1
 $$
 
 ## 幂函数与分式函数
