@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 考研数据结构个人笔记——算法大题编码（持续更新）
+title: 考研数据结构个人笔记——算法大题编码之线性表（持续更新）
 date: 2026-09-02 13:30:00 +0800
 categories: data structure
 tags: [blog, 数据结构, 算法设计, 考研]
@@ -13,7 +13,7 @@ cover_image: /../assets/data_structure.jpg
 
 ## 线性表的顺序存储
 
-**基础补充：计算算法的时间复杂度。**
+### 基础补充：计算算法的时间复杂度。
 - 通常我们计算的是算法的最坏时间复杂度，因为它提供了算法运行时间的上界。
 - 计算时间复杂度的话，先在代码中找基本运算，然后计算该运算执行了多少次。例如：
 ```c
@@ -29,6 +29,8 @@ void fun (int n)
 在上例中，基本运算是$i = i * 2$，设执行次数为t，那么就有$2^t \leq n$，即$t \leq \log_2(n)$，因此时间复杂度就是$O(\log_2(n))$
 
 -程序中有条件判断语句时，取分支中时间复杂度最大的那个做整体的时间复杂度。
+
+### 相关题目
 
 **$1$、从顺序表中删除具有最小值的元素（假设唯一），并由函数返回被删除的元素的值，空出的位置由最后一个元素填补，若顺序表为空，则显示错误信息并退出运行。**
 
@@ -535,3 +537,399 @@ int findMinDistance(int A[], int n1, int B[], int n2, int C[], int n3)
 ```
 
 ## 线性表的链式存储
+
+### 基础补充：链表的基本操作。
+
+首先我们给出链表的节点定义：
+
+```c
+typedef struct LNode
+{
+	ElemType data;
+	struct LNode *next;
+}LNode, *LinkList;
+```
+
+```text
+这段内容给C语言基础不扎实的同学讲一下上面那段代码的每一部分代表什么。
+1、typedef：用于给C语言中的类型取一个新名字。
+2、struct：结构体声明。
+3、LNode（struct后面那个）：结构体标签，即结构体类型的名字。
+4、ElemType：任意数据类型。可以是int，char，float，double，甚至是其他struct。
+5、*next：链表中负责指向下一个节点的指针域。
+6、LNode（整个结构体后面那个）：重命名“struct LNode”为"LNode"。
+7、*LinkList：重命名“struct LNode”为“LinkList”，并在其开头添加“*”使其指向结构体指针，即现在“LinkList”等价于“struct LNode *”
+注：纯C语言中，如果没有typedef，我们声明了Struct LNode这个结构体类型的话，往后声明新的变量就必须要写“struct LNode A”，但是在C++里，它会把结构体标签自动变成结构体类型名，也就是说，如果不用typedef的话，在C++里，我们直接用“LNode A”是不会报错的。
+```
+
+#### 单链表的初始化：
+
+```c
+// 带头结点的单链表初始化
+bool InitList(LinkList &L)
+{
+	L = (LNode*)malloc(sizeof(LNode));	// 创建头节点
+	L -> next = NULL;					// 头节点后暂无数据
+	return true;						// 创建成功
+}
+
+// 不带头结点的单链表初始化
+bool InitList(LinkList &L)
+{
+	L = NULL;					// 无头节点的链表初始化就说明链表里啥也没有
+	return true;
+}
+```
+
+#### 单链表求表长
+
+```c
+// 单链表求表长本质上是统计单链表中数据的个数（不包括头节点）
+int Length(LinkList L)
+{
+	int len = 0;				// 计数变量
+	LNode *p = L;				// 取单链表第一个节点
+	while (p -> next != NULL)
+	{
+		p = p -> next;
+		len++;
+	}
+	return len;
+}
+```
+
+#### 按序号查找结点
+
+```c
+// 从单链表的第一个数据节点开始查找第i个节点
+LNode *GetElem(LinkList L, int i)
+{
+	LNode *p = L;				// 取单链表第一个节点
+	int j = 0;
+	while(p != NULL && j < i)
+	{
+		p = p -> next;
+		j++;
+	}
+	return p;		// 找到第i个节点就返回对应的指针，否则返回NULL
+}
+```
+
+#### 按值查找表节点
+
+```c
+LNode *LocateElem(LinkList L, ElemType e)
+{
+	LNode *p = L -> next;	// 跳过头节点取第一个数据节点
+	while(p != NULL && p -> data != e)	// 从第一个数据节点开始查找值为e的节点
+	{
+		p = p -> next;
+	}
+	return p;
+}
+```
+
+#### 插入节点操作
+
+将值为$e$的新节点插入到第$i$个位置，先检查$i$的合法性，然后找到第$i - 1$个节点，即待插入节点的前驱，再在其后插入新节点。
+
+```c
+bool LIstInsert(LinkList& L, int i, ElemType e) 
+{
+	LNode* p = L;		// p指向当前扫描节点
+	int j = 0;			// j记录当前位序，头节点是第0个节点
+	while(p != NULL && j < i - 1)	// 寻找第i-1个结点
+	{
+		p = p->next;
+		j++;
+	}
+	if (p == NULL) 
+	{
+		return false;		// i值不合法
+	}
+	LNode* s = (LNode*)malloc(sizeof(LNode));	// 生成新结点
+	s -> data = e;
+	s -> next = p->next;	// 步骤1：将p的后继结点赋值给s的后继
+	p->next = s;	// 步骤2：将s连接到p的后继
+	return true;
+}
+```
+
+- 注：步骤1和步骤2的顺序不能颠倒，若先执行步骤2，则会导致原后继地址丢失，即插入节点$s$的后继不再是节点$p$原先的的后面的节点，而是$s$自己。
+
+#### 删除节点操作
+
+假设要删除的第$i$个节点为$*q$，而找到的第$i - 1$个节点为$*p$，先将$*p$的$next$指向$*q$的后继结点，然后释放$*q$。
+
+```c
+bool ListDelete(LinkList& L, int i, ElemType& e)
+{
+	LNode* p = L;
+	int j = 0;
+	while (p->next != NULL && j < i - 1)
+	{
+		p = p->next;
+		j++;
+	}
+	if (p->next == NULL || j > i - 1)		// j值不合法 
+	{
+		return false;
+	}
+	LNode* q = p->next;		// 令q指向被删除的节点
+	e = q->data;		// e返回删除元素的值
+	p->next = q->next;
+	free(q);		// q是用malloc申请的空间，就要用free释放
+	return true;
+}
+```
+
+#### 采用头插法建立单链表
+
+头插法指的是从一个空表开始，生成新节点$*s$，并将输入的数据存入它的数据域，然后令$s -> next$指向头节点的$next$域指向的节点，再将头节点的$next$域指向$*s$，重复此过程，新节点始终是第一个数据节点，最终链表中的数据顺序与输入顺序相反。
+
+```c
+LinkList List_HeadInsert(LinkList& L)	// 头插法建立单链表
+{
+	LNode* s;	// 待插入节点
+	int x;		// 设数据域包含一个整型数据
+	L = (LNode*)malloc(sizeof(LNode));	// 创建头节点
+	L->next = NULL;
+	cin >> x;
+	while (x != -1)		// 假设输入-1表示结束输入
+	{
+		s = (LNode*)malloc(sizeof(LNode));	// 新节点分配空间
+		s->data = x;
+		s->next = L->next;
+		L->next = s;
+		cin >> x;		// 继续下一个输入
+	}
+	return L;
+}
+```
+
+若单链表不带头节点，则每次插入新节点后，都要将新节点的指针赋值给头指针$L$
+
+#### 尾插法建立单链表
+
+尾插法指的是新节点都插入当前链表的表尾，为此，需要维护一个尾指针始终指向当前的尾节点。链表中数据的顺序与输入顺序一致。
+
+```c
+LinkList List_TailInsert(LinkList& L)	// 尾插法建立单链表
+{
+	int x;	// 设数据域包含一个整型元素
+	L = (LNode*)malloc(sizeof(LNode));
+	LNode* s, * r = L;	// s指向新节点，r指向表尾
+	cin >> x;
+	while (x != -1)		// 假设输入-1表示结束输入
+	{
+		s = (LNode*)malloc(sizeof(LNode));
+		s->data = x;
+		r->next = s;
+		r = s;		// r指向新的表尾节点
+		cin >> x;
+	}
+	r->next = NULL;
+	return L;
+}
+```
+
+### 其他特殊链表
+
+#### 双链表
+
+双链表的每一个节点包含数据域，前驱指针域$prior$和后继指针域$next$，可以分别指向直接前驱和直接后继。头节点的$prior$为空，尾节点的$next$为空。
+
+#### 循环单链表
+
+单链表中最后一个节点的$next$域指向头节点，从而使整个链表形成一个环，判空条件变成检查头节点的$next$域是否是头节点自身。
+
+#### 循环双链表
+
+双链表中头节点的$prior$域指向尾节点，尾节点的$next$域指向头节点。当循环双链表为空时，头节点的$prior$域和$next$域均指向自身。
+
+#### 静态链表
+
+就是用数组表示的链表。数组中每个元素包含两个域：$data$和$next$，因此一般用结构体数组表示。这里的$next$保存的是节点所在的数组下标。结构定义如下：
+
+```c
+# define MaxSize 50
+typedef struct 
+{
+	ElemType data;
+	int next;
+}SLinkList[MaxSize];
+```
+
+一般静态链表以$next == -1$作为结束标志，插入、删除操作只需要修改对应指针下标。
+
+### 相关题目
+
+**$1$、在带头结点的单链表中删除所有值为$x$的节点并释放其空间，假设值为$x$的节点不唯一**
+
+```c
+void DeleteAllX(LinkList L, ElemType x) 
+{
+	LNode* pre = L;          // pre 指向当前节点的前驱，初始为头结点
+	LNode* p = L->next;      // p 从第一个实际节点开始
+
+	while (p != NULL) 
+	{
+		if (p->data == x) 
+		{
+			pre->next = p->next;  // 前驱跳过当前节点
+			free(p);              // 释放被删节点空间
+			p = pre->next;        // p 指向新的后继节点
+		}
+		else 
+		{
+			pre = p;              // 前驱后移
+			p = p->next;          // 当前指针后移
+		}
+	}
+}
+```
+
+**$2$、编写在带头节点的单链表L中删除最小值节点的高效算法，假设节点唯一**
+
+```c
+void DeleteMinNode(LinkList L) 
+{
+	if (L == NULL || L->next == NULL) 
+	{
+		return;                     // 空表或只有头结点，无需删除
+	}
+
+	LNode* pre = L;                 // pre 指向 p 的前驱
+	LNode* p = L->next;             // p 用于遍历
+	LNode* minpre = pre;            // 最小值节点的前驱
+	ElemType min = p->data;         // 当前最小值
+
+	while (p != NULL) 
+	{
+		if (p->data < min) 
+		{
+			min = p->data;
+			minpre = pre;           // 记录最小值节点的前驱
+		}
+		pre = p;
+		p = p->next;
+	}
+
+	// 删除最小值节点
+	LNode* q = minpre->next;
+	minpre->next = q->next;
+	free(q);
+}
+```
+
+**$3$、编写算法将带头结点的单链表就地逆置，就地指使用的空间复杂度是$O(1)$**
+
+利用头插法重建链表：从头到尾扫描原链表的每个实际节点，依次将其摘下并插入到头结点之后。由于每次插入都在头部，最终链表的顺序恰好被逆置。
+
+```c
+void ReverseList(LinkList L) 
+{
+	if (L == NULL || L->next == NULL) 
+	{
+		return;                     // 空表或只有一个实际节点，无需逆置
+	}
+
+	LNode* p = L->next;             // p 指向第一个实际节点
+	L->next = NULL;                 // 头结点与原链表断开，准备头插
+
+	while (p != NULL) 
+	{
+		LNode* q = p->next;         // 暂存 p 的后继，防止断链
+		p->next = L->next;          // 将 p 插入到头结点之后
+		L->next = p;
+		p = q;                      // p 继续处理原链表的下一个节点
+	}
+}
+```
+
+**$4$、设在一个带头节点的单链表中，所有节点的元素均无须，编写一个函数，删除表中所有处于给定两个值之间的元素（如果存在），该两个值由函数参数给出**
+
+```c
+void DeleteBetween(LinkList L, ElemType low, ElemType high) 
+{
+	if (L == NULL || L->next == NULL) 
+	{
+		return;                     // 空表或只有头结点，无需处理
+	}
+
+	// 确保 low <= high，若参数顺序颠倒则交换
+	if (low > high) 
+	{
+		ElemType temp = low;
+		low = high;
+		high = temp;
+	}
+
+	LNode* pre = L;                 // pre 指向当前节点的前驱
+	LNode* p = L->next;             // p 用于遍历实际节点
+
+	while (p != NULL) 
+	{
+		if (p->data >= low && p->data <= high)		// 处于闭区间 [low, high] 内
+		{ 
+			pre->next = p->next;    // 前驱跳过当前节点
+			free(p);                // 释放被删节点空间
+			p = pre->next;          // p 指向新的后继节点
+		}
+		else 
+		{
+			pre = p;                // 前驱后移
+			p = p->next;            // 当前指针后移
+		}
+	}
+}
+```
+
+**$5$、设$C = \{a_1, b_1, a_2, b_2, \dots, a_n, b_n\}$为线性表，采用带头结点的单链表存放，设计一个就地算法，将其拆分成两个线性表为$A = \{a_1, a2, \dots, a_n\}$和$B = \{b_1, b_2, \dots, b_n\}$**
+
+```c
+void SplitList(LinkList C, LinkList* A, LinkList* B) 
+{
+	*A = C;                     // A 复用原头结点
+	*B = NULL;                  // B 初始为空（不带头结点）
+	LNode* pa = C;              // pa 指向 A 的尾结点
+	LNode* pb_tail = NULL;      // pb_tail 指向 B 的尾结点
+	LNode* p = C->next;         // p 指向当前 a 结点
+
+	while (p != NULL) 
+	{
+		// 1. 将当前 a 结点保留在 A 中
+		pa->next = p;
+		pa = p;
+
+		// 2. 处理紧随其后的 b 结点
+		LNode* q = p->next;     // q 指向当前 b 结点
+		if (q != NULL) 
+		{
+			p->next = q->next;  // 从原链中摘除 b 结点，a 直接指向下一个 a
+			// 将 q 尾插到 B 中
+			if (*B == NULL) 
+			{
+				*B = q;
+				pb_tail = q;
+			}
+			else 
+			{
+				pb_tail->next = q;
+				pb_tail = q;
+			}
+			p = p->next;        // p 移向下一个 a 结点
+		}
+		else 
+		{
+			p = p->next;        // 没有 b 结点了，p 变为 NULL
+		}
+	}
+
+	pa->next = NULL;            // A 的尾结点置空
+	if (pb_tail != NULL) 
+	{
+		pb_tail->next = NULL;   // B 的尾结点置空
+	}
+}
+```
