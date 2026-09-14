@@ -2106,6 +2106,26 @@ body.light-mode {
   font-size: 0.9em;
 }
 
+// === Tables (dark mode) ===
+body:not(.light-mode) table {
+  color: #fff;
+  border: 1px solid #333;
+  tr:nth-child(odd) {
+    background-color: #1a1a1a;
+  }
+  tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+  th {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-bottom-color: #444;
+  }
+  td {
+    border: 1px solid #333;
+  }
+}
+
 // === Light Mode ===
 body.light-mode {
   background-color: #ffffff !important;
