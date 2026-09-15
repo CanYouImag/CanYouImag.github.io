@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 考研数据结构个人笔记——算法大题编码之线性表（持续更新）
+title: 考研数据结构个人笔记——算法大题编码之线性表
 date: 2026-09-02 13:30:00 +0800
 categories: data structure
 tags: [blog, 数据结构, 算法设计, 考研]
@@ -8,6 +8,8 @@ cover_image: /../assets/data_structure.jpg
 ---
 
 今天新开一个408大题系列，我打算把408大题解题的一般思路整理出来，不过数据结构……除了计算时间复杂度之外剩下的大题都是算法设计什么的，而算法设计这种题我打算每道题都做一遍并记录整理答案，所以这篇博文应该会特别长。但大家放心，我会把题目按照王道的数据结构教材的章节进行分类的。
+
+算了，如果把一本书都整理进来还是太他妈长了，所以我决定一个章节一篇文章了。
 
 # 线性表
 
@@ -930,6 +932,484 @@ void SplitList(LinkList C, LinkList* A, LinkList* B)
 	if (pb_tail != NULL) 
 	{
 		pb_tail->next = NULL;   // B 的尾结点置空
+	}
+}
+```
+
+**$6$、设$A$和$B$是两个递增有序，带头结点的单链表，设计一个算法从$A$和$B$的公共元素产生单链表$C$，要求不破坏$A$和$B$的节点。**
+
+这道题在$A$和$B$上各建立一个指针，同步遍历。若两个指针所指元素相等，那么就是公共节点。这个时候新建一个节点保存这个公共节点并尾插到链表$C$中。
+
+```c
+LinkList GetCommon(LinkList A, LinkList B) 
+{
+	// 创建 C 的头结点
+	LinkList C = (LNode*)malloc(sizeof(LNode));
+	C->next = NULL;
+	LNode* pc = C;              // pc 始终指向 C 的尾结点
+
+	LNode* pa = A->next;        // pa 遍历 A 的实际结点
+	LNode* pb = B->next;        // pb 遍历 B 的实际结点
+
+	while (pa != NULL && pb != NULL) 
+	{
+		if (pa->data == pb->data) 
+		{
+			// 发现公共元素，新建结点并尾插到 C
+			LNode* newNode = (LNode*)malloc(sizeof(LNode));
+			newNode->data = pa->data;
+			newNode->next = NULL;
+			pc->next = newNode;
+			pc = newNode;
+
+			pa = pa->next;
+			pb = pb->next;
+		}
+		else if (pa->data < pb->data) 
+		{
+			pa = pa->next;      // A 当前元素较小，后移 A
+		}
+		else 
+		{
+			pb = pb->next;      // B 当前元素较小，后移 B
+		}
+	}
+
+	return C;                   // 返回带头结点的单链表 C
+}
+```
+
+**$7$、两个整数序列$A = a_1, a_2, \dots, a_m$和$B = b_1, b_2, \dots, b_n$已经存入两个单链表中，设计一个算法判断序列$B$是否是序列$A$的连续子序列。**
+
+还是为$A$和$B$各准备一个指针，外层循环遍历$A$的每个节点，内层循环每次从$B$的开头开始比较，如果$B$的所有节点均能匹配，那么返回$1$表示匹配成功，否则该轮匹配失败，链表$A$的指针从开始匹配的位置的下一个节点开始重新比较。如果$A$的指针走到头而$B$的没有，说明$B$不是$A$的连续子序列，匹配失败。
+
+```c
+int IsSubsequence(LinkList A, LinkList B) 
+{
+	if (B->next == NULL) 
+	{
+		return 1;                   // 空序列是任何序列的子序列
+	}
+	if (A->next == NULL) 
+	{
+		return 0;                   // A 为空，B 非空，不可能是子序列
+	}
+
+	LNode* pa = A->next;            // pa 用于遍历 A 的每个结点作为起始点
+	while (pa != NULL) 
+	{
+		LNode* p = pa;              // p 从当前起始点开始与 B 匹配
+		LNode* pb = B->next;        // pb 遍历 B
+
+		while (p != NULL && pb != NULL && p->data == pb->data) 
+		{
+			p = p->next;
+			pb = pb->next;
+		}
+
+		if (pb == NULL) 
+		{
+			return 1;               // B 的所有结点都匹配成功
+		}
+
+		pa = pa->next;              // 从 A 的下一个结点重新尝试
+	}
+
+	return 0;                       // 遍历完 A 仍未匹配
+}
+```
+
+**$8$、设计一个算法用于判断带头结点的循环双链表是否对称。**
+
+所谓链表对称，指的是链表的数据不论从前往后看还是从后往前看都完全相同。那么我们可以知道，如果链表中只有一个元素或者干脆是个空表的情况下，它一定对称。
+
+因为是循环双链表，所以头节点的$next$指针域一定指向第一个数据节点，$prior$域一定指向最后一个数据节点。所以我们设计两个指针$p$和$q$，分别从左侧和右侧向中间遍历，每次比较$p -> data$和$q -> data$，如果不相等说明链表不对称，当$p$和$q$相遇时，匹配成功。
+
+```c
+int IsSymmetric(DLinkList L) 
+{
+	if (L == NULL) 
+	{
+		return 0;                   // 空指针视为不对称（或按题目约定）
+	}
+	if (L->next == L) 
+	{
+		return 1;                   // 只有头结点，空表视为对称
+	}
+
+	DNode* p = L->next;             // p 指向第一个实际结点
+	DNode* q = L->prior;            // q 指向最后一个实际结点
+
+	// 当 p 和 q 相遇或交叉时停止
+	while (p != q && p->prior != q) 
+	{
+		if (p->data != q->data) 
+		{
+			return 0;               // 发现不对称
+		}
+		p = p->next;                // p 向后移动
+		q = q->prior;               // q 向前移动
+	}
+
+	return 1;                       // 全部匹配，对称
+}
+```
+
+**$9$、有两个循环单链表，头指针分别是$h_1$和$h_2$，编写一个函数将链表$h_2$链接到链表$h_1$之后，要求链接后的链表仍保持循环链表的形式。**
+
+这里面我们假设链表不带头结点，如果链表带头节点的话，那么找尾节点时从$h_1 -> next$开始，并在链接的时候保留$h_1$的头节点，释放$h_2$的头节点（如果题目要求）。
+
+回到问题，两个链表都不带头结点，那么$h_1$和$h_2$都指向链表的第一个数据节点。分别找到两个链表的尾节点，即节点的$next$域指向头节点的那个。然后修改节点的指针使得$h_1$的尾巴和h_2$的脑瓜子连在一块儿，$h_2$的尾巴和$h_1$的脑瓜子连一块儿。
+
+```c
+LinkList LinkCircular(LinkList h1, LinkList h2) 
+{
+	if (h1 == NULL) return h2;      // h1 为空，合并后头指针为 h2
+	if (h2 == NULL) return h1;      // h2 为空，合并后头指针为 h1
+
+	// 1. 找到 h1 的尾结点
+	LNode* p = h1;
+	while (p->next != h1) 
+	{
+		p = p->next;
+	}
+
+	// 2. 找到 h2 的尾结点
+	LNode* q = h2;
+	while (q->next != h2) 
+	{
+		q = q->next;
+	}
+
+	// 3. 将 h2 链接到 h1 之后
+	p->next = h2;                   // h1 尾结点指向 h2 的第一个结点
+	q->next = h1;                   // h2 尾结点指向 h1 的第一个结点，保持循环
+
+	return h1;                      // 返回合并后的头指针
+}
+```
+
+**$10$、设有一个非循环双链表，其每个节点除了$pre$、$data$、$next$域外，还设置了一个访问频度域$freq$，其值初始化为零，每当链表中进行一次$Locate(L, x)运算时，令值为$x$的节点中$freq$域的值$+1$，并使此链表中的节点保持按访问频度递减的顺序排列，且在访问频度相同的情况下，最近访问的节点排在最前面，以便使频繁访问的节点总是靠近表头，编写出符合上述要求的$Locate(L, x)函数，返回找到节点的地址，类型是指针型。$**
+
+这里我们还是假设链表带头节点，因为链表不带头结点的话，需要额外处理头节点变化的过程。$L$为头指针。
+
+先遍历找到值为$x$的节点$P$，若不存在返回$NULL$，将$p -> freq$加$1$，然后把$p$从原位置摘下。再从$p$的前驱开始向前扫描，跳过所有频度小于等于$p -> freq$的点，直到遇到头节点或频度大于$p$的节点$q$。然后将$p$插到$q$之后，因为在前向扫描的过程中，已经跳过了所有频度和$p$相等的节点，所以在所有同频节点中，$p$将是最靠前的那个。
+
+```c
+// 鉴于题目要求，我们在这里重新设计一下链表节点的结构
+typedef struct DNode 
+{
+	int data;
+	int freq;
+	struct DNode* pre, * next;
+} DNode, * DLinkList;
+
+DNode* Locate(DLinkList L, int x) 
+{
+	if (L == NULL) return NULL;          // 空表
+	DNode* p = L->next;                  // 从第一个实际结点开始
+	while (p != NULL && p->data != x) 
+	{  // 查找值为 x 的结点
+		p = p->next;
+	}
+	if (p == NULL) 
+	{
+		return NULL;          // 未找到
+	}
+
+	p->freq++;                           // 访问频度加 1
+
+	// 将 p 从原位置摘下
+	if (p->pre != NULL) 
+	{
+		p->pre->next = p->next;
+	}
+	if (p->next != NULL) 
+	{
+		p->next->pre = p->pre;
+	}
+
+	// 从 p 的原前驱开始向前查找插入位置
+	DNode* q = p->pre;                   // 原前驱
+	while (q != L && q->freq <= p->freq) 
+	{
+		q = q->pre;
+	}
+	// 此时 q 是插入位置的前驱（q 为头结点或 freq > p->freq 的结点）
+
+	// 将 p 插入到 q 之后
+	p->next = q->next;
+	if (q->next != NULL) 
+	{
+		q->next->pre = p;
+	}
+	q->next = p;
+	p->pre = q;
+
+	return p;                            // 返回找到的结点地址
+}
+```
+
+**$11$、设将n个整数存放到不带头节点的单链表中，设计算法将$L$中保存的序列循环右移$k(k0 < k < n)个位置。$**
+
+链表不带头结点，所以头指针指向第一个数据节点。循环右移$k$位后，链表新的第一个节点是原来链表的第$n - k + 1$个节点。所以我们先遍历一遍链表获得链表长度和尾节点，然后把尾节点的$next$域指向头节点形成一个环。再从原头节点往后走$n - k - 1$位找到新的尾节点，最后在新的尾节点处断开得到所需答案。
+
+```c
+LNode* RotateRight(LNode* L, int k) 
+{
+	if (L == NULL || k <= 0) 
+	{
+		return L;                       // 空表或无需移动
+	}
+
+	// 1. 求链表长度 n，并找到尾结点
+	int n = 1;
+	LNode* tail = L;
+	while (tail->next != NULL) 
+	{
+		tail = tail->next;
+		n++;
+	}
+
+	// 若 k >= n，取模（题目给定 0 < k < n，可省略）
+	k = k % n;
+	if (k == 0) 
+	{
+		return L;
+	}
+
+	// 2. 将尾结点指向头结点，形成循环链表
+	tail->next = L;
+
+	// 3. 找到新的尾结点：从原头结点走 n - k - 1 步
+	LNode* new_tail = L;
+	for (int i = 0; i < n - k - 1; i++) 
+	{
+		new_tail = new_tail->next;
+	}
+
+	// 4. 新的头结点是新尾结点的后继
+	LNode* new_head = new_tail->next;
+
+	// 5. 断开环，恢复单链表
+	new_tail->next = NULL;
+
+	return new_head;                    // 返回新的头指针
+}
+```
+
+**$12$、已知一个带有头节点的单链表，假设该链表只给出了头指针$list$，在不改变链表的前提下，设计一个尽可能高效的算法查找链表的倒数第$k$个节点，若查找成功，算法输出该节点$data$的值，并返回$1$，否则只返回$0$。**
+
+采用快慢指针法，快指针先走$k$步，然后同时让快指针和慢指针向前移动，当快指针移动到链表尾的时候，慢指针刚好找到链表倒数第$k$个节点。
+
+```c
+int FindLastKth(LinkList list, int k) 
+{
+	if (list == NULL || k <= 0) 
+	{
+		return 0;                       // 参数非法
+	}
+
+	LNode* fast = list->next;           // 快指针，从第一个实际结点开始
+	LNode* slow = list->next;           // 慢指针，也从头开始
+
+	// 1. 快指针先走 k 步
+	for (int i = 0; i < k; i++) 
+	{
+		if (fast == NULL) {
+			return 0;                   // 链表长度不足 k，查找失败
+		}
+		fast = fast->next;
+	}
+
+	// 2. 快慢指针同步前进，直到快指针到达 NULL
+	while (fast != NULL) {
+		fast = fast->next;
+		slow = slow->next;
+	}
+
+	// 此时 slow 指向倒数第 k 个结点
+	printf("%d\n", slow->data);         // 输出该结点的数据
+	return 1;                           // 查找成功
+}
+```
+
+**$13$、假定用带头结点的单链表保存单词的字母，当两个单词有相同后缀时，可共享相同的后缀存储空间，也就是说两个后缀相同的单词共享相同的后缀节点。设$str1$和$str2$分别指向两个单词所在单链表的头节点，设计一个时间上尽可能高效的算法，找出由$str1$和$str2$所指向的两个链表共同后缀的起始位置。**
+
+这道题等价于找出两个链表的第一个公共节点的位置。通常做法是对齐两个链表的表尾，然后用双指针同时移动。具体做法如下。
+
+分别便利两个链表，得到他们的实际长度$len1$和$len2$，然后计算长度差$diff = |len1 - len2|$，然后让较长链表的指针向前移动$diff$步，使得两个指针到链表表尾的距离相等，然后两个指针同时向前移动，每次比较他们是否是同一个节点，直到找到相同的节点或走到链表末尾，即寻找失败。
+
+```c
+LNode* FindCommonSuffix(LinkList str1, LinkList str2) 
+{
+	if (str1 == NULL || str2 == NULL) 
+	{
+		return NULL;
+	}
+
+	// 1. 求两个链表的实际数据节点长度（不包含头结点）
+	int len1 = 0, len2 = 0;
+	LNode* p1 = str1->next;
+	LNode* p2 = str2->next;
+	while (p1 != NULL) 
+	{
+		len1++;
+		p1 = p1->next;
+	}
+	while (p2 != NULL) {
+		len2++;
+		p2 = p2->next;
+	}
+
+	// 2. 重置指针到第一个实际节点
+	p1 = str1->next;
+	p2 = str2->next;
+
+	// 3. 让较长的链表先走长度差
+	int diff;
+	if (len1 > len2) 
+	{
+		diff = len1 - len2;
+		while (diff--) 
+		{
+			p1 = p1->next;
+		}
+	}
+	else 
+	{
+		diff = len2 - len1;
+		while (diff--) 
+		{
+			p2 = p2->next;
+		}
+	}
+
+	// 4. 同步前进，寻找第一个公共节点
+	while (p1 != NULL && p2 != NULL) 
+	{
+		if (p1 == p2) 
+		{
+			return p1;      // 找到共同后缀的起始位置
+		}
+		p1 = p1->next;
+		p2 = p2->next;
+	}
+
+	return NULL;            // 无公共后缀
+}
+```
+
+**$14$、用单链表保存$m$个整数，节点的$\|data\| \leq n $（$n$为正整数）设计一个时间上尽可能高效的算法，对于链表中$data$的绝对值相等的节点，仅保留第一次出现的节点而删除其他绝对值相等的节点。**
+
+利用题目给定的条件$\|data\| \leq n $开辟一个辅助数组$visited$，下标记录绝对值，用以标记该绝对值是否出现过。然后设置两个指针，一个指向当前节点，一个指向当前节点的前驱。遍历链表，对每个节点计算绝对值，若该绝对值未出现过，则将对应$visited$标记为已出现，保留节点。若该绝对值出现过，则通过前驱指针删除该节点并释放空间。时间复杂度为$O(m)$，空间复杂度是$O(n)$。
+
+```c
+void RemoveDuplicateAbs(LinkList L, int n) 
+{
+	// 假设 L 为带头结点的单链表，n 为节点 data 绝对值的上界
+	if (L == NULL || L->next == NULL) 
+	{
+		return;
+	}
+
+	// 辅助数组，记录绝对值是否已经出现过（0 表示未出现，1 表示已出现）
+	int* visited = (int*)calloc(n + 1, sizeof(int));
+	if (visited == NULL) 
+	{
+		return;                     // 内存分配失败，直接返回
+	}
+
+	LNode* pre = L;                 // pre 指向当前节点的前驱
+	LNode* p = L->next;             // p 指向当前节点
+
+	while (p != NULL) 
+	{
+		int absVal = (p->data >= 0) ? p->data : -p->data;
+
+		if (visited[absVal]) 
+		{
+			// 该绝对值已经出现过，删除当前节点
+			pre->next = p->next;
+			free(p);
+			p = pre->next;          // p 指向新的后继
+		}
+		else 
+		{
+			// 第一次出现，标记并保留
+			visited[absVal] = 1;
+			pre = p;
+			p = p->next;
+		}
+	}
+
+	free(visited);                  // 释放辅助数组
+}
+```
+
+**$15$、设线性表$L = (a_1, a_2, a_3, \dots, a_{n - 2}, a_{n - 1}, a_n)$采用带头结点的单链表保存，设计一个空间复杂度为$O(1)$且时间上尽可能高效的算法，重新排列$L$中的各节点，得到线性表$L' = (a_1, a_n, a_2, a_{n - 1}, a_3, a_{n - 2}, \dots)$**
+
+这道题还是用快慢指针找到中间节点，把链表分成前半部分和后半部分，再将后半部分链表就地逆置，再和前半部分链表相互交叉合并。
+
+```c
+void ReorderList(LinkList L) 
+{
+	if (L == NULL || L->next == NULL || L->next->next == NULL) 
+	{
+		return;                     // 0 或 1 个数据结点无需重排
+	}
+
+	// 1. 找中间结点（slow 最终指向前半部分的最后一个结点）
+	LNode* slow = L->next;
+	LNode* fast = L->next;
+	while (fast->next != NULL && fast->next->next != NULL) 
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+
+	// 2. 拆分链表，second 指向后半部分的第一个结点
+	LNode* second = slow->next;
+	slow->next = NULL;              // 前半部分尾部置空
+
+	// 3. 就地逆置后半部分
+	LNode* prev = NULL;
+	LNode* p = second;
+	while (p != NULL) 
+	{
+		LNode* next = p->next;
+		p->next = prev;
+		prev = p;
+		p = next;
+	}
+	// prev 指向逆置后的后半部分头结点
+
+	// 4. 交替合并前半部分和逆置后的后半部分
+	LNode* first = L->next;         // 前半部分头结点
+	LNode* secondHead = prev;       // 逆置后的后半部分头结点
+	LNode* tail = L;                // 新链表的尾指针，从头结点开始
+
+	while (first != NULL && secondHead != NULL) 
+	{
+		// 插入 first
+		tail->next = first;
+		tail = first;
+		first = first->next;
+
+		// 插入 secondHead
+		tail->next = secondHead;
+		tail = secondHead;
+		secondHead = secondHead->next;
+	}
+
+	// 若前半部分还有剩余（奇数长度时），直接接上
+	if (first != NULL) 
+	{
+		tail->next = first;
+	}
+	else 
+	{
+		tail->next = NULL;
 	}
 }
 ```
