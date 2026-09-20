@@ -483,8 +483,19 @@
   // === Theme Toggle ===
   var themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
-    var savedTheme = localStorage.getItem('theme') || 'dark';
+    // Auto theme by clock: light 7:00-19:00, dark 19:00-7:00.
+    // A manually stored choice (light/dark) overrides the clock.
+    var savedTheme = localStorage.getItem('theme');
+    var autoLight;
     if (savedTheme === 'light') {
+      autoLight = true;
+    } else if (savedTheme === 'dark') {
+      autoLight = false;
+    } else {
+      var hour = new Date().getHours();
+      autoLight = hour >= 7 && hour < 19;
+    }
+    if (autoLight) {
       document.body.classList.add('light-mode');
       themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }

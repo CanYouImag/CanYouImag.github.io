@@ -2,7 +2,16 @@
 <div id="giscus-comments" class="giscus">
   <script>
     (function() {
-      var theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+      var st = localStorage.getItem('theme');
+      var theme;
+      if (st === 'light') {
+        theme = 'light';
+      } else if (st === 'dark') {
+        theme = 'dark';
+      } else {
+        var h = new Date().getHours();
+        theme = (h >= 7 && h < 19) ? 'light' : 'dark';
+      }
       var s = document.createElement('script');
       s.src = 'https://giscus.app/client.js';
       s.setAttribute('data-repo', 'CanYouImag/CanYouImag.github.io');

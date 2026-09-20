@@ -2150,8 +2150,8 @@ body.light-mode {
     color: #222222 !important;
   }
 
-  a { color: #4db6ac; }
-  a:hover { color: #80cbc4; }
+  a { color: #EC807E; }
+  a:hover { color: #EC807E; }
 
   .hero-btn, .stats-bar, .post-card, .categories-summary,
   .tag-cloud, .friend-link, .tool-card, .weather-card,
@@ -2262,6 +2262,40 @@ body.light-mode {
   .langrank-name, .langrank-count { color: #333 !important; }
   .langrank-bar-bg { background: #ddd !important; }
   .langrank-footer { border-top-color: #ddd; }
+
+  // === Daytime (light mode): all green accent text -> #EC807E ===
+  .post-card-content .post-link:hover,
+  .post-category,
+  .post-tag,
+  .tag-badge,
+  .tag-cloud-item,
+  .stat-number,
+  .category-summary-item,
+  .category-summary-item:hover,
+  .category-summary-count,
+  .footer-col .footer-heading,
+  .footer-bottom i,
+  .moe-icp a:hover,
+  .header-icon-btn:hover,
+  .dropdown-item:hover,
+  .category-card-icon,
+  .tag-card-icon,
+  .year-title,
+  .back-to-tools,
+  .back-to-tools:hover,
+  .tool-card-icon,
+  .weather-temp-value,
+  .anime-source a,
+  .related-posts li a,
+  .links-requirements li::before {
+    color: #EC807E !important;
+  }
+
+  #toc-nav a:hover,
+  #toc-nav a.active {
+    color: #EC807E !important;
+    border-left-color: #EC807E;
+  }
 }
 
 // === Ripple Click Effect ===
