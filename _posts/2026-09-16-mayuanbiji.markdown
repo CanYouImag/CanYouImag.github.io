@@ -85,8 +85,8 @@ cover_image: /../assets/mazhe.jpg
 $$
 \left\{
 \begin{aligned}
-\text{物质：} \;&=\; \text{世界上所有物的总和} \\[4pt]
-\text{物质的概念（物质的范畴）：} \;&=\; \text{从物的总和中抽象出来的共性}
+&\text{物质：世界上所有物的总和} \\\\
+&\text{物质的概念（物质的范畴）：从物的总和中抽象出来的共性}
 \end{aligned}
 \right.
 $$
