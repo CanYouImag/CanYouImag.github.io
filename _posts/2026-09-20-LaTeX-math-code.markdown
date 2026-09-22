@@ -111,8 +111,8 @@ cover_image: /../assets/formula.png
 
 | 符号 | 代码 | 含义说明 |
 | :---: | :--- | :--- |
-| $\{ \}$ | `\{ \}` | 普通大括号（需转义，用于集合） |
-| $\left\{ \right\}$ | `\left\{ \right\}` | 自适应大小的大括号 |
+| $\lbrace \rbrace$ | `\{ \}` | 普通大括号（需转义，用于集合） |
+| $\left\lbrace \right\rbrace$ | `\left\{ \right\}` | 自适应大小的大括号 |
 | $\lfloor x \rfloor$ | `\lfloor x \rfloor` | 向下取整（Floor，不超过 x 的最大整数） |
 | $\lceil x \rceil$ | `\lceil x \rceil` | 向上取整（Ceiling，不小于 x 的最小整数） |
 | $\langle x \rangle$ | `\langle x \rangle` | 尖括号（内积、期望值） |
