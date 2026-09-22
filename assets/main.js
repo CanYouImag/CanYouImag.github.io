@@ -480,6 +480,14 @@
     });
   }
 
+  // === GitHub Contribution Chart (theme-aware color) ===
+  function updateGithubChart() {
+    var chart = document.getElementById('github-chart');
+    if (!chart) return;
+    var color = document.body.classList.contains('light-mode') ? 'EC807E' : '4db6ac';
+    chart.src = 'https://ghchart.rshah.org/' + color + '/CanYouImag';
+  }
+
   // === Theme Toggle ===
   var themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
@@ -499,12 +507,14 @@
       document.body.classList.add('light-mode');
       themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
+    updateGithubChart();
 
     themeToggle.addEventListener('click', function() {
       document.body.classList.toggle('light-mode');
       var isLight = document.body.classList.contains('light-mode');
       themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      updateGithubChart();
 
       var giscusFrame = document.querySelector('iframe.giscus-frame');
       if (giscusFrame) {

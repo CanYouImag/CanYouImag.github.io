@@ -26,3 +26,7 @@ permalink: /about/
 
 ![猫娘](/../assets/maoniang1.jpg)
 
+哦对了，这里是贫道的github提交情况，如果需要的话，你知道在哪里找我。
+
+![贫道的 GitHub 提交情况](https://ghchart.rshah.org/4db6ac/CanYouImag){: #github-chart }
+
