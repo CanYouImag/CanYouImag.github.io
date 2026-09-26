@@ -21,7 +21,7 @@ cover_image: /../assets/formula.png
 
 ---
 
-## 一、 切比雪夫大数定律（Chebyshev's Law）
+## 一、切比雪夫大数定律（Chebyshev's Law）
 
 *   **前提条件**：
     1.  随机变量序列$X_1, X_2, \dots, X_n$**相互独立**。
@@ -39,7 +39,7 @@ cover_image: /../assets/formula.png
 
 ---
 
-## 二、 伯努利大数定律（Bernoulli's Law）
+## 二、伯努利大数定律（Bernoulli's Law）
 
 *   **前提条件**：
     1.  进行$n$重伯努利试验（每次试验只有两个结果：发生/不发生）。
@@ -55,7 +55,7 @@ cover_image: /../assets/formula.png
 
 ---
 
-## 三、 辛钦大数定律（Khinchin's Law）
+## 三、辛钦大数定律（Khinchin's Law）
 
 *   **前提条件**：
     1.  随机变量序列$X_1, X_2, \dots, X_n$**独立同分布**（i.i.d.）。

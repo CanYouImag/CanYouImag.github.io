@@ -33,7 +33,7 @@ $$
 
 证明过程：
 
-  令$P\{\lvert\bar{X} - EX\rvert < \Delta\} = 1 - \alpha$，即令$\bar{X}$到$\mu$的距离小于某个正数的概率为$1 - \alpha$
+  令$P\lbrace\lvert\bar{X} - EX\rvert < \Delta\rbrace = 1 - \alpha$，即令$\bar{X}$到$\mu$的距离小于某个正数的概率为$1 - \alpha$
 
   由于$\bar{X} \sim N(\mu, \frac{\sigma^2}{n})$，记$Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0, 1)$（正态分布的标准化），则有：
 

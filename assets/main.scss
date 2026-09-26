@@ -101,6 +101,11 @@ code {
   border-radius: 4px;
 }
 
+// Dark mode only: table code ("写法" in cheat-sheet tables) matches site green
+body:not(.light-mode) .post-content table code {
+  color: #4db6ac !important;
+}
+
   .highlight {
     .c { color: #608b4e; }
     .k { color: #569cd6; }
@@ -1864,7 +1869,9 @@ body.light-mode {
 
 // === Header Actions (Search + Theme Toggle) ===
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .site-header .wrapper {

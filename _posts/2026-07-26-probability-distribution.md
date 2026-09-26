@@ -15,7 +15,7 @@ cover_image: /../assets/formula.png
 
 ## 定义
 
-​	设E的样本空间为 $\Omega$，对于每一个样本点 $\omega \in \Omega$，都有唯一的实数 $X(\omega)$ 与之对应，且对于任意实数x，事件$\{ \omega \mid X(\omega) \leq x \}$ 都有确定的概率 $P\{ \omega \mid X(\omega) \leq x \}$ 与之对应，则称 $X(\omega)$ 为随机变量。
+​	设E的样本空间为 $\Omega$，对于每一个样本点 $\omega \in \Omega$，都有唯一的实数 $X(\omega)$ 与之对应，且对于任意实数x，事件$\lbrace \omega \mid X(\omega) \leq x \rbrace$ 都有确定的概率 $P\lbrace \omega \mid X(\omega) \leq x \rbrace$ 与之对应，则称 $X(\omega)$ 为随机变量。
 
 ​	按照随机变量的取值是有限或可数无穷，还是随机变量取值散布在一个区间内，可分为离散型随机变量和连续型随机变量。
 
@@ -315,7 +315,7 @@ $$
 D(X) = \frac{(b - a)^2}{12}
 $$
 
-#### 特殊性质
+### 特殊性质
 
 ​	区间概率直接测长度：
 
