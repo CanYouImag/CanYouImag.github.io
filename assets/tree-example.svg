@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 410" role="img" aria-label="一棵树的结构示例：根节点A，A的后继为B、C、D，B的后继为E、F，C的后继为G，D的后继为H、I、J，E的后继为K、L，H的后继为M。右侧标注第1层到第4层，左侧用标记线标出整棵树的高度为4。" font-family="'Noto Sans SC','Microsoft YaHei',Arial,sans-serif">
+
+  <!-- 左侧：I 形高度标记线，中间断开写“高度为4” -->
+  <g stroke="#c0392b" stroke-width="2" stroke-linecap="round">
+    <line x1="46" y1="50" x2="82" y2="50"/>
+    <line x1="64" y1="50" x2="64" y2="181"/>
+    <line x1="64" y1="219" x2="64" y2="350"/>
+    <line x1="46" y1="350" x2="82" y2="350"/>
+  </g>
+  <text x="64" y="200" font-size="24" font-weight="700" fill="#c0392b" text-anchor="middle" dominant-baseline="central">高度为4</text>
+
+  <!-- 树的连线 -->
+  <g stroke="#4a6fa5" stroke-width="2" stroke-linecap="round">
+    <line x1="477.5" y1="50" x2="312.5" y2="150"/>
+    <line x1="477.5" y1="50" x2="470" y2="150"/>
+    <line x1="477.5" y1="50" x2="650" y2="150"/>
+    <line x1="312.5" y1="150" x2="245" y2="250"/>
+    <line x1="312.5" y1="150" x2="380" y2="250"/>
+    <line x1="245" y1="250" x2="200" y2="350"/>
+    <line x1="245" y1="250" x2="290" y2="350"/>
+    <line x1="470" y1="150" x2="470" y2="250"/>
+    <line x1="650" y1="150" x2="560" y2="250"/>
+    <line x1="650" y1="150" x2="650" y2="250"/>
+    <line x1="650" y1="150" x2="740" y2="250"/>
+    <line x1="560" y1="250" x2="560" y2="350"/>
+  </g>
+
+  <!-- 树的节点 -->
+  <g fill="#eaf2ff" stroke="#3b6fb5" stroke-width="2">
+    <circle cx="477.5" cy="50" r="22"/>
+    <circle cx="312.5" cy="150" r="22"/>
+    <circle cx="470" cy="150" r="22"/>
+    <circle cx="650" cy="150" r="22"/>
+    <circle cx="245" cy="250" r="22"/>
+    <circle cx="380" cy="250" r="22"/>
+    <circle cx="470" cy="250" r="22"/>
+    <circle cx="560" cy="250" r="22"/>
+    <circle cx="650" cy="250" r="22"/>
+    <circle cx="740" cy="250" r="22"/>
+    <circle cx="200" cy="350" r="22"/>
+    <circle cx="290" cy="350" r="22"/>
+    <circle cx="560" cy="350" r="22"/>
+  </g>
+  <g font-size="22" font-weight="600" fill="#1b3a63" text-anchor="middle" dominant-baseline="central">
+    <text x="477.5" y="50">A</text>
+    <text x="312.5" y="150">B</text>
+    <text x="470" y="150">C</text>
+    <text x="650" y="150">D</text>
+    <text x="245" y="250">E</text>
+    <text x="380" y="250">F</text>
+    <text x="470" y="250">G</text>
+    <text x="560" y="250">H</text>
+    <text x="650" y="250">I</text>
+    <text x="740" y="250">J</text>
+    <text x="200" y="350">K</text>
+    <text x="290" y="350">L</text>
+    <text x="560" y="350">M</text>
+  </g>
+
+  <!-- 右侧：树的层数标注 -->
+  <g font-size="24" font-weight="700" fill="#1b3a63" text-anchor="start" dominant-baseline="central">
+    <text x="800" y="50">第1层</text>
+    <text x="800" y="150">第2层</text>
+    <text x="800" y="250">第3层</text>
+    <text x="800" y="350">第4层</text>
+  </g>
+
+</svg>

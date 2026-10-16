@@ -23,7 +23,9 @@ $$
 # 有理分式的拆分
 
 ​	记$P(x)$的最高次项的次数为$m$，$Q(x)$的最高次项的次数为$n$。
-## （一）假分式（$n<m$）：先用多项式除法化为真分式
+
+## （一）假分式（$n\le m$）：先用多项式除法化为真分式
+
 **例：**
 
 $$
@@ -93,7 +95,7 @@ $2$、二次不可约因式：
 $$
 \begin{cases}
 \text{单因式：} & x^2 +bx +c \rightarrow \frac{Ax + B}{x^2 + bx + c} \\
-\text{重因式：} & (x^2 +bx + c)^n \rightarrow \frac{A_1x + B}{x^2 + bx + c} + \frac{A_2x + B_2}{(x^2 + bx + c)^2} + \cdots + \frac{A_nx + B_n}{(x^2 + bx + c)^n}
+\text{重因式：} & (x^2 +bx + c)^n \rightarrow \frac{A_1x + B_1}{x^2 + bx + c} + \frac{A_2x + B_2}{(x^2 + bx + c)^2} + \cdots + \frac{A_nx + B_n}{(x^2 + bx + c)^n}
 \end{cases}
 $$
 

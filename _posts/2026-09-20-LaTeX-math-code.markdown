@@ -120,6 +120,7 @@ cover_image: /../assets/formula.png
 | $\Vert$ | `\Vert` | 范数 |
 
 ### 分段函数写法
+
 ```latex
 $$
 f(x) = \begin{cases} 
@@ -127,8 +128,10 @@ x^2 & x \ge 0 \\
 -x & x < 0 
 \end{cases}
 $$
+
 ```
 效果：
+
 $$
 f(x) = \begin{cases} 
 x^2 & x \ge 0 \\ 
@@ -196,8 +199,10 @@ $$
 $$
 X \sim N(\mu, \sigma^2), \quad P(X \le \mu + \varepsilon) = \Phi\left(\frac{\varepsilon}{\sigma}\right) \approx \frac{1}{2}
 $$
+
 ```
 效果：
+
 $$
 X \sim N(\mu, \sigma^2), \quad P(X \le \mu + \varepsilon) = \Phi\left(\frac{\varepsilon}{\sigma}\right) \approx \frac{1}{2}
 $$

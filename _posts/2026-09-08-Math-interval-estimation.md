@@ -17,7 +17,7 @@ $$
 P\{\hat{\theta_1}(X_1, X_2, \dots, X_n) < \theta < \hat{\theta_2}(X_1, X_2, \dots, X_n)\} = 1 - \alpha
 $$
 
-则称随机区间$(\hat{\theta_1}, \hat{\theta_2})$是$\theta$的置信度为$1 - \alpha$的置信区间，$\hat{\theta_1}$和$\hat{\theta_2}$分别称为$\theta$的置信度为$1 - \alpha$的双侧置信区间的**置信上限**和**置信下限**。$1 - \alpha$称为置信度或置信水平，$\alpha$称为显著性水平。
+则称随机区间$(\hat{\theta_1}, \hat{\theta_2})$是$\theta$的置信度为$1 - \alpha$的置信区间，$\hat{\theta_1}$和$\hat{\theta_2}$分别称为$\theta$的置信度为$1 - \alpha$的双侧置信区间的**置信下限**和**置信上限**。$1 - \alpha$称为置信度或置信水平，$\alpha$称为显著性水平。
 
 # 单个正态总体均值和方差的置信区间
 
@@ -42,26 +42,31 @@ P\{\lvert\frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}\rvert < \frac{\Delta}{\fr
 $$
 
   即
+
 $$
 \frac{\Delta}{\frac{\sigma}{\sqrt{n}}} = z_\frac{\alpha}{2}
 $$
+
   解得$\Delta = z_{\frac{\alpha}{2}}·\frac{\sigma}{\sqrt{n}}$
 
   故称
+
 $$
 (\bar{x} - \frac{\sigma}{\sqrt{n}}z_{\frac{\alpha}{2}}, \bar{x} + \frac{\sigma}{\sqrt{n}}z_{\frac{\alpha}{2}})
 $$
+
   是置信度为$1 - \alpha$的置信区间
 
 ## $\sigma^2$未知，$\mu$的置信水平是$1 - \alpha$的区间
 
 $$
-(\bar{X} - \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}(n - 1)}, \bar{X} + \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}(n - 1)})
+(\bar{X} - \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}}(n - 1), \bar{X} + \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}}(n - 1))
 $$
 
 证明过程：
 
   令
+
 $$
 P\{\lvert\frac{\bar{X} - \mu}{\frac{S}{\sqrt{n}}}\rvert < \frac{\Delta}{\frac{S}{\sqrt{n}}}\} = 1 - \alpha
 $$
@@ -85,7 +90,7 @@ $$
 P\{\lvert T\rvert > \frac{\Delta}{\frac{S}{\sqrt{n}}}\} = \alpha
 $$
 
-这个形式眼熟不？没错，他就是$t$分布的上$\alpha$分位点。由$t$分布的性质得：
+这个形式眼熟不？没错，他就是$t$分布的上$\frac{\alpha}{2}$分位点。由$t$分布的性质得：
 
 $$
 \frac{\Delta}{\frac{S}{\sqrt{n}}} = t_{\frac{\alpha}{2}}(n - 1)

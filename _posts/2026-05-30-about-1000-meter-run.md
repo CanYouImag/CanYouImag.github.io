@@ -23,6 +23,6 @@ cover_image: /../assets/leitan.jpg
 
 以后谁再叫我跑一千米，我就把今天的这篇博客甩他脸上。累了，毁灭吧，想骂人了。
 
-体测，fuck you!Son of bitch!
+体测，fuck you! Son of a bitch!
 
 ![累瘫了](/../assets/leitan.jpg)

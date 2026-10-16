@@ -46,6 +46,7 @@ $$
 $$
 P\{ X = x_k \} = p_k, k = 1,2,\dots
 $$
+
 （满足 $\Sigma p_k = 1$，$p_k \geq 0$）
 
 ## 分布函数
@@ -74,6 +75,7 @@ $$
 ## 特点
 
 ​	取值充满一个区间，无法一一列举。**任意一点的取值的概率都是 0**，即：
+
 $$
 P\{X = a\} = 0
 $$
@@ -125,8 +127,8 @@ $$
 
 $$
 F(x) = \begin{cases}
-0, & x \le 0 \\
-1 - p, & 0 \leq x \le 1 \\
+0, & x < 0 \\
+1 - p, & 0 \leq x < 1 \\
 1, & x \geq 1
 \end{cases}
 $$
@@ -221,6 +223,13 @@ $$
 
 ​	期望与方差相等，选择题常用。
 
+特殊值处的分布函数：
+
+$$
+P\{X = 0\} = e^{-\lambda} \\
+P\{X \geq 1\} = 1 - P\{X = 0\} = 1 - e^{-\lambda}
+$$
+
 ## 几何分布
 
 ### 定义
@@ -261,19 +270,13 @@ $$
 ​	尾概率：
 
 $$
-P\{X \ge m\} = (1 - p)^m
+P\{X > m\} = (1 - p)^m
 $$
 
 ​	无记忆性：
-$$
-P(X \ge m + n \mid X \ge m) = P(X \ge n)
-$$
-
-​	特殊值处的分布函数：
 
 $$
-P\{X = 0\} = e^{-\lambda} \\
-P\{X \geq 1\} = 1 - P\{X = 0\} = 1 - e^{-\lambda}
+P(X > m + n \mid X > m) = P(X > n)
 $$
 
 # 常用连续型随机变量
@@ -362,6 +365,7 @@ $$
 ### 特殊性质
 
 ​	算了我也不知道这个式子叫什么名反正记住就行：
+
 $$
 P\{X \ge t\} = e^{-\lambda t} \\
 P\{X \leq t\} = 1 - e^{-\lambda t}
@@ -401,20 +405,21 @@ $$
 
 ### 特殊性质
 
-​	正态分布的曲线关于$x = \mu$曲线对称。
+​	正态分布的曲线关于直线$x = \mu$对称。
 
 ​	设正态分布$X_1 \sim N(\mu_1 , \sigma_1^2)$，$X_2 \sim N(\mu_2 , \sigma_2^2)$相互独立，则它们的线性组合依然服从正态分布：
+
 $$
 aX_1 + bX_2 \sim N(a\mu_1 + b\mu_2 , a^2\sigma_1^2 + b^2\sigma_2^2)
 $$
 
 ​	标准正态分布的$3\sigma$原则（约等于的值按照题目要求或试卷要求找）：
 
-​		（1）$P(\lvert X - \mu \rvert \le \sigma) =P(\mu + \sigma \le X \le \mu + \sigma) = \Phi(1) - \Phi(-1) \approx 0.6827$
+​		（1）$P(\lvert X - \mu \rvert \le \sigma) =P(\mu - \sigma \le X \le \mu + \sigma) = \Phi(1) - \Phi(-1) \approx 0.6827$
 
-​		（2）$P(\lvert X - \mu \rvert \le 2\sigma) = P(\mu + 2\sigma \le X \le \mu + 2\sigma) = \Phi(2) - \Phi(-2) \approx 0.9545$
+​		（2）$P(\lvert X - \mu \rvert \le 2\sigma) = P(\mu - 2\sigma \le X \le \mu + 2\sigma) = \Phi(2) - \Phi(-2) \approx 0.9545$
 
-​		（3）$P(\lvert X - \mu \rvert \le 3\sigma) = P(\mu + 3\sigma \le X \le \mu + 3\sigma) = \Phi(3) - \Phi(-3) \approx 0.9973$
+​		（3）$P(\lvert X - \mu \rvert \le 3\sigma) = P(\mu - 3\sigma \le X \le \mu + 3\sigma) = \Phi(3) - \Phi(-3) \approx 0.9973$
 
 ### 标准正态分布（$X \sim N(0 , 1)$）
 

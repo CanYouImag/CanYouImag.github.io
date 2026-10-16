@@ -26,7 +26,7 @@ cover_image: /../assets/formula.png
 
 判断两个矩阵是否相似，套路其实很固定，按"由易到难"的顺序逐一排查即可：
 
-1. **看行列式**：$|A|\neq |B|$，必不相似。
+1. **看行列式**：$\lvert A\rvert \neq \lvert B\rvert$，必不相似。
 2. **看秩**：$r(A)\neq r(B)$，必不相似。
 3. **看迹**：$\operatorname{tr}(A)\neq \operatorname{tr}(B)$，必不相似。
 4. **看特征值**：特征值（含重数）不相同，必不相似。
