@@ -2345,6 +2345,17 @@ body.light-mode {
   .weather-input-group input { color: #333 !important; }
   .weather-desc { border-bottom-color: #ddd; }
 
+  .weather-hint { color: #888; }
+
+  .weather-help {
+    background: rgba(240, 240, 240, 0.8);
+    border-color: #e0e0e0;
+  }
+  .weather-help summary { color: #EC807E; }
+  .weather-help-body { color: #555; }
+  .weather-help-body strong { color: #222; }
+  .weather-help-note { color: #999; }
+
   .friend-name { color: #333 !important; }
   .friend-link:hover { background: #e8e8e8 !important; }
 
@@ -2395,30 +2406,43 @@ body.light-mode {
 
 // === Ripple Click Effect ===
 .ripple {
+  --ripple-border: #4db6ac;
+  --ripple-border-end: #64b5f6;
+  --ripple-fill-start: rgba(77, 182, 172, 0.35);
+  --ripple-fill-end: rgba(100, 181, 246, 0.15);
+
   position: fixed;
   pointer-events: none;
   border-radius: 50%;
   width: 10px;
   height: 10px;
-  background: radial-gradient(circle, rgba(77,182,172,0.35), rgba(100,181,246,0.15));
-  border: 2px solid #4db6ac;
+  background: radial-gradient(circle, var(--ripple-fill-start), var(--ripple-fill-end));
+  border: 2px solid var(--ripple-border);
   transform: translate(-50%, -50%) scale(0);
   z-index: 9999;
   animation: rippleAnim 0.75s ease-out forwards;
+}
+
+// 亮色模式：点击波纹使用亮色主题的珊瑚色，暗色模式保持青蓝
+body.light-mode .ripple {
+  --ripple-border: #EC807E;
+  --ripple-border-end: #F2A6A4;
+  --ripple-fill-start: rgba(236, 128, 126, 0.32);
+  --ripple-fill-end: rgba(236, 128, 126, 0.10);
 }
 
 @keyframes rippleAnim {
   0% {
     transform: translate(-50%, -50%) scale(0);
     opacity: 0.8;
-    border-color: #4db6ac;
+    border-color: var(--ripple-border);
   }
   50% {
-    border-color: #64b5f6;
+    border-color: var(--ripple-border-end);
   }
   100% {
     transform: translate(-50%, -50%) scale(14);
     opacity: 0;
-    border-color: #64b5f6;
+    border-color: var(--ripple-border-end);
   }
 }
