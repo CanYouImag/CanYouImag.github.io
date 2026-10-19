@@ -96,7 +96,7 @@ pre {
 
 code {
   background-color: #333 !important;
-  color: #ff9d00 !important;
+  color: #4db6ac !important;
   padding: 2px 4px;
   border-radius: 4px;
 }
@@ -2277,12 +2277,20 @@ body.light-mode {
   .quick-search-results a { color: #333 !important; }
   .quick-search-results a:hover { background: #eee; }
 
+  .hero-avatar {
+    border-color: #EC807E;
+  }
+
+  .hero-desc .cursor {
+    background: #EC807E;
+  }
+
   .hero-btn {
     color: #333 !important;
     border-color: #ddd !important;
   }
   .hero-btn:hover {
-    background: #4db6ac !important;
+    background: #EC807E !important;
     color: #000 !important;
   }
 
@@ -2295,7 +2303,7 @@ body.light-mode {
     border-color: #ddd !important;
   }
   .tag-cloud-item:hover {
-    background: #4db6ac !important;
+    background: #EC807E !important;
     color: #000 !important;
   }
 
@@ -2323,11 +2331,11 @@ body.light-mode {
   .code-block-wrapper pre code { color: #333 !important; }
 
   .copy-btn { background: #e0e0e0; color: #666; border-color: #ccc; }
-  .copy-btn:hover { background: #4db6ac; color: #000; }
+  .copy-btn:hover { background: #EC807E; color: #000; }
 
   .share-buttons { border-top-color: #ddd; }
   .share-btn { background: #e0e0e0; border-color: #ccc; color: #666 !important; }
-  .share-btn:hover { background: #4db6ac; color: #000 !important; border-color: #4db6ac; }
+  .share-btn:hover { background: #EC807E; color: #000 !important; border-color: #EC807E; }
 
   .toc-sticky::-webkit-scrollbar-thumb { background: #bbb; }
   .toc-title { color: #666 !important; border-bottom-color: #ddd; }
@@ -2356,10 +2364,38 @@ body.light-mode {
   .weather-help-body strong { color: #222; }
   .weather-help-note { color: #999; }
 
-  .friend-name { color: #333 !important; }
-  .friend-link:hover { background: #e8e8e8 !important; }
+  // 工具页与子页面按钮：亮色模式改用珊瑚色
+  .tool-btn,
+  .weather-input-group button,
+  .langrank-toolbar button,
+  .anime-image-toolbar button {
+    background: #EC807E;
+    color: #000;
+  }
 
-  #reading-progress { background: linear-gradient(90deg, #4db6ac, #64b5f6); }
+  .tool-btn:hover,
+  .weather-input-group button:hover,
+  .langrank-toolbar button:hover,
+  .anime-image-toolbar button:hover {
+    background: #F2A6A4;
+  }
+
+  .tool-card:hover {
+    background: #f5f5f5 !important;
+    border-color: #EC807E !important;
+  }
+
+  .weather-input-group input:focus,
+  .anime-image-toolbar select:focus {
+    border-color: #EC807E;
+  }
+
+  .friend-name { color: #333 !important; }
+  .friend-avatar { border-color: #ddd; }
+  .friend-link:hover { background: #e8e8e8 !important; border-color: #EC807E; }
+  .friend-link:hover .friend-avatar { border-color: #EC807E; }
+
+  #reading-progress { background: linear-gradient(90deg, #EC807E, #F2A6A4); }
 
   #particle-canvas { opacity: 0.3; }
 
