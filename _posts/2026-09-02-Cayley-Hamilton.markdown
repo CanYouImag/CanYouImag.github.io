@@ -47,7 +47,7 @@ $$
 
 # 一般解题过程
 
-1. **求特征多项式**：计算$f(\lambda) = \vert\lambda E - A\vert$，得到
+1. **求特征多项式**：计算$f(\lambda) = \lvert\lambda E - A\rvert$，得到
 
    $$
    f(\lambda)=\lambda^n + c_{n-1}\lambda^{n-1}+\cdots+c_1\lambda+c_0.
