@@ -22,13 +22,13 @@ $$
 
 ​	其中，$R_n(x)$是$(x-a)^n$的高阶无穷小，在实际应用中有两种表示形式：
 
-- 拉格朗日型余项（Lagrange Remainder）
+- 拉格朗日型余项（$\mathrm{Lagrange}$ $\mathrm{Remainder}$）
 
 $$
 R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1} \quad (\xi \text{ 介于 } a \text{ 与 } x \text{ 之间})
 $$
 
-- 皮阿诺型余项（Peano Remainder）
+- 皮阿诺型余项（$\mathrm{Peano}$ $\mathrm{Remainder}$）
 
 $$
 R_n(x) = o((x-a)^n)
@@ -82,7 +82,7 @@ $$
 = \sum_{n=1}^{\infty} \frac{B_{2n}(-4)^n(1-4^n)}{(2n)!} x^{2n-1}, \quad \lvert x\rvert < \frac{\pi}{2}
 $$
 
-**注：$\tan x$展开式中字母B代表伯努利数，以下为前几个非零的伯努利数：**
+**注：$\tan x$展开式中字母$B$代表伯努利数，以下为前几个非零的伯努利数：**
 
 $$
 B_0 = 1, \quad B_2 = \frac{1}{6}, \quad B_4 = -\frac{1}{30}, \quad B_6 = \frac{1}{42}, \quad B_8 = -\frac{1}{30}

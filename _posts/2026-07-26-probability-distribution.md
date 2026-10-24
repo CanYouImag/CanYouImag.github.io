@@ -7,7 +7,7 @@ tags: [blog, 数学, 计算, 考研]
 cover_image: /../assets/formula.png
 ---
 
-​	众所周知，概率论与数理统计一直是考研数学中折磨广大学子的一大难项。喂，考数二的那几位，别看了，没说你们，数二不考概率论（至少26年12月的27考研不考）。今天，贫道就为大家带来概率论这一部分的基础——随机变量以及相关的基础内容。内容很多，请各位道友耐心观看，看到一半看不下去了就去喝喝茶，上个厕所也行。
+​	众所周知，概率论与数理统计一直是考研数学中折磨广大学子的一大难项。喂，考数二的那几位，别看了，没说你们，数二不考概率论（至少$26$年$12$月的$27$考研不考）。今天，贫道就为大家带来概率论这一部分的基础——随机变量以及相关的基础内容。内容很多，请各位道友耐心观看，看到一半看不下去了就去喝喝茶，上个厕所也行。
 
 ​	来，把背打直认真听，啊。
 
@@ -15,11 +15,11 @@ cover_image: /../assets/formula.png
 
 ## 定义
 
-​	设E的样本空间为 $\Omega$，对于每一个样本点 $\omega \in \Omega$，都有唯一的实数 $X(\omega)$ 与之对应，且对于任意实数x，事件$\lbrace \omega \mid X(\omega) \leq x \rbrace$ 都有确定的概率 $P\lbrace \omega \mid X(\omega) \leq x \rbrace$ 与之对应，则称 $X(\omega)$ 为随机变量。
+​	设$E$的样本空间为$\Omega$，对于每一个样本点$\omega \in \Omega$，都有唯一的实数$X(\omega)$与之对应，且对于任意实数$x$，事件$\lbrace \omega \mid X(\omega) \leq x \rbrace$都有确定的概率$P\lbrace \omega \mid X(\omega) \leq x \rbrace$与之对应，则称$X(\omega)$为随机变量。
 
 ​	按照随机变量的取值是有限或可数无穷，还是随机变量取值散布在一个区间内，可分为离散型随机变量和连续型随机变量。
 
-## 分布函数（CDF）
+## 分布函数（$\mathrm{CDF}$）
 
 ### 公式
 
@@ -41,13 +41,13 @@ $$
 
 ​	取值是有限个或可列无穷多个（如抛硬币的正面/反面，射箭命中的环数）。
 
-## 分布律（PMF）
+## 分布律（$\mathrm{PMF}$）
 
 $$
 P\{ X = x_k \} = p_k, k = 1,2,\dots
 $$
 
-（满足 $\Sigma p_k = 1$，$p_k \geq 0$）
+（满足$\Sigma p_k = 1$，$p_k \geq 0$）
 
 ## 分布函数
 
@@ -74,15 +74,15 @@ $$
 
 ## 特点
 
-​	取值充满一个区间，无法一一列举。**任意一点的取值的概率都是 0**，即：
+​	取值充满一个区间，无法一一列举。**任意一点的取值的概率都是$0$**，即：
 
 $$
 P\{X = a\} = 0
 $$
 
-## 概率密度（PDF）
+## 概率密度（$\mathrm{PDF}$）
 
-​	$f(x)$，满足 $\int_{-\infty}^{+\infty}f(x)dx = 1$，$f(x) \geq 0$
+​	$f(x)$，满足$\int_{-\infty}^{+\infty}f(x)dx = 1$，$f(x) \geq 0$
 
 ## 分布函数
 
@@ -109,7 +109,7 @@ $$
 
 # 常用离散型随机变量
 
-## 0-1分布（$X \sim B(1 , p)$）
+## $0\text{-}1$分布（$X \sim B(1 , p)$）
 
 ### 定义
 
@@ -123,7 +123,7 @@ $$
 
 ### 分布函数$F(x)$
 
-​	阶梯函数（不是Sigmoid函数）：
+​	阶梯函数（不是$\mathrm{Sigmoid}$函数）：
 
 $$
 F(x) = \begin{cases}
@@ -177,7 +177,7 @@ $$
 
 ### 特殊性质
 
-​	当$n = 1$时，退化为0-1分布。
+​	当$n = 1$时，退化为$0\text{-}1$分布。
 
 ​	当$n$很大，$p$很小的时候，$np = \lambda$，则近似为泊松分布。
 
@@ -415,11 +415,11 @@ $$
 
 ​	标准正态分布的$3\sigma$原则（约等于的值按照题目要求或试卷要求找）：
 
-​		（1）$P(\lvert X - \mu \rvert \le \sigma) =P(\mu - \sigma \le X \le \mu + \sigma) = \Phi(1) - \Phi(-1) \approx 0.6827$
+​		（$1$）$P(\lvert X - \mu \rvert \le \sigma) =P(\mu - \sigma \le X \le \mu + \sigma) = \Phi(1) - \Phi(-1) \approx 0.6827$
 
-​		（2）$P(\lvert X - \mu \rvert \le 2\sigma) = P(\mu - 2\sigma \le X \le \mu + 2\sigma) = \Phi(2) - \Phi(-2) \approx 0.9545$
+​		（$2$）$P(\lvert X - \mu \rvert \le 2\sigma) = P(\mu - 2\sigma \le X \le \mu + 2\sigma) = \Phi(2) - \Phi(-2) \approx 0.9545$
 
-​		（3）$P(\lvert X - \mu \rvert \le 3\sigma) = P(\mu - 3\sigma \le X \le \mu + 3\sigma) = \Phi(3) - \Phi(-3) \approx 0.9973$
+​		（$3$）$P(\lvert X - \mu \rvert \le 3\sigma) = P(\mu - 3\sigma \le X \le \mu + 3\sigma) = \Phi(3) - \Phi(-3) \approx 0.9973$
 
 ### 标准正态分布（$X \sim N(0 , 1)$）
 
@@ -433,6 +433,6 @@ $$
 
 **性质：**
 
-​	（1）对称性：$\Phi(-x) = 1 - \Phi(x)$
+​	（$1$）对称性：$\Phi(-x) = 1 - \Phi(x)$
 
-​	（2）中点值：$\Phi(0) = 0.5$
+​	（$2$）中点值：$\Phi(0) = 0.5$

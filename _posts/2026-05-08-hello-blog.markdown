@@ -13,37 +13,37 @@ cover_image: /../assets/wangye.png
 
 ## 修炼法器准备
 
-俗话说“工欲善其事，必先利其器”。贫道此次选用的乃是 **Jekyll** 这一大能框架，配合 **GitHub Pages** 这一云端阵法（你得有个github账号）。
+俗话说“工欲善其事，必先利其器”。贫道此次选用的乃是**$\mathrm{Jekyll}$**这一大能框架，配合**$\mathrm{GitHub}$ $\mathrm{Pages}$**这一云端阵法（你得有个$\mathrm{github}$账号）。
 
 ## 修炼过程
 
 1. **环境搭建**
-   本以为安装 MSYS2 和 Ruby 会像运转“风后奇门”一样困难，结果竟然一路回车，毫无阻碍。看来贫道与这代码一途，确实有些缘分。
+   本以为安装$\mathrm{MSYS2}$和$\mathrm{Ruby}$会像运转“风后奇门”一样困难，结果竟然一路回车，毫无阻碍。看来贫道与这代码一途，确实有些缘分。
    今大道已成，贫道就稍微透露一点修习法门，请道友按序修习（谅你乱序也库库报错）：
 
-   - **在Windows下配置**
+   - **在$\mathrm{Windows}$下配置**
 
-   [安装RubyInstaller](https://rubyinstaller.org/downloads/)（安装Ruby+Devkit安装包，选择推荐版本）
+   [安装$\mathrm{RubyInstaller}$](https://rubyinstaller.org/downloads/)（安装$\text{Ruby+Devkit}$安装包，选择推荐版本）
 
-   ![安装Ruby+Devkit安装包，选择推荐版本](/../assets/download_Ruby+Devkit_recommand_version.png)
+   ![安装$\text{Ruby+Devkit}$安装包，选择推荐版本](/../assets/download_Ruby+Devkit_recommand_version.png)
 
-   运行下载的安装包，除了选择文件下载位置的地方各位道友需要考虑一下，默认会下到C盘，其他的一路保持默认配置就好。
+   运行下载的安装包，除了选择文件下载位置的地方各位道友需要考虑一下，默认会下到$C$盘，其他的一路保持默认配置就好。
 
    
 
-   - **在macOS下配置**
+   - **在$\mathrm{macOS}$下配置**
 
-   macOS很多版本会自带Ruby，但是Jekyll官方不推荐使用macOS自带的Ruby，原因如下：
+   $\mathrm{macOS}$很多版本会自带$\mathrm{Ruby}$，但是$\mathrm{Jekyll}$官方不推荐使用$\mathrm{macOS}$自带的$\mathrm{Ruby}$，原因如下：
 
-      （1） ***系统Ruby太老了***
+      （$1$） ***系统$\mathrm{Ruby}$太老了***
 
-      （2） ***系统Ruby缺少一些必要的库***
+      （$2$） ***系统$\mathrm{Ruby}$缺少一些必要的库***
 
-      （3） ***系统Ruby安装gem默认情况下无法使用***
+      （$3$） ***系统$\mathrm{Ruby}$安装$\mathrm{gem}$默认情况下无法使用***
 
    ………………………………………………（给的理由还不少）
 
-   然后在macOS上安装Ruby：
+   然后在$\mathrm{macOS}$上安装$\mathrm{Ruby}$：
 
    打开终端，运行如下命令：
    
@@ -59,11 +59,11 @@ cover_image: /../assets/wangye.png
    
    ```
 
-   以上命令如有疑问，请查询[macOS安装ruby](https://jekyllrb.com/docs/installation/macos/)
+   以上命令如有疑问，请查询[$\mathrm{macOS}$安装$\mathrm{ruby}$](https://jekyllrb.com/docs/installation/macos/)
 
-   - **在Linux下配置**
+   - **在$\mathrm{Linux}$下配置**
 
-   不同发行版使用的安装命令不同，请查询[Linux安装ruby等](https://jekyllrb.com/docs/installation/other-linux/)（注：Ubuntu使用者请直接移步此网页最底端，其他Linux用户安装后续操作与Ubuntu安装后操作相同）
+   不同发行版使用的安装命令不同，请查询[$\mathrm{Linux}$安装$\mathrm{ruby}$等](https://jekyllrb.com/docs/installation/other-linux/)（注：$\mathrm{Ubuntu}$使用者请直接移步此网页最底端，其他$\mathrm{Linux}$用户安装后续操作与$\mathrm{Ubuntu}$安装后操作相同）
 
    **安装成功后**
 
@@ -74,7 +74,7 @@ cover_image: /../assets/wangye.png
    gem -v
    ```
 
-   如果报错的话，很大可能是各位道友安装时忘记勾选添加环境变量了。请各位道友把报错信息复制扔给AI，它们会帮你解决的（个人建议多问几个）。
+   如果报错的话，很大可能是各位道友安装时忘记勾选添加环境变量了。请各位道友把报错信息复制扔给$\mathrm{AI}$，它们会帮你解决的（个人建议多问几个）。
 
    没有报错的话，继续下一步，在终端中运行：
    
@@ -99,18 +99,18 @@ cover_image: /../assets/wangye.png
    jekyll new myblog
    ```
 
-   这条命令会在你的工作目录下创建一个名为"myblog"的文件夹，不喜欢这个名字可以修改上面的命令中“myblog”那部分。
+   这条命令会在你的工作目录下创建一个名为"$\mathrm{myblog}$"的文件夹，不喜欢这个名字可以修改上面的命令中“$\mathrm{myblog}$”那部分。
 
-   然后终端进入到新建的“myblog”文件夹（请道友实地操作的时候进入你自己创建的文件夹），运行如下命令：
+   然后终端进入到新建的“$\mathrm{myblog}$”文件夹（请道友实地操作的时候进入你自己创建的文件夹），运行如下命令：
 
    ```bash
    bundle exec jekyll serve
    ```
 
-   等待命令执行成功后，进入终端给出的网址（可以按住ctrl，然后鼠标左键网址，就能进入这个本地网站了）
+   等待命令执行成功后，进入终端给出的网址（可以按住$\mathrm{ctrl}$，然后鼠标左键网址，就能进入这个本地网站了）
 
 3. **布置阵法**
-   首先，你得在github上创建一个仓库，命名为“***你的用户名.github.io***”格式，如你的账号用户名是@zhangsan，那么仓库就命名为"zhangsan.github.io"。
+   首先，你得在$\mathrm{github}$上创建一个仓库，命名为“***你的用户名.$\text{github.io}$***”格式，如你的账号用户名是@$\mathrm{zhangsan}$，那么仓库就命名为"$\text{zhangsan.github.io}$"。
 
    在博客根目录下运行：
 
@@ -126,41 +126,41 @@ cover_image: /../assets/wangye.png
 
    1. ***进入仓库***
 
-      登录 GitHub，点进你刚才创建并上传的那个博客仓库。
+      登录$\mathrm{GitHub}$，点进你刚才创建并上传的那个博客仓库。
 
    2. ***找到“设置”***
 
-      在仓库页面的顶部导航栏里，找到并点击Settings。
+      在仓库页面的顶部导航栏里，找到并点击$\mathrm{Settings}$。
 
-   3. ***找到“Pages”选项***
+   3. ***找到“$\mathrm{Pages}$”选项***
 
-      在左侧的菜单栏里，往下翻，找到 Pages 这一项，点击它。
+      在左侧的菜单栏里，往下翻，找到$\mathrm{Pages}$这一项，点击它。
 
    4. ***配置“电源”***
 
-      在右侧的主界面中，找到 Build and deployment 部分。
+      在右侧的主界面中，找到$\mathrm{Build}$ $\mathrm{and}$ $\mathrm{deployment}$部分。
 
-      Source：保持默认（GitHub Actions 或 Deploy from a branch 都可以，默认通常是 Branch）。
+      $\mathrm{Source}$：保持默认（$\mathrm{GitHub}$ $\mathrm{Actions}$或$\mathrm{Deploy}$ $\mathrm{from}$ $a$ $\mathrm{branch}$都可以，默认通常是$\mathrm{Branch}$）。
 
-      Branch：点击下拉菜单，选择 main（或者是 master，看你本地分支叫啥）。
+      $\mathrm{Branch}$：点击下拉菜单，选择$\mathrm{main}$（或者是$\mathrm{master}$，看你本地分支叫啥）。
 
-      Folder：保持 / (root) 不变。
+      $\mathrm{Folder}$：保持 / ($\mathrm{root}$) 不变。
 
       点击“保存”
 
-      点击 Save 按钮。
+      点击$\mathrm{Save}$按钮。
 
    5. ***等待部署***
 
-      点击保存后，页面顶部可能会出现一个正在运行的进度条。等待大概 1-2 分钟，刷新一下这个页面。你会看到一行字：
+      点击保存后，页面顶部可能会出现一个正在运行的进度条。等待大概$1\text{-}2$分钟，刷新一下这个页面。你会看到一行字：
 
-      Your site is live at https://你的用户名.github.io/
+      $\mathrm{Your}$ $\mathrm{site}$ $\mathrm{is}$ $\mathrm{live}$ $\mathrm{at}$ https://你的用户名.github.io/
 
       点击这个链接，你的博客就正式面世了！
 
 ## 修炼心得
 
-今日方知，只要路子选得对，Bug 也是能绕道走的。
+今日方知，只要路子选得对，$\mathrm{Bug}$也是能绕道走的。
 既然洞府已建成，往后贫道便在此处闭关修炼。无论是代码上的疑难杂症，还是生活里的碎碎念，皆会记录于此。
 各位道友，人世纷乱，出入平安。有缘再见！
 

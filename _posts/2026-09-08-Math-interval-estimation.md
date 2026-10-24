@@ -96,7 +96,7 @@ $$
 \frac{\Delta}{\frac{S}{\sqrt{n}}} = t_{\frac{\alpha}{2}}(n - 1)
 $$
 
-解得 $\Delta = t_{\frac{\alpha}{2}}(n - 1) \cdot \frac{S}{\sqrt{n}}$，代回不等式 $\lvert\bar{X} - \mu\rvert < \Delta$ 得：
+解得$\Delta = t_{\frac{\alpha}{2}}(n - 1) \cdot \frac{S}{\sqrt{n}}$，代回不等式$\lvert\bar{X} - \mu\rvert < \Delta$得：
 
 $$
 \bar{X} - \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}}(n - 1) < \mu < \bar{X} + \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}}(n - 1)
@@ -108,7 +108,7 @@ $$
 \left(\bar{X} - \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}}(n - 1),\ \bar{X} + \frac{S}{\sqrt{n}}t_{\frac{\alpha}{2}}(n - 1)\right)
 $$
 
-是置信度为 $1 - \alpha$ 的置信区间。
+是置信度为$1 - \alpha$的置信区间。
 
 ## $\mu$已知，$\sigma^2$的置信水平是$1 - \alpha$的置信区间
 
@@ -118,7 +118,7 @@ $$
 
 证明过程：
 
-由题设 $X_i \sim N(\mu, \sigma^2)$ 且 $\mu$ 已知，对每个 $X_i$ 标准化得 $\frac{X_i - \mu}{\sigma} \sim N(0, 1)$，于是：
+由题设$X_i \sim N(\mu, \sigma^2)$且$\mu$已知，对每个$X_i$标准化得$\frac{X_i - \mu}{\sigma} \sim N(0, 1)$，于是：
 
 $$
 \sum_{i=1}^{n}\left(\frac{X_i - \mu}{\sigma}\right)^2 = \frac{1}{\sigma^2}\sum_{i=1}^{n}(X_i - \mu)^2 \sim \chi^2(n)
@@ -138,7 +138,7 @@ $$
 P\left\{\frac{1}{\chi^2_{\frac{\alpha}{2}}(n)} < \frac{\sigma^2}{\sum_{i=1}^{n}(X_i - \mu)^2} < \frac{1}{\chi^2_{1 - \frac{\alpha}{2}}(n)}\right\} = 1 - \alpha
 $$
 
-各部分同乘 $\sum_{i=1}^{n}(X_i - \mu)^2$，得：
+各部分同乘$\sum_{i=1}^{n}(X_i - \mu)^2$，得：
 
 $$
 P\left\{\frac{\sum_{i=1}^{n}(X_i - \mu)^2}{\chi^2_{\frac{\alpha}{2}}(n)} < \sigma^2 < \frac{\sum_{i=1}^{n}(X_i - \mu)^2}{\chi^2_{1 - \frac{\alpha}{2}}(n)}\right\} = 1 - \alpha
@@ -150,7 +150,7 @@ $$
 \left(\frac{\sum_{i=1}^{n}(X_i - \mu)^2}{\chi^2_{\frac{\alpha}{2}}(n)},\ \frac{\sum_{i=1}^{n}(X_i - \mu)^2}{\chi^2_{1 - \frac{\alpha}{2}}(n)}\right)
 $$
 
-是置信度为 $1 - \alpha$ 的置信区间。
+是置信度为$1 - \alpha$的置信区间。
 
 ## $\mu$未知，$\sigma^2$的置信水平是$1 - \alpha$的置信区间
 
@@ -160,7 +160,7 @@ $$
 
 证明过程：
 
-由于 $\mu$ 未知，我们用 $\bar{X}$ 替代 $\mu$。由正态总体的抽样分布性质知：
+由于$\mu$未知，我们用$\bar{X}$替代$\mu$。由正态总体的抽样分布性质知：
 
 $$
 \frac{(n - 1)S^2}{\sigma^2} \sim \chi^2(n - 1)
@@ -180,7 +180,7 @@ $$
 P\left\{\frac{1}{\chi^2_{\frac{\alpha}{2}}(n - 1)} < \frac{\sigma^2}{(n - 1)S^2} < \frac{1}{\chi^2_{1 - \frac{\alpha}{2}}(n - 1)}\right\} = 1 - \alpha
 $$
 
-各部分同乘 $(n-1)S^2$，得：
+各部分同乘$(n-1)S^2$，得：
 
 $$
 P\left\{\frac{(n - 1)S^2}{\chi^2_{\frac{\alpha}{2}}(n - 1)} < \sigma^2 < \frac{(n - 1)S^2}{\chi^2_{1 - \frac{\alpha}{2}}(n - 1)}\right\} = 1 - \alpha
@@ -192,4 +192,4 @@ $$
 \left(\frac{(n - 1)S^2}{\chi^2_{\frac{\alpha}{2}}(n - 1)},\ \frac{(n - 1)S^2}{\chi^2_{1 - \frac{\alpha}{2}}(n - 1)}\right)
 $$
 
-是置信度为 $1 - \alpha$ 的置信区间。
+是置信度为$1 - \alpha$的置信区间。

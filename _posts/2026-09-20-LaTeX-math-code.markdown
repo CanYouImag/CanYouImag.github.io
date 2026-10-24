@@ -7,7 +7,7 @@ tags: [blog, 数学, LaTeX, 公式]
 cover_image: /../assets/formula.png
 ---
 
-众所周知，我们在个人网站或者在公共博客网站上写帖子的时候，写的帖子都支持markdown格式。而在markdown中，我们又可以通过LaTeX公式的语法来实现对一些公式的渲染，从而让我们的博文里也能有吓死人的各种各样的数学公式。但是，有的道友就想问了：“啊道友可是我不会写LaTeX啊，我不会这个符号啊那个符号啊什么的。”很好，有这种问题的道友别慌，今天，他来了，他来了，他带着焚决走来了；他来了，他来了，他脚踏祥云进来了。~~两块两块，全场都两块。 所有商品全部两充，欢迎致电赵四。 不吃亏来不上当，望一望来瞅一瞅。 两元商品啥都有，旅游去不了新加坡。 两块钱不算贵，买不了冰箱和冰柜。~~
+众所周知，我们在个人网站或者在公共博客网站上写帖子的时候，写的帖子都支持$\mathrm{markdown}$格式。而在$\mathrm{markdown}$中，我们又可以通过$\mathrm{LaTeX}$公式的语法来实现对一些公式的渲染，从而让我们的博文里也能有吓死人的各种各样的数学公式。但是，有的道友就想问了：“啊道友可是我不会写$\mathrm{LaTeX}$啊，我不会这个符号啊那个符号啊什么的。”很好，有这种问题的道友别慌，今天，他来了，他来了，他带着焚决走来了；他来了，他来了，他脚踏祥云进来了。~~两块两块，全场都两块。 所有商品全部两充，欢迎致电赵四。 不吃亏来不上当，望一望来瞅一瞅。 两元商品啥都有，旅游去不了新加坡。 两块钱不算贵，买不了冰箱和冰柜。~~
 
 哪个缺大德的完蛋玩意儿在这放了个两元店的音响，破坏贫道洞府的气氛，真的是。算了，各位有需要的道友们请移步下面。
 
@@ -32,9 +32,9 @@ cover_image: /../assets/formula.png
 | $\cdot$ | `\cdot` | 点乘（向量内积常用） |
 | $\div$ | `\div` | 除法 |
 | $\pm$ | `\pm` | 正负号 |
-| $\frac{a}{b}$ | `\frac{a}{b}` | 分数（a 为分子，b 为分母） |
+| $\frac{a}{b}$ | `\frac{a}{b}` | 分数（$a$为分子，$b$为分母） |
 | $\sqrt{x}$ | `\sqrt{x}` | 平方根（二次根号） |
-| $\sqrt[n]{x}$ | `\sqrt[n]{x}` | n 次方根 |
+| $\sqrt[n]{x}$ | `\sqrt[n]{x}` | $n$次方根 |
 | $x^2$ | `x^2` | 上标（幂运算） |
 | $x_n$ | `x_n` | 下标（序列/索引） |
 | $x^{n+1}$ | `x^{n+1}` | 多字符上标（需用大括号包裹） |
@@ -93,7 +93,7 @@ cover_image: /../assets/formula.png
 | 符号 | 代码 | 含义说明 |
 | :---: | :--- | :--- |
 | $\int$ | `\int` | 不定积分 |
-| $\int_{a}^{b}$ | `\int_{a}^{b}` | 定积分（a 为下限，b 为上限） |
+| $\int_{a}^{b}$ | `\int_{a}^{b}` | 定积分（$a$为下限，$b$为上限） |
 | $\iint$ | `\iint` | 二重积分 |
 | $\iiint$ | `\iiint` | 三重积分 |
 | $\oint$ | `\oint` | 闭合曲线积分（环路积分） |
@@ -101,9 +101,9 @@ cover_image: /../assets/formula.png
 | $\sum$ | `\sum` | 求和（累加） |
 | $\prod$ | `\prod` | 累乘（连乘） |
 | $\partial$ | `\partial` | 偏导数符号 |
-| $\nabla$ | `\nabla` | 梯度算子（Nabla） |
+| $\nabla$ | `\nabla` | 梯度算子（$\mathrm{Nabla}$） |
 | $\infty$ | `\infty` | 无穷大 |
-| $\mathrm{d}x$ | `\mathrm{d}x` | 微分（正体 d，规范写法） |
+| $\mathrm{d}x$ | `\mathrm{d}x` | 微分（正体$d$，规范写法） |
 
 ---
 
@@ -113,8 +113,8 @@ cover_image: /../assets/formula.png
 | :---: | :--- | :--- |
 | $\lbrace \rbrace$ | `\{ \}` | 普通大括号（需转义，用于集合） |
 | $\left\lbrace \right\rbrace$ | `\left\{ \right\}` | 自适应大小的大括号 |
-| $\lfloor x \rfloor$ | `\lfloor x \rfloor` | 向下取整（Floor，不超过 x 的最大整数） |
-| $\lceil x \rceil$ | `\lceil x \rceil` | 向上取整（Ceiling，不小于 x 的最小整数） |
+| $\lfloor x \rfloor$ | `\lfloor x \rfloor` | 向下取整（$\mathrm{Floor}$，不超过$x$的最大整数） |
+| $\lceil x \rceil$ | `\lceil x \rceil` | 向上取整（$\mathrm{Ceiling}$，不小于$x$的最小整数） |
 | $\langle x \rangle$ | `\langle x \rangle` | 尖括号（内积、期望值） |
 | $\lvert x \rvert$ | `\lvert x \rvert` | 绝对值 / 条件概率分隔符 |
 | $\Vert$ | `\Vert` | 范数 |
@@ -139,7 +139,7 @@ x^2 & x \ge 0 \\
 \end{cases}
 $$
 
-> 含义：分段函数，当 $x \ge 0$ 时 $f(x) = x^2$，当 $x < 0$ 时 $f(x) = -x$。
+> 含义：分段函数，当$x \ge 0$时$f(x) = x^2$，当$x < 0$时$f(x) = -x$。
 
 ---
 
@@ -171,13 +171,13 @@ $$
 | $\overline{AB}$ | `\overline{AB}` | 上划线（线段、共轭复数） |
 | $\hat{x}$ | `\hat{x}` | 帽子符号（估计值、单位向量） |
 | $\tilde{x}$ | `\tilde{x}` | 波浪号上标（近似、傅里叶变换） |
-| $\mathbb{R}$ | `\mathbb{R}` | 黑板粗体（实数集，同理 $\mathbb{Z}$ 整数集、$\mathbb{C}$ 复数集） |
+| $\mathbb{R}$ | `\mathbb{R}` | 黑板粗体（实数集，同理$\mathbb{Z}$整数集、$\mathbb{C}$复数集） |
 | $\mathcal{L}$ | `\mathcal{L}` | 花体（拉普拉斯变换、拉格朗日量） |
 | $\sin x$ | `\sin x` | 正弦函数（正体，区别于斜体变量） |
 | $\cos x$ | `\cos x` | 余弦函数 |
 | $\tan x$ | `\tan x` | 正切函数 |
-| $\ln x$ | `\ln x` | 自然对数（以 e 为底） |
-| $\log x$ | `\log x` | 常用对数（以 10 为底，或泛指对数） |
+| $\ln x$ | `\ln x` | 自然对数（以$e$为底） |
+| $\log x$ | `\log x` | 常用对数（以$10$为底，或泛指对数） |
 
 ---
 
@@ -189,7 +189,7 @@ $$
 | 自适应括号 | `\left( \frac{a}{b} \right)` | $\left( \frac{a}{b} \right)$ | 括号高度自动匹配内部内容 |
 | 大空格 | `\quad` | $a \quad b$ | 插入一个较大空格（约一个字符宽） |
 | 小空格 | `\,` | $a\,b$ | 插入一个小空格（常用于积分微分前） |
-| 公式编号 | `\tag{1}` | 放在 `$$` 末尾 | 给公式添加自定义编号 |
+| 公式编号 | `\tag{1}` | 放在`$$`末尾 | 给公式添加自定义编号 |
 
 ---
 
@@ -207,7 +207,7 @@ $$
 X \sim N(\mu, \sigma^2), \quad P(X \le \mu + \varepsilon) = \Phi\left(\frac{\varepsilon}{\sigma}\right) \approx \frac{1}{2}
 $$
 
-> **含义拆解**：随机变量 $X$ 服从均值为 $\mu$、方差为 $\sigma^2$ 的正态分布；$X$ 小于等于 $\mu + \varepsilon$ 的概率等于标准正态分布函数在 $\frac{\varepsilon}{\sigma}$ 处的取值，约等于 $\frac{1}{2}$。
+> **含义拆解**：随机变量$X$服从均值为$\mu$、方差为$\sigma^2$的正态分布；$X$小于等于$\mu + \varepsilon$的概率等于标准正态分布函数在$\frac{\varepsilon}{\sigma}$处的取值，约等于$\frac{1}{2}$。
 
 ---
 
