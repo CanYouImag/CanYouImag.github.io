@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-labelledby="shigang-title shigang-desc">
+  <title id="shigang-title">中国近现代史纲要三条主线脉络图</title>
+  <desc id="shigang-desc">以革命、国情、历史时期三条线并列展示1840年至今的中国近现代史脉络。</desc>
+  <style>
+    text {
+      font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    }
+  </style>
+  <defs>
+    <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1f2d33" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="800" rx="18" fill="#fbfaf7"/>
+  <rect x="1" y="1" width="1198" height="798" rx="18" fill="none" stroke="#e6e0d8"/>
+  <rect x="0" y="0" width="1200" height="6" rx="3" fill="#4db6ac"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#1f2d33">中国近现代史纲要 · 三条主线</text>
+  <text x="40" y="82" font-size="15" fill="#6b7c86">革命线 × 国情线 × 历史时期线</text>
+  <text x="1160" y="52" text-anchor="end" font-size="13" fill="#8a9aa2">考研政治 · 史纲</text>
+  <text x="1160" y="82" text-anchor="end" font-size="13" fill="#8a9aa2">1840—至今</text>
+  <line x1="40" y1="100" x2="1160" y2="100" stroke="#e6e0d8" stroke-width="1"/>
+
+  <line x1="150" y1="120" x2="1160" y2="120" stroke="#cfd8dc" stroke-width="2"/>
+  <g stroke="#dfe6e8" stroke-width="1" stroke-dasharray="5 6">
+    <line x1="150" y1="120" x2="150" y2="610"/>
+    <line x1="350" y1="120" x2="350" y2="610"/>
+    <line x1="540" y1="120" x2="540" y2="610"/>
+    <line x1="650" y1="120" x2="650" y2="610"/>
+    <line x1="790" y1="120" x2="790" y2="610"/>
+    <line x1="980" y1="120" x2="980" y2="610"/>
+    <line x1="1160" y1="120" x2="1160" y2="610"/>
+  </g>
+
+  <g font-size="13" font-weight="600" fill="#5f6f78" text-anchor="middle">
+    <text x="150" y="108">1840</text>
+    <text x="350" y="108">1919</text>
+    <text x="540" y="108">1949</text>
+    <text x="650" y="108">1956</text>
+    <text x="790" y="108">1978</text>
+    <text x="980" y="108">2012</text>
+    <text x="1160" y="108" text-anchor="end">至今</text>
+  </g>
+  <g font-size="11" fill="#8a9aa2" text-anchor="middle">
+    <text x="150" y="140">鸦片战争</text>
+    <text x="350" y="140">五四运动</text>
+    <text x="540" y="140">新中国成立</text>
+    <text x="650" y="140">三大改造基本完成</text>
+    <text x="790" y="140">十一届三中全会</text>
+    <text x="980" y="140">党的十八大</text>
+  </g>
+  <g>
+    <circle cx="150" cy="120" r="3.5" fill="#4f7cff"/>
+    <circle cx="350" cy="120" r="3.5" fill="#d95c5c"/>
+    <circle cx="540" cy="120" r="4" fill="#d95c5c"/>
+    <circle cx="650" cy="120" r="3.5" fill="#e39a3b"/>
+    <circle cx="790" cy="120" r="4" fill="#8b6bb1"/>
+    <circle cx="980" cy="120" r="4" fill="#c9a227"/>
+  </g>
+
+  <!-- 革命线 -->
+  <rect x="40" y="150" width="90" height="95" rx="14" fill="#eef4f6" stroke="#d5e2e6"/>
+  <text x="85" y="190" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d33">革命</text>
+  <text x="85" y="213" text-anchor="middle" font-size="11" fill="#6b7c86">主线</text>
+  <text x="85" y="232" text-anchor="middle" font-size="9.5" fill="#8a9aa2">革命→建设→改革</text>
+
+  <g filter="url(#soft-shadow)">
+    <rect x="150" y="150" width="196" height="95" rx="12" fill="#4f7cff"/>
+    <rect x="350" y="150" width="186" height="95" rx="12" fill="#d95c5c"/>
+    <rect x="540" y="150" width="106" height="95" rx="12" fill="#e39a3b"/>
+    <rect x="650" y="150" width="136" height="95" rx="12" fill="#4f9d69"/>
+    <rect x="790" y="150" width="186" height="95" rx="12" fill="#8b6bb1"/>
+    <rect x="980" y="150" width="176" height="95" rx="12" fill="#c9a227"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="248" y="188" font-size="20" font-weight="700" fill="#ffffff">旧民主主义革命</text>
+    <text x="248" y="214" font-size="14" fill="#dce6ff">1840—1919</text>
+
+    <text x="443" y="188" font-size="20" font-weight="700" fill="#ffffff">新民主主义革命</text>
+    <text x="443" y="214" font-size="14" fill="#ffe1e1">1919—1949</text>
+
+    <text x="593" y="188" font-size="15" font-weight="700" fill="#3d2a12">社会主义革命</text>
+    <text x="593" y="212" font-size="12" fill="#5a3a12">1949—1956</text>
+
+    <text x="718" y="188" font-size="18" font-weight="700" fill="#ffffff">社会主义建设</text>
+    <text x="718" y="214" font-size="13" fill="#e0f0e5">1956—1978</text>
+
+    <text x="883" y="188" font-size="18" font-weight="700" fill="#ffffff">改革开放新的伟大革命</text>
+    <text x="883" y="214" font-size="13" fill="#eadff5">1978—2012</text>
+
+    <text x="1068" y="188" font-size="17" font-weight="700" fill="#3b2f0b">新时代伟大社会革命</text>
+    <text x="1068" y="214" font-size="13" fill="#5a4a12">2012—至今</text>
+  </g>
+
+  <!-- 国情线 -->
+  <rect x="40" y="285" width="90" height="95" rx="14" fill="#eef4f6" stroke="#d5e2e6"/>
+  <text x="85" y="325" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d33">国情</text>
+  <text x="85" y="350" text-anchor="middle" font-size="11" fill="#6b7c86">社会性质</text>
+
+  <g filter="url(#soft-shadow)">
+    <rect x="150" y="285" width="386" height="95" rx="12" fill="#6b8fa3"/>
+    <rect x="540" y="285" width="106" height="95" rx="12" fill="#e39a3b"/>
+    <rect x="650" y="285" width="506" height="95" rx="12" fill="#4f9d69"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="343" y="323" font-size="20" font-weight="700" fill="#ffffff">半殖民地半封建社会</text>
+    <text x="343" y="349" font-size="14" fill="#e4eef3">1840—1949</text>
+
+    <text x="593" y="323" font-size="14" font-weight="700" fill="#3d2a12">新民主主义社会</text>
+    <text x="593" y="347" font-size="12" fill="#5a3a12">1949—1956</text>
+
+    <text x="903" y="323" font-size="20" font-weight="700" fill="#ffffff">社会主义初级阶段</text>
+    <text x="903" y="349" font-size="14" fill="#e0f0e5">1956—至今 · 长期处于</text>
+  </g>
+
+  <!-- 历史时期线 -->
+  <rect x="40" y="420" width="90" height="180" rx="14" fill="#eef4f6" stroke="#d5e2e6"/>
+  <text x="85" y="500" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2d33">历史时期</text>
+  <text x="85" y="525" text-anchor="middle" font-size="10.5" fill="#6b7c86">近代史·现代史</text>
+
+  <rect x="150" y="420" width="390" height="180" rx="14" fill="#eef4fb" stroke="#4f7cff" stroke-width="1.5"/>
+  <text x="345" y="448" text-anchor="middle" font-size="20" font-weight="700" fill="#2f5fd0">近代史</text>
+  <text x="345" y="468" text-anchor="middle" font-size="12" fill="#5f7fb8">1840—1949</text>
+
+  <rect x="162" y="480" width="172" height="108" rx="10" fill="#ffffff" stroke="#d7e3ff"/>
+  <text x="248" y="516" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2d33">旧民主主义革命时期</text>
+  <text x="248" y="540" text-anchor="middle" font-size="12" fill="#6b7c86">1840—1919</text>
+
+  <rect x="346" y="480" width="182" height="108" rx="10" fill="#ffffff" stroke="#d7e3ff"/>
+  <text x="437" y="516" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2d33">新民主主义革命时期</text>
+  <text x="437" y="540" text-anchor="middle" font-size="12" fill="#6b7c86">1919—1949</text>
+
+  <rect x="540" y="420" width="620" height="180" rx="14" fill="#fff6e8" stroke="#e39a3b" stroke-width="1.5"/>
+  <text x="850" y="448" text-anchor="middle" font-size="20" font-weight="700" fill="#b26a12">现代史</text>
+  <text x="850" y="468" text-anchor="middle" font-size="12" fill="#b28a5a">1949—至今</text>
+
+  <rect x="552" y="480" width="226" height="108" rx="10" fill="#ffffff" stroke="#f0dcc0"/>
+  <line x1="650" y1="550" x2="650" y2="580" stroke="#ead6b8" stroke-width="1" stroke-dasharray="4 5"/>
+  <text x="665" y="516" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2d33">社会主义革命和建设时期</text>
+  <text x="665" y="540" text-anchor="middle" font-size="12" fill="#6b7c86">1949—1978</text>
+  <text x="601" y="568" text-anchor="middle" font-size="10.5" fill="#8a6a3a">1949—1956</text>
+  <text x="719" y="568" text-anchor="middle" font-size="10.5" fill="#8a6a3a">1956—1978</text>
+
+  <rect x="788" y="480" width="180" height="108" rx="10" fill="#ffffff" stroke="#f0dcc0"/>
+  <text x="878" y="508" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2d33">改革开放和</text>
+  <text x="878" y="528" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2d33">社会主义现代化建设</text>
+  <text x="878" y="548" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2d33">新时期</text>
+  <text x="878" y="570" text-anchor="middle" font-size="11.5" fill="#6b7c86">1978—2012</text>
+
+  <rect x="978" y="480" width="170" height="108" rx="10" fill="#ffffff" stroke="#f0dcc0"/>
+  <text x="1063" y="516" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2d33">中国特色社会主义</text>
+  <text x="1063" y="536" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2d33">新时代</text>
+  <text x="1063" y="560" text-anchor="middle" font-size="11.5" fill="#6b7c86">2012—至今</text>
+
+  <!-- 底部提示 -->
+  <rect x="150" y="640" width="1010" height="110" rx="14" fill="#f4f6f7" stroke="#dde5e8"/>
+  <text x="170" y="672" font-size="15" font-weight="700" fill="#1f2d33">主题：实现中华民族伟大复兴</text>
+  <text x="170" y="698" font-size="13" fill="#5f6f78">两大历史任务：1840—1949 争取民族独立、人民解放；1949—至今 实现国家富强、人民幸福</text>
+  <text x="170" y="724" font-size="13" fill="#5f6f78">主线：历史和人民选择了马克思主义、选择了中国共产党、选择了社会主义道路</text>
+  <text x="1140" y="724" text-anchor="end" font-size="10.5" fill="#8a9aa2">示意图，非严格按年份比例</text>
+</svg>

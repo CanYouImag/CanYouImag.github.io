@@ -2298,6 +2298,21 @@ body.light-mode {
   .post-card-excerpt, .post-meta { color: #888 !important; }
   .post-card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05); }
 
+  .pagination-btn {
+    background: rgba(240, 240, 240, 0.9) !important;
+    border-color: #ddd !important;
+    color: #555 !important;
+  }
+  .pagination-btn:hover,
+  .pagination-btn.active {
+    background: #EC807E !important;
+    border-color: #EC807E !important;
+    color: #000 !important;
+  }
+  .pagination-btn.disabled {
+    opacity: 0.45;
+  }
+
   .tag-badge, .tag-cloud-item {
     background: rgba(240, 240, 240, 0.8) !important;
     border-color: #ddd !important;

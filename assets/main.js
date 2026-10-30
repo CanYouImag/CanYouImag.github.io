@@ -204,6 +204,38 @@
     }
   }
 
+  // === Split post/page content into scroll-reveal blocks ===
+  // A single .flip-in on the whole article breaks on long posts: the
+  // IntersectionObserver threshold is a fraction of the target's area,
+  // so a very tall article never reaches it. Animate its top-level blocks
+  // instead, so each section reveals as it enters the viewport.
+  var contentContainers = document.querySelectorAll('.post-content');
+  Array.prototype.forEach.call(contentContainers, function(content) {
+    content.classList.remove('flip-in', 'animate');
+
+    var blockTags = {
+      H1: true, H2: true, H3: true, H4: true, H5: true, H6: true,
+      P: true, UL: true, OL: true, DL: true, BLOCKQUOTE: true,
+      PRE: true, TABLE: true, FIGURE: true, HR: true, DETAILS: true,
+      IMG: true, IFRAME: true, VIDEO: true, AUDIO: true
+    };
+
+    Array.prototype.forEach.call(content.children, function(child) {
+      var tag = child.tagName;
+      var isAnimatedDiv = tag === 'DIV' && (
+        child.classList.contains('code-block-wrapper') ||
+        child.classList.contains('katex-display') ||
+        child.classList.contains('MathJax_Display') ||
+        child.classList.contains('highlight') ||
+        child.classList.contains('table-wrapper')
+      );
+
+      if ((blockTags[tag] || isAnimatedDiv) && !child.classList.contains('flip-in')) {
+        child.classList.add('flip-in');
+      }
+    });
+  });
+
   // === Scroll-based Animations (Flip-in + Fade-in) ===
   var animElements = document.querySelectorAll('.flip-in, .animate-on-scroll');
   if (animElements.length > 0 && 'IntersectionObserver' in window) {
@@ -214,18 +246,16 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0 });
 
     animElements.forEach(function(el) { observer.observe(el); });
   } else {
     animElements.forEach(function(el) { el.classList.add('animate'); });
   }
 
-  // Safety: force-show any flip-in elements after 3s if animation didn't trigger
-  setTimeout(function() {
-    var stuck = document.querySelectorAll('.flip-in:not(.animate)');
-    stuck.forEach(function(el) { el.classList.add('animate'); });
-  }, 3000);
+  // No timeout fallback: every content block is observed individually, so
+  // article length cannot exhaust a single threshold. Browsers without
+  // IntersectionObserver are handled by the else branch above.
 
   // Stagger delay for flip-in elements in post list
   var postItems = document.querySelectorAll('.post-list .flip-in');
