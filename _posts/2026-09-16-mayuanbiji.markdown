@@ -3,7 +3,7 @@ layout: post
 title: "考研政治个人笔记——马克思主义基本原理（第二章至第四章：马克思主义哲学）"
 date: 2026-09-16 10:30:00 +0800
 categories: politics
-tags: [blog, 政治, 考研]
+tags: [政治, 考研]
 cover_image: /../assets/mazhe.jpg
 ---
 

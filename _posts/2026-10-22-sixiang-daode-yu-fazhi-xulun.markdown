@@ -3,7 +3,7 @@ layout: post
 title: "考研政治个人笔记——思想道德与法治（第零章：绪论 + 第一章至第三章：思想篇）"
 date: 2026-10-22 11:30:00 +0800
 categories: politics
-tags: [blog, 政治, 考研]
+tags: [政治, 考研]
 cover_image: /../assets/sixiu.jpg
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "猫娘小玄的日记（一）"
 date: 2026-06-08 20:30:00 +0800
 categories: diary
-tags: [blog,日记]
+tags: [日记]
 cover_image: /../assets/rainy_day.jpg
 ---
 

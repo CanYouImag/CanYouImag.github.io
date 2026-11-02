@@ -3,7 +3,7 @@ layout: post
 title: "猫娘小玄的日记（二）"
 date: 2026-06-12 22:30:00 +0800
 categories: diary
-tags: [blog,日记]
+tags: [日记]
 cover_image: /../assets/sleep.png
 ---
 

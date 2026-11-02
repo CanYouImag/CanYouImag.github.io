@@ -3,7 +3,7 @@ layout: post
 title: "考研政治个人笔记——马克思主义基本原理（第一章：导论）"
 date: 2026-09-13 10:00:00 +0800
 categories: politics
-tags: [blog, 政治, 考研]
+tags: [政治, 考研]
 cover_image: /../assets/mazhe.jpg
 ---
 

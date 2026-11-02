@@ -3,7 +3,7 @@ layout: post
 title: "考研数学个人笔记（七）——三大大数定律（概率论与数理统计）"
 date: 2026-09-15 14:25:00 +0800
 categories: math
-tags: [blog, 数学, 概率, 考研]
+tags: [数学, 概率, 考研]
 cover_image: /../assets/formula.png
 ---
 

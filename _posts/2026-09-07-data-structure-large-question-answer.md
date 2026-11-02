@@ -3,7 +3,7 @@ layout: post
 title: 考研数据结构个人笔记——算法大题编码之线性表
 date: 2026-09-07 13:30:00 +0800
 categories: data structure
-tags: [blog, 数据结构, 算法设计, 考研]
+tags: [数据结构, 算法设计, 考研]
 cover_image: /../assets/data_structure.jpg
 ---
 
@@ -24,7 +24,7 @@ cover_image: /../assets/data_structure.jpg
 void fun (int n)
 {
 	int i = 1;
-	while(i <= n)
+	while (i <= n)
 	{
 		i = i * 2;
 	}
@@ -575,7 +575,7 @@ typedef struct LNode
 bool InitList(LinkList &L)
 {
 	L = (LNode*)malloc(sizeof(LNode));	// 创建头节点
-	L -> next = NULL;					// 头节点后暂无数据
+	L->next = NULL;					// 头节点后暂无数据
 	return true;						// 创建成功
 }
 
@@ -595,9 +595,9 @@ int Length(LinkList L)
 {
 	int len = 0;				// 计数变量
 	LNode *p = L;				// 取单链表第一个节点
-	while (p -> next != NULL)
+	while (p->next != NULL)
 	{
-		p = p -> next;
+		p = p->next;
 		len++;
 	}
 	return len;
@@ -612,9 +612,9 @@ LNode *GetElem(LinkList L, int i)
 {
 	LNode *p = L;				// 取单链表第一个节点
 	int j = 0;
-	while(p != NULL && j < i)
+	while (p != NULL && j < i)
 	{
-		p = p -> next;
+		p = p->next;
 		j++;
 	}
 	return p;		// 找到第i个节点就返回对应的指针，否则返回NULL
@@ -626,10 +626,10 @@ LNode *GetElem(LinkList L, int i)
 ```c
 LNode *LocateElem(LinkList L, ElemType e)
 {
-	LNode *p = L -> next;	// 跳过头节点取第一个数据节点
-	while(p != NULL && p -> data != e)	// 从第一个数据节点开始查找值为e的节点
+	LNode *p = L->next;	// 跳过头节点取第一个数据节点
+	while (p != NULL && p->data != e)	// 从第一个数据节点开始查找值为e的节点
 	{
-		p = p -> next;
+		p = p->next;
 	}
 	return p;
 }
@@ -644,7 +644,7 @@ bool ListInsert(LinkList& L, int i, ElemType e)
 {
 	LNode* p = L;		// p指向当前扫描节点
 	int j = 0;			// j记录当前位序，头节点是第0个节点
-	while(p != NULL && j < i - 1)	// 寻找第i-1个结点
+	while (p != NULL && j < i - 1)	// 寻找第i-1个结点
 	{
 		p = p->next;
 		j++;
@@ -654,8 +654,8 @@ bool ListInsert(LinkList& L, int i, ElemType e)
 		return false;		// i值不合法
 	}
 	LNode* s = (LNode*)malloc(sizeof(LNode));	// 生成新结点
-	s -> data = e;
-	s -> next = p->next;	// 步骤1：将p的后继结点赋值给s的后继
+	s->data = e;
+	s->next = p->next;	// 步骤1：将p的后继结点赋值给s的后继
 	p->next = s;	// 步骤2：将s连接到p的后继
 	return true;
 }

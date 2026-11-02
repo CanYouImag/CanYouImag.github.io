@@ -3,7 +3,7 @@ layout: post
 title: "考研数学个人笔记（五）——凯莱-哈密顿定理应用笔记（线性代数）"
 date: 2026-09-02 08:30:00 +0800
 categories: math
-tags: [blog, 数学, 计算, 考研]
+tags: [数学, 计算, 考研]
 cover_image: /../assets/formula.png
 ---
 

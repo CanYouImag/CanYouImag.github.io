@@ -3,7 +3,7 @@ layout: post
 title: "Markdown 数学公式速查表"
 date: 2026-09-20 13:30:00 +0800
 categories: math
-tags: [blog, 数学, LaTeX, 公式]
+tags: [数学, LaTeX, 公式]
 cover_image: /../assets/formula.png
 ---
 
@@ -185,7 +185,7 @@ $$
 
 | 技巧 | 代码 | 效果 | 含义说明 |
 | :--- | :--- | :--- | :--- |
-| 上下标跑到正上方/下方 | `\limits` | $\sum\limits_{i=1}^{n}$ | 强制将上下标置于运算符正上下方（直接在\limits后面加下标或上标） |
+| 上下标跑到正上方/下方 | `\limits` | $\sum\limits_{i=1}^{n}$ | 强制将上下标置于运算符正上下方（直接在`\limits`后面加下标或上标） |
 | 自适应括号 | `\left( \frac{a}{b} \right)` | $\left( \frac{a}{b} \right)$ | 括号高度自动匹配内部内容 |
 | 大空格 | `\quad` | $a \quad b$ | 插入一个较大空格（约一个字符宽） |
 | 小空格 | `\,` | $a\,b$ | 插入一个小空格（常用于积分微分前） |

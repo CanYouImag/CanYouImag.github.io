@@ -197,6 +197,15 @@ body {
   border-color: #4db6ac;
 }
 
+.hero-btn i {
+  color: #4db6ac;
+  transition: color 0.3s;
+}
+
+.hero-btn:hover i {
+  color: #000;
+}
+
 // === Stats Bar ===
 .stats-bar {
   display: flex;
@@ -2435,8 +2444,6 @@ body.light-mode {
   .moe-icp a:hover,
   .header-icon-btn:hover,
   .dropdown-item:hover,
-  .category-card-icon,
-  .tag-card-icon,
   .year-title,
   .back-to-tools,
   .back-to-tools:hover,
@@ -2452,6 +2459,45 @@ body.light-mode {
   #toc-nav a.active {
     color: #EC807E !important;
     border-left-color: #EC807E;
+  }
+}
+
+// === Category & Tag Cards (light mode) ===
+body.light-mode {
+  .category-card, .tag-card {
+    background: rgba(240, 240, 240, 0.8) !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  .category-card h3, .tag-card h3 {
+    color: #333 !important;
+  }
+
+  .category-card p, .tag-card p {
+    color: #888 !important;
+  }
+
+  .category-card-icon, .tag-card-icon {
+    color: #D96B69 !important;
+    transition: color 0.3s;
+  }
+
+  .category-card:hover, .tag-card:hover {
+    background: #fff5f5 !important;
+    border-color: #EC807E !important;
+  }
+
+  .category-card:hover .category-card-icon,
+  .tag-card:hover .tag-card-icon {
+    color: #EC807E !important;
+  }
+
+  .hero-btn i {
+    color: #D96B69;
+  }
+
+  .hero-btn:hover i {
+    color: #000;
   }
 }
 

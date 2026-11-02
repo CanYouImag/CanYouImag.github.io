@@ -3,7 +3,7 @@ layout: post
 title: "考研数学个人笔记（九）——微分方程求解（高等数学）"
 date: 2026-10-25 10:00:00 +0800
 categories: math
-tags: [blog, 数学, 计算, 考研]
+tags: [数学, 计算, 考研]
 cover_image: /../assets/formula.png
 ---
 

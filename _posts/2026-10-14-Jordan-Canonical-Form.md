@@ -3,7 +3,7 @@ layout: post
 title: "考研数学个人笔记（八）——Jordan标准型（线性代数）"
 date: 2026-10-14 16:00:00 +0800
 categories: math
-tags: [blog, 数学, 计算, 考研]
+tags: [数学, 计算, 考研]
 cover_image: /../assets/formula.png
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "考研数据结构个人笔记——算法大题编码之树与二叉树"
 date: 2026-10-15 10:00:00 +0800
 categories: data structure
-tags: [blog, 数据结构, 算法设计, 考研]
+tags: [数据结构, 算法设计, 考研]
 cover_image: /../assets/data_structure.jpg
 ---
 
@@ -549,11 +549,11 @@ int CountTwoChildNodes(BiTree T)
 	{
 		return 0;
 	}
-	queue<BiTree>q;
+	queue<BiTree> q;
 	q.push(T);
 	int count = 0;
 	
-	while(!q.empty())
+	while (!q.empty())
 	{
 		BiTree p = q.front();
 		q.pop();

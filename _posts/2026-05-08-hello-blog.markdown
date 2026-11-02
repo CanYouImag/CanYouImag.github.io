@@ -3,7 +3,7 @@ layout: post
 title:  "搭建博客：从入门到入土（划掉）到飞升"
 date: 2026-05-08 09:17:41 +0800
 categories: technology
-tags: [blog, tutorial, jekyll]
+tags: [tutorial, jekyll]
 cover_image: /../assets/wangye.png
 ---
 

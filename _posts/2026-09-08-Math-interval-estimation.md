@@ -3,7 +3,7 @@ layout: post
 title: "考研数学个人笔记（六）——参数的区间估计（概率论与数理统计）"
 date: 2026-09-08 17:30:00 +0800
 categories: math
-tags: [blog, 数学, 计算, 考研]
+tags: [数学, 计算, 考研]
 cover_image: /../assets/formula.png
 ---
 

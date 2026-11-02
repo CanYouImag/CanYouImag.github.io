@@ -3,7 +3,7 @@ layout: post
 title: "关于我今天体测1000米差点“原地去世”这件事"
 date: 2026-05-30 18:30:00 +0800
 categories: life
-tags: [blog, 吐槽, 体测]
+tags: [吐槽, 体测]
 cover_image: /../assets/leitan.jpg
 ---
 

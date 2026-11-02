@@ -3,7 +3,7 @@ layout: post
 title: "考研政治个人笔记——中国近现代史纲要"
 date: 2026-10-25 14:00:00 +0800
 categories: politics
-tags: [blog, 政治, 考研]
+tags: [政治, 考研]
 cover_image: /../assets/jinxiandaishi.jpg
 ---
 

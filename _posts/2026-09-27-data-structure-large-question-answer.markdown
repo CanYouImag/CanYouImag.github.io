@@ -3,7 +3,7 @@ layout: post
 title: "考研数据结构个人笔记——算法大题编码之串"
 date: 2026-09-27 10:00:00 +0800
 categories: data structure
-tags: [blog, 数据结构, 算法设计, 考研]
+tags: [数据结构, 算法设计, 考研]
 cover_image: /../assets/data_structure.jpg
 
 ---
@@ -43,7 +43,7 @@ $$
 
 ### $C$语言中的字符串
 
-纯$C$语言环境中如果你想表示一个字符串，必须使用$char$类型的指针或数组，且必须在末尾多留出一位“\0”结尾。由于$C$语言本身不提供对字符串的赋值，拼接，比较等操作，所以必须借助头文件<$string.h$>来实现。以下是该头文件中的常用函数
+纯$C$语言环境中如果你想表示一个字符串，必须使用$char$类型的指针或数组，且必须在末尾多留出一位`\0`结尾。由于$C$语言本身不提供对字符串的赋值，拼接，比较等操作，所以必须借助头文件<$string.h$>来实现。以下是该头文件中的常用函数
 
 | 函数 | 功能 | 示例 |
 | :--- | :--- | :--- |
@@ -52,7 +52,7 @@ $$
 | `strncpy(dest, src, n)` | 拷贝最多$n$个字符 | 更安全 |
 | `strcat(dest, src)` | 字符串拼接 | `strcat(a, " world")` |
 | `strncat(dest, src, n)` | 拼接最多$n$个字符 | |
-| `strcmp(s1, s2)` | 字符串比较 | 返回 <$0$, $0$, >$0$ |
+| `strcmp(s1, s2)` | 字符串比较 | 返回$<0$、$0$、$>0$ |
 | `strncmp(s1, s2, n)` | 比较前$n$个字符 | |
 | `strchr(s, c)` | 查找字符首次出现 | 返回指针 |
 | `strrchr(s, c)` | 查找字符最后一次出现 | |
@@ -151,14 +151,14 @@ int ViolenceSearch(const string& text, const string& pattern)
 	int n = text.size();	// 主串长度
 	int m = pattern.size();	// 模式串长度
 
-	for(int i = 0; i <= n - m; ++i) 
+	for (int i = 0; i <= n - m; ++i) 
 	{
 		int j = 0;
-		while(j < m && text[i + j] == pattern[j]) 
+		while (j < m && text[i + j] == pattern[j]) 
 		{
 			++j;
 		}
-		if(j == m) 
+		if (j == m) 
 		{
 			return i; // 找到匹配，返回起始位置
 		}
@@ -369,7 +369,7 @@ void getNext(string& p, int* next)
 	next[1] = 0;	// 假设next数组下标从1开始。
 	while (i < p.length())
 	{
-		if(j == 0 || p[i] == p[j]) 
+		if (j == 0 || p[i] == p[j]) 
 		{
 			i++;
 			j++;
@@ -454,7 +454,7 @@ void getNextval(string& p, int* nextval)
 	nextval[1] = 0;	// 假设nextval数组下标从1开始。
 	while (i < p.length())
 	{
-		if(j == 0 || p[i] == p[j]) 
+		if (j == 0 || p[i] == p[j]) 
 		{
 			i++;
 			j++;
@@ -485,7 +485,7 @@ int KMP(string& s, string& t, int* next)
 	int i = 1, j = 1;
 	while (i <= s.length() && j <= t.length())
 	{
-		if(j==0|| s[i] == t[j])		// 继续比较后面的字符
+		if (j == 0 || s[i] == t[j])		// 继续比较后面的字符
 		{
 			i++;
 			j++;
@@ -495,7 +495,7 @@ int KMP(string& s, string& t, int* next)
 			j = next[j];
 		}
 	}
-	if(j>t.length())			// 匹配成功
+	if (j > t.length())			// 匹配成功
 	{
 		return i - t.length();
 	}

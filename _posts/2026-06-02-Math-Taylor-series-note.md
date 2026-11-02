@@ -3,7 +3,7 @@ layout: post
 title: "考研数学个人笔记（一）——泰勒公式（高等数学）"
 date: 2026-06-02 16:30:00 +0800
 categories: math
-tags: [blog, 数学, 公式, 考研]
+tags: [数学, 公式, 考研]
 cover_image: /../assets/formula.png
 ---
 

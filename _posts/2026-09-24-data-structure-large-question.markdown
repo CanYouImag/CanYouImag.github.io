@@ -3,7 +3,7 @@ layout: post
 title: "考研数据结构个人笔记——算法大题编码之栈，队列和数组"
 date: 2026-09-24 18:30:00 +0800
 categories: data structure
-tags: [blog, 数据结构, 算法设计, 考研]
+tags: [数据结构, 算法设计, 考研]
 cover_image: /../assets/data_structure.jpg
 ---
 
@@ -418,7 +418,7 @@ private:
 	Node* left;
 	Node* right;
 public:
-	Node(int val):data(val), left(nullptr), right(nullptr) {}
+	Node(int val) : data(val), left(nullptr), right(nullptr) {}
 	int getData() const { return data; }
 	Node* getLeft() const { return left; }
 	Node* getRight() const { return right; }
@@ -432,7 +432,7 @@ class BinaryTree
 private:
 	Node* root;
 public:
-	BinaryTree() :root(nullptr) {};
+	BinaryTree() : root(nullptr) {};
 	// 其他相关操作，如析构函数等。
 };
 
@@ -443,9 +443,9 @@ void LevelOrder(BinaryTree* tree)
 	{
 		return;
 	}
-	queue<Node*>q;
+	queue<Node*> q;
 	q.push(tree->getRoot());	// 根节点入队
-	while(!q.empty()) 
+	while (!q.empty()) 
 	{
 		Node* current = q.front();	// 获取队首元素
 		q.pop();	// 队首元素出队

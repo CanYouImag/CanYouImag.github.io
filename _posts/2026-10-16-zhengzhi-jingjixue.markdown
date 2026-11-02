@@ -3,7 +3,7 @@ layout: post
 title: "考研政治个人笔记——马克思主义政治经济学（第五章至第六章：马克思主义政治经济学）"
 date: 2026-10-16 11:30:00 +0800
 categories: politics
-tags: [blog, 政治, 考研]
+tags: [政治, 考研]
 cover_image: /../assets/mazhe.jpg
 ---
 
