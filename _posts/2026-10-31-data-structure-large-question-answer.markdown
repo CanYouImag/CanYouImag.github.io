@@ -44,23 +44,26 @@ cover_image: /../assets/data_structure.jpg
 #include <vector>
 using namespace std;
 
+// 直接插入排序：把L[i]插入前面已经有序的L[0..i - 1]中
 void InsertSort(vector<int>& L)
 {
 	int n = L.size();
 
 	for (int i = 1; i < n; i++)
 	{
+		// 只有当前元素比前一个元素小，才需要向前插入
 		if (L[i] < L[i - 1])
 		{
-			int temp = L[i];
+			int temp = L[i];	// 暂存待插入元素
 			int j = i - 1;
 
+			// 从后往前找插入位置，同时把较大的元素后移
 			while (j >= 0 && temp < L[j])
 			{
 				L[j + 1] = L[j];
 				j--;
 			}
-			L[j + 1] = temp;
+			L[j + 1] = temp;	// 插入到空出来的位置
 		}
 	}
 }
@@ -80,16 +83,18 @@ void InsertSort(vector<int>& L)
 #include <vector>
 using namespace std;
 
+// 折半插入排序：先用折半查找定位，再统一后移
 void BInsertSort(vector<int>& v)
 {
 	int n = v.size();
 
 	for (int i = 1; i < n; i++)
 	{
-		int temp = v[i];
+		int temp = v[i];	// 暂存待插入元素
 		int low = 0;
 		int high = i - 1;
 
+		// 在有序区v[0..i - 1]中折半查找插入位置
 		while (low <= high)
 		{
 			int mid = (low + high) / 2;
@@ -103,11 +108,12 @@ void BInsertSort(vector<int>& v)
 			}
 		}
 
+		// 插入位置是high + 1，把该位置及之后的元素后移
 		for (int j = i - 1; j >= high + 1; j--)
 		{
 			v[j + 1] = v[j];
 		}
-		v[high + 1] = temp;
+		v[high + 1] = temp;	// 放入待插入元素
 	}
 }
 ```
@@ -130,12 +136,15 @@ void BInsertSort(vector<int>& v)
 #include <vector>
 using namespace std;
 
+// 希尔排序：按增量dk分组，对每组做直接插入排序
 void ShellSort(vector<int>& v)
 {
 	int n = v.size();
 
+	// 增量从n / 2开始，每次减半，最后一定为1
 	for (int dk = n / 2; dk >= 1; dk /= 2)
 	{
+		// 对相隔dk的元素组成的子序列做直接插入排序
 		for (int i = dk; i < n; i++)
 		{
 			int temp = v[i];
@@ -144,6 +153,7 @@ void ShellSort(vector<int>& v)
 			{
 				int j = i - dk;
 
+				// 在子序列中从后往前找位置，元素按dk步长后移
 				while (j >= 0 && temp < v[j])
 				{
 					v[j + dk] = v[j];
@@ -173,14 +183,16 @@ void ShellSort(vector<int>& v)
 #include <utility>
 using namespace std;
 
+// 冒泡排序：每趟把当前未排序部分的最小元素换到前面
 void BubbleSort(vector<int>& v)
 {
 	int n = v.size();
 
 	for (int i = 0; i < n - 1; i++)
 	{
-		bool flag = false;
+		bool flag = false;	// 记录本趟是否发生交换
 
+		// 从后往前比较相邻元素，逆序则交换
 		for (int j = n - 1; j > i; j--)
 		{
 			if (v[j - 1] > v[j])
@@ -190,6 +202,7 @@ void BubbleSort(vector<int>& v)
 			}
 		}
 
+		// 本趟没有交换，说明序列已经有序，可以提前结束
 		if (flag == false)
 		{
 			break;
@@ -223,18 +236,21 @@ $$
 #include <utility>
 using namespace std;
 
+// 一趟划分：以v[low]为基准，把小于基准的放左边，大于等于基准的放右边
 int Partition(vector<int>& v, int low, int high)
 {
-	int pivot = v[low];
+	int pivot = v[low];	// 暂存基准元素
 
 	while (low < high)
 	{
+		// 从右往左找第一个小于基准的元素
 		while (low < high && v[high] >= pivot)
 		{
 			high--;
 		}
 		v[low] = v[high];
 
+		// 从左往右找第一个大于基准的元素
 		while (low < high && v[low] <= pivot)
 		{
 			low++;
@@ -242,17 +258,18 @@ int Partition(vector<int>& v, int low, int high)
 		v[high] = v[low];
 	}
 
-	v[low] = pivot;
-	return low;
+	v[low] = pivot;	// 基准放到最终位置
+	return low;		// 返回基准下标
 }
 
+// 快速排序：递归处理基准左右两个子区间
 void QuickSort(vector<int>& v, int low, int high)
 {
 	if (low < high)
 	{
-		int pi = Partition(v, low, high);
-		QuickSort(v, low, pi - 1);
-		QuickSort(v, pi + 1, high);
+		int pi = Partition(v, low, high);	// 划分并取得基准位置
+		QuickSort(v, low, pi - 1);			// 递归排序左子区间
+		QuickSort(v, pi + 1, high);			// 递归排序右子区间
 	}
 }
 ```
@@ -278,14 +295,16 @@ void QuickSort(vector<int>& v, int low, int high)
 #include <utility>
 using namespace std;
 
+// 简单选择排序：每趟从未排序部分选出最小元素放到前面
 void SelectSort(vector<int>& v)
 {
 	int n = v.size();
 
 	for (int i = 0; i < n - 1; i++)
 	{
-		int min = i;
+		int min = i;	// 记录当前未排序部分最小元素的下标
 
+		// 在v[i + 1..n - 1]中找更小的元素
 		for (int j = i + 1; j < n; j++)
 		{
 			if (v[j] < v[min])
@@ -294,6 +313,7 @@ void SelectSort(vector<int>& v)
 			}
 		}
 
+		// 如果最小元素不在i位置，就交换过去
 		if (min != i)
 		{
 			swap(v[i], v[min]);
@@ -324,36 +344,42 @@ void SelectSort(vector<int>& v)
 #include <utility>
 using namespace std;
 
+// 向下调整：把v[i]调整到合适位置，n是当前堆的有效长度
 void SiftDown(vector<int>& v, int i, int n)
 {
 	while (2 * i + 1 < n)
 	{
-		int child = 2 * i + 1;
+		int child = 2 * i + 1;	// 左孩子下标
 
+		// 如果右孩子更大，就让child指向右孩子
 		if (child + 1 < n && v[child + 1] > v[child])
 		{
 			child++;
 		}
 
+		// 父结点已经不小于较大的孩子，堆性质恢复，调整结束
 		if (v[i] >= v[child])
 		{
 			break;
 		}
 
 		swap(v[i], v[child]);
-		i = child;
+		i = child;	// 继续向下调整
 	}
 }
 
+// 堆排序：先建大根堆，再不断把堆顶换到末尾
 void HeapSort(vector<int>& v)
 {
 	int n = v.size();
 
+	// 从最后一个非叶结点开始向前调整，建立大根堆
 	for (int i = n / 2 - 1; i >= 0; i--)
 	{
 		SiftDown(v, i, n);
 	}
 
+	// 每次把堆顶（最大值）换到当前末尾，然后缩小堆并重新调整
 	for (int i = n - 1; i > 0; i--)
 	{
 		swap(v[0], v[i]);
@@ -385,18 +411,20 @@ void HeapSort(vector<int>& v)
 #include <vector>
 using namespace std;
 
+// 求最大的k个元素：维护一个大小为k的小根堆
 vector<int> TopKLargest(const vector<int>& nums, int k)
 {
-	priority_queue<int, vector<int>, greater<int>> pq;
+	priority_queue<int, vector<int>, greater<int>> pq;	// 小根堆，堆顶是当前k个元素中最小的
 
 	for (int x : nums)
 	{
 		if (pq.size() < k)
 		{
-			pq.push(x);
+			pq.push(x);	// 堆还没满，直接放入
 		}
 		else if (x > pq.top())
 		{
+			// 新元素比堆顶大，替换掉当前最小的候选
 			pq.pop();
 			pq.push(x);
 		}
@@ -419,6 +447,7 @@ vector<int> TopKLargest(const vector<int>& nums, int k)
 优先队列中的元素定义如下：
 
 ```c
+// 优先队列元素：value是数据，priority越大优先级越高
 typedef struct
 {
 	int value;		// 元素的值
@@ -448,6 +477,7 @@ typedef struct
 ```c
 #define MAXSIZE 100
 
+// 固定容量的大根堆，data[0]不用，data[1]是堆顶
 typedef struct
 {
 	PriorityQueueElement data[MAXSIZE + 1];	// 从下标1开始存，data[0]不用
@@ -461,11 +491,13 @@ typedef struct
 #include <utility>
 using namespace std;
 
+// 初始化：空队列
 void InitQueue(PriorityQueue& pq)
 {
 	pq.size = 0;
 }
 
+// 入队：把新元素放到堆尾，然后向上调整
 bool Enqueue(PriorityQueue& pq, int value, int priority)
 {
 	if (pq.size == MAXSIZE)
@@ -473,10 +505,11 @@ bool Enqueue(PriorityQueue& pq, int value, int priority)
 		return false;
 	}
 
-	int i = ++pq.size;
+	int i = ++pq.size;	// 新元素放在数组末尾
 	pq.data[i].value = value;
 	pq.data[i].priority = priority;
 
+	// 优先级比父结点大就上浮
 	while (i > 1 && pq.data[i].priority > pq.data[i / 2].priority)
 	{
 		swap(pq.data[i], pq.data[i / 2]);
@@ -485,6 +518,7 @@ bool Enqueue(PriorityQueue& pq, int value, int priority)
 	return true;
 }
 
+// 出队：取走堆顶，把堆尾元素放到堆顶，然后向下调整
 bool Dequeue(PriorityQueue& pq, PriorityQueueElement& out)
 {
 	if (pq.size == 0)
@@ -492,27 +526,29 @@ bool Dequeue(PriorityQueue& pq, PriorityQueueElement& out)
 		return false;
 	}
 
-	out = pq.data[1];
-	pq.data[1] = pq.data[pq.size];
+	out = pq.data[1];					// 保存当前优先级最高的元素
+	pq.data[1] = pq.data[pq.size];		// 把最后一个元素移到堆顶
 	pq.size--;
 
 	int i = 1;
 	while (2 * i <= pq.size)
 	{
-		int child = 2 * i;
+		int child = 2 * i;	// 左孩子下标
 
+		// 如果右孩子优先级更高，就让child指向右孩子
 		if (child + 1 <= pq.size && pq.data[child + 1].priority > pq.data[child].priority)
 		{
 			child++;
 		}
 
+		// 父结点优先级已经不低于较大的孩子，调整结束
 		if (pq.data[i].priority >= pq.data[child].priority)
 		{
 			break;
 		}
 
 		swap(pq.data[i], pq.data[child]);
-		i = child;
+		i = child;	// 继续向下调整
 	}
 	return true;
 }
@@ -532,6 +568,7 @@ $STL$的`priority_queue`就是堆实现的优先队列，默认是大根堆。�
 #include <functional>
 using namespace std;
 
+// priority_queue常用操作
 priority_queue<int> maxHeap;						// 大根堆，top最大
 priority_queue<int, vector<int>, greater<int>> minHeap;	// 小根堆，top最小
 
@@ -546,6 +583,7 @@ maxHeap.emplace(x);		// 原地构造并入堆，O(log n)
 `priority_queue`的模板形式是：
 
 ```cpp
+// 模板参数：元素类型、底层容器、比较器
 priority_queue<元素类型, 底层容器, 比较器>
 ```
 
@@ -554,6 +592,7 @@ priority_queue<元素类型, 底层容器, 比较器>
 `priority_queue`没有迭代器，不能遍历，也没有`clear()`。如果要清空，可以重新赋一个空队列：
 
 ```cpp
+// 清空优先队列：重新赋值为空队列
 pq = priority_queue<int>();
 ```
 
@@ -564,12 +603,14 @@ pq = priority_queue<int>();
 #include <vector>
 using namespace std;
 
+// 自定义元素
 struct Node
 {
 	int value;
 	int priority;
 };
 
+// 比较器：priority大的元素排在堆顶
 struct Cmp
 {
 	bool operator()(const Node& a, const Node& b) const
@@ -602,12 +643,14 @@ priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> 
 #include <vector>
 using namespace std;
 
+// 合并v[low..mid]和v[mid + 1..high]两个有序区间
 void Merge(vector<int>& v, int low, int mid, int high, vector<int>& temp)
 {
-	int i = low;
-	int j = mid + 1;
-	int k = low;
+	int i = low;		// 左半段指针
+	int j = mid + 1;	// 右半段指针
+	int k = low;		// 临时数组指针
 
+	// 每次取两段中较小的元素放入temp
 	while (i <= mid && j <= high)
 	{
 		if (v[i] <= v[j])
@@ -620,33 +663,37 @@ void Merge(vector<int>& v, int low, int mid, int high, vector<int>& temp)
 		}
 	}
 
+	// 把左半段剩余元素接上
 	while (i <= mid)
 	{
 		temp[k++] = v[i++];
 	}
 
+	// 把右半段剩余元素接上
 	while (j <= high)
 	{
 		temp[k++] = v[j++];
 	}
 
+	// 把临时数组的内容写回原数组
 	for (i = low; i <= high; i++)
 	{
 		v[i] = temp[i];
 	}
 }
 
+// 归并排序：分治
 void MergeSort(vector<int>& v, int low, int high, vector<int>& temp)
 {
-	if (low >= high)
+	if (low >= high)	// 区间长度不超过1，已经有序
 	{
 		return;
 	}
 
-	int mid = (low + high) / 2;
-	MergeSort(v, low, mid, temp);
-	MergeSort(v, mid + 1, high, temp);
-	Merge(v, low, mid, high, temp);
+	int mid = (low + high) / 2;	// 从中间划分
+	MergeSort(v, low, mid, temp);		// 递归排序左半段
+	MergeSort(v, mid + 1, high, temp);	// 递归排序右半段
+	Merge(v, low, mid, high, temp);		// 合并两个有序段
 }
 ```
 
@@ -665,25 +712,29 @@ void MergeSort(vector<int>& v, int low, int high, vector<int>& temp)
 #include <vector>
 using namespace std;
 
+// 基数排序：按十进制位从低位到高位分配和收集
 void RadixSort(vector<int>& v)
 {
-	if (v.empty())
+	if (v.empty())	// 空数组直接返回
 	{
 		return;
 	}
 
-	int maxValue = *max_element(v.begin(), v.end());
+	int maxValue = *max_element(v.begin(), v.end());	// 找到最大值，确定需要处理多少位
 
+	// exp表示当前处理的位：1是个位，10是十位，依此类推
 	for (int exp = 1; maxValue / exp > 0; exp *= 10)
 	{
-		vector<vector<int>> buckets(10);
+		vector<vector<int>> buckets(10);	// 10个桶，对应数字0~9
 
 		for (int x : v)
 		{
-			buckets[(x / exp) % 10].push_back(x);
+			buckets[(x / exp) % 10].push_back(x);	// 按当前位放入对应桶
 		}
 
 		int idx = 0;
+
+		// 按桶的顺序收集，保证当前趟稳定
 		for (int d = 0; d < 10; d++)
 		{
 			for (int x : buckets[d])
@@ -752,12 +803,14 @@ $$
 #include <vector>
 using namespace std;
 
+// 合并两个递增有序顺序表
 vector<int> MergeTwoSorted(const vector<int>& a, const vector<int>& b)
 {
-	vector<int> ans;
-	int i = 0;
-	int j = 0;
+	vector<int> ans;	// 存放合并结果
+	int i = 0;			// 指向a的指针
+	int j = 0;			// 指向b的指针
 
+	// 两个表都还有元素时，取较小的放入结果
 	while (i < a.size() && j < b.size())
 	{
 		if (a[i] <= b[j])
@@ -770,11 +823,13 @@ vector<int> MergeTwoSorted(const vector<int>& a, const vector<int>& b)
 		}
 	}
 
+	// 把a中剩余元素接上
 	while (i < a.size())
 	{
 		ans.push_back(a[i++]);
 	}
 
+	// 把b中剩余元素接上
 	while (j < b.size())
 	{
 		ans.push_back(b[j++]);
@@ -795,24 +850,26 @@ vector<int> MergeTwoSorted(const vector<int>& a, const vector<int>& b)
 #include <vector>
 using namespace std;
 
+// 求第k小元素：维护一个大小为k的大根堆
 int FindKthSmallest(const vector<int>& nums, int k)
 {
-	priority_queue<int> pq;
+	priority_queue<int> pq;	// 大根堆，堆顶是当前k个元素中最大的
 
 	for (int x : nums)
 	{
 		if (pq.size() < k)
 		{
-			pq.push(x);
+			pq.push(x);	// 堆还没满，直接放入
 		}
 		else if (x < pq.top())
 		{
+			// 新元素比堆顶小，替换掉当前最大的候选
 			pq.pop();
 			pq.push(x);
 		}
 	}
 
-	return pq.top();
+	return pq.top();	// 堆顶就是第k小的元素
 }
 ```
 
@@ -826,21 +883,23 @@ int FindKthSmallest(const vector<int>& nums, int k)
 #include <vector>
 using namespace std;
 
+// 判断数组是否满足大根堆性质
 bool IsMaxHeap(const vector<int>& v)
 {
 	int n = v.size();
 
+	// 只需检查所有非叶结点
 	for (int i = 0; i <= (n - 2) / 2; i++)
 	{
-		int left = 2 * i + 1;
-		int right = 2 * i + 2;
+		int left = 2 * i + 1;	// 左孩子下标
+		int right = 2 * i + 2;	// 右孩子下标
 
-		if (left < n && v[i] < v[left])
+		if (left < n && v[i] < v[left])	// 父结点小于左孩子，不是大根堆
 		{
 			return false;
 		}
 
-		if (right < n && v[i] < v[right])
+		if (right < n && v[i] < v[right])	// 父结点小于右孩子，不是大根堆
 		{
 			return false;
 		}
