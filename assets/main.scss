@@ -373,6 +373,7 @@ body {
 .post-card-image {
   flex-shrink: 0;
   width: 200px;
+  height: 180px; // 固定封面高度，避免竖版封面把整张卡片撑高
   overflow: hidden;
 }
 
