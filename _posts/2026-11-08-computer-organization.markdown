@@ -159,7 +159,7 @@ $SSD$是基于$Flash$存储器构建的存储设备，读写速度快、功耗�
 
 ### 连续编址方式
 
-![连续编址方式示意图](/../assets/concessive_addressing.png)
+![连续编址方式示意图](https://i-blog.csdnimg.cn/blog_migrate/c657d44b9da4731348d51c591201d774.png)
 
 连续编址又叫**高位交叉编址**：地址的高位部分用来选择模块，低位部分用来选择模块内的存储单元。
 
@@ -192,7 +192,7 @@ $$
 
 ### 交叉编址方式
 
-![交叉编址方式示意图](/../assets/cross_addressing.png)
+![交叉编址方式示意图](https://i-blog.csdnimg.cn/blog_migrate/819e72e68e6f7e5a67c983da12ef082e.png)
 
 交叉编址又叫**低位交叉编址**：地址的低位部分用来选择模块，高位部分用来选择模块内的存储单元。
 
