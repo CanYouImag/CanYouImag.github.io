@@ -1,6 +1,78 @@
 (function() {
   'use strict';
 
+  // === Auto-hide header on scroll ===
+  var siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    var lastScrollY = window.scrollY || window.pageYOffset;
+    var headerTicking = false;
+    var headerJumpLockUntil = 0;
+    var headerJumpTimer = null;
+
+    function setHeaderHidden(hidden) {
+      siteHeader.classList.toggle('is-hidden', hidden);
+    }
+
+    function updateHeaderOnScroll() {
+      headerTicking = false;
+      var y = window.scrollY || window.pageYOffset;
+
+      // Ignore the scroll events produced by a TOC jump. Otherwise a jump
+      // upwards would immediately reveal the header again.
+      if (Date.now() < headerJumpLockUntil) {
+        lastScrollY = y;
+        return;
+      }
+
+      if (y <= 8) {
+        setHeaderHidden(false);
+        lastScrollY = y;
+        return;
+      }
+
+      var delta = y - lastScrollY;
+      if (Math.abs(delta) < 4) return;
+
+      setHeaderHidden(delta > 0);
+      lastScrollY = y;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!headerTicking) {
+        headerTicking = true;
+        window.requestAnimationFrame(updateHeaderOnScroll);
+      }
+    }, { passive: true });
+
+    function hideHeaderForTocJump() {
+      setHeaderHidden(true);
+      headerJumpLockUntil = Date.now() + 1200;
+
+      clearTimeout(headerJumpTimer);
+      headerJumpTimer = setTimeout(function() {
+        headerJumpLockUntil = 0;
+        lastScrollY = window.scrollY || window.pageYOffset;
+      }, 1200);
+    }
+
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', function() {
+        if (Date.now() < headerJumpLockUntil) {
+          headerJumpLockUntil = 0;
+          lastScrollY = window.scrollY || window.pageYOffset;
+        }
+      }, { passive: true });
+    }
+
+    var headerTocNav = document.getElementById('toc-nav');
+    if (headerTocNav) {
+      headerTocNav.addEventListener('click', function(e) {
+        var link = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+        if (link) hideHeaderForTocJump();
+      });
+    }
+  }
+
   // === Back to Top ===
   var backToTop = document.getElementById('back-to-top');
   if (backToTop) {
