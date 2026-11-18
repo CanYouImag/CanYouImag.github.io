@@ -208,6 +208,25 @@
     }
   });
 
+  // === Responsive table wrapper ===
+  var contentTables = document.querySelectorAll('.post-content table');
+  contentTables.forEach(function(table) {
+    if (table.parentNode && table.parentNode.classList.contains('table-wrapper')) return;
+
+    var columnCount = table.rows.length ? table.rows[0].cells.length : 0;
+    if (columnCount >= 7) {
+      table.classList.add('table-wide');
+    }
+
+    var tableWrapper = document.createElement('div');
+    tableWrapper.className = 'table-wrapper';
+    tableWrapper.setAttribute('tabindex', '0');
+    tableWrapper.setAttribute('role', 'region');
+    tableWrapper.setAttribute('aria-label', '表格，可横向滚动');
+    table.parentNode.insertBefore(tableWrapper, table);
+    tableWrapper.appendChild(table);
+  });
+
   // === Lightbox ===
   var lightboxOverlay = document.getElementById('lightbox-overlay');
   var lightboxImage = document.getElementById('lightbox-image');

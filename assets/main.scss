@@ -554,6 +554,53 @@ body {
   min-width: 0;
 }
 
+.table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 20px;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+  margin-bottom: 0;
+  min-width: 100%;
+}
+
+.table-wrapper table.table-wide {
+  width: max-content;
+  min-width: 100%;
+}
+
+.table-wrapper table.table-wide th,
+.table-wrapper table.table-wide td {
+  white-space: nowrap;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+body.light-mode .table-wrapper {
+  scrollbar-color: #bbb transparent;
+}
+
+body.light-mode .table-wrapper::-webkit-scrollbar-thumb {
+  background: #bbb;
+}
+
 .post-toc {
   flex-shrink: 0;
   width: 220px;
