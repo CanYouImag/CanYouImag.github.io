@@ -664,6 +664,21 @@ body.light-mode .table-wrapper::-webkit-scrollbar-thumb {
   .post-toc { display: block; }
 }
 
+// === Anchor targets: keep headings below the sticky header ===
+html {
+  scroll-padding-top: 76px;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6,
+.post-content a[id] {
+  scroll-margin-top: 76px;
+}
+
 // === KaTeX overflow fix ===
 .post-content .katex-display,
 .post-content .kdmath {
@@ -899,6 +914,195 @@ body.light-mode .table-wrapper::-webkit-scrollbar-thumb {
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-top: 10px solid #ffd1dc;
+}
+
+// === Return to the position before a knowledge-point jump ===
+.jump-back {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: min(380px, calc(100vw - 240px));
+  padding: 7px 8px 7px 14px;
+  border: 1px solid rgba(77, 182, 172, 0.42);
+  border-radius: 999px;
+  background: rgba(24, 24, 24, 0.9);
+  color: #d8f3ef;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.34);
+  user-select: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+
+.jump-back[hidden] {
+  display: none;
+}
+
+.jump-back.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.jump-back-main {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.jump-back-arrow {
+  flex: none;
+  color: #4db6ac;
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.jump-back-main:hover .jump-back-arrow {
+  transform: translateX(-3px);
+}
+
+.jump-back-prefix {
+  flex: none;
+  color: #9ad9d1;
+  font-size: 0.8em;
+  letter-spacing: 0.02em;
+}
+
+.jump-back-label {
+  max-width: 240px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 0.86em;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.jump-back-close {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: #aaa;
+  font-size: 15px;
+  line-height: 22px;
+  cursor: pointer;
+  opacity: 0.55;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.jump-back-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  opacity: 1;
+}
+
+.jump-back-main:focus-visible,
+.jump-back-close:focus-visible {
+  outline: 2px solid #4db6ac;
+  outline-offset: 2px;
+}
+
+// Briefly mark the link that started the jump after coming back.
+.jump-return-highlight {
+  border-radius: 3px;
+  background: rgba(77, 182, 172, 0.22);
+  box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.14);
+  animation: jumpOriginPulse 2.5s ease-out;
+}
+
+@keyframes jumpOriginPulse {
+  0% { background: rgba(77, 182, 172, 0.5); }
+  100% { background: rgba(77, 182, 172, 0); }
+}
+
+body.light-mode .jump-back {
+  border-color: rgba(236, 128, 126, 0.45);
+  background: rgba(255, 255, 255, 0.94);
+  color: #333;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+
+body.light-mode .jump-back-arrow,
+body.light-mode .jump-back-prefix {
+  color: #EC807E;
+}
+
+body.light-mode .jump-back-label {
+  color: #333;
+}
+
+body.light-mode .jump-back-close {
+  color: #888;
+}
+
+body.light-mode .jump-back-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #333;
+}
+
+body.light-mode .jump-return-highlight {
+  background: rgba(236, 128, 126, 0.18);
+  box-shadow: 0 0 0 3px rgba(236, 128, 126, 0.14);
+  animation-name: jumpOriginPulseLight;
+}
+
+@keyframes jumpOriginPulseLight {
+  0% { background: rgba(236, 128, 126, 0.42); }
+  100% { background: rgba(236, 128, 126, 0); }
+}
+
+@media screen and (max-width: 600px) {
+  .jump-back {
+    left: 12px;
+    bottom: 12px;
+    max-width: calc(100vw - 24px);
+    padding: 6px 6px 6px 12px;
+  }
+
+  .jump-back-label {
+    display: none;
+  }
+
+  .jump-back-prefix {
+    font-size: 0.82em;
+  }
+}
+
+@media print {
+  .jump-back {
+    display: none !important;
+  }
+
+  .jump-return-highlight {
+    background: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
 }
 
 // === Reading Progress Bar ===

@@ -18,7 +18,7 @@ cover_image: /../assets/computer_organisation_principle.jpg
 $ISA$主要包括以下内容：
 
 - 指令格式、寻址方式、操作类型，以及各操作所需要的操作数个数、类型和寻址约束。
-- 操作数的数据类型，以及数据按大端还是小端存放（详见第一章笔记）。
+- 操作数的数据类型，以及数据按大端还是小端存放（详见[第一章笔记]({% link _posts/2026-11-05-computer-organization.markdown %}#co-endianness)）。
 - 程序可访问的寄存器编号、数量和位数，存储空间的大小和编码方式。
 - 程序员可见的控制状态，如程序计数器、条件码的定义与行为等。
 

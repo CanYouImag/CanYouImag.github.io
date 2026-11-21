@@ -658,6 +658,352 @@
     });
   });
 
+  // === Return to the position before a knowledge-point jump ===
+  // Every internal link inside .post-content (same page or cross page) pushes
+  // its source position onto a small session stack. The destination shows a
+  // low-key floating pill; returning pops the stack, restores the exact scroll
+  // position and briefly highlights the link that was clicked.
+  var JUMP_STACK_KEY = 'blog:jump-stack';
+  var JUMP_RESTORE_KEY = 'blog:jump-restore';
+  var JUMP_TTL = 6 * 60 * 60 * 1000;
+  var JUMP_STACK_LIMIT = 8;
+
+  function jumpStorageRead(key) {
+    try {
+      var raw = window.sessionStorage.getItem(key);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function jumpStorageWrite(key, value) {
+    try {
+      window.sessionStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {}
+  }
+
+  function jumpStorageRemove(key) {
+    try {
+      window.sessionStorage.removeItem(key);
+    } catch (e) {}
+  }
+
+  function jumpDecode(value) {
+    try {
+      return decodeURIComponent(value);
+    } catch (e) {
+      return value;
+    }
+  }
+
+  function jumpCurrentPage() {
+    return jumpDecode(window.location.pathname + window.location.search);
+  }
+
+  function jumpStack() {
+    var stack = jumpStorageRead(JUMP_STACK_KEY);
+    if (!Array.isArray(stack)) return [];
+    var fresh = [];
+    var now = Date.now();
+    for (var i = 0; i < stack.length; i++) {
+      var entry = stack[i];
+      if (!entry || !entry.url || !entry.to || !entry.ts) continue;
+      if (now - entry.ts > JUMP_TTL) continue;
+      fresh.push(entry);
+    }
+    if (fresh.length !== stack.length) jumpStorageWrite(JUMP_STACK_KEY, fresh);
+    return fresh;
+  }
+
+  function jumpPush(entry) {
+    var stack = jumpStack();
+    var top = stack[stack.length - 1];
+    if (top && top.to === entry.to && top.url === entry.url &&
+        Math.abs((top.scrollY || 0) - entry.scrollY) < 4) {
+      return;
+    }
+    stack.push(entry);
+    if (stack.length > JUMP_STACK_LIMIT) {
+      stack.splice(0, stack.length - JUMP_STACK_LIMIT);
+    }
+    jumpStorageWrite(JUMP_STACK_KEY, stack);
+  }
+
+  function jumpSectionTitle(node) {
+    var headings = document.querySelectorAll(
+      '.post-content h1, .post-content h2, .post-content h3, ' +
+      '.post-content h4, .post-content h5, .post-content h6'
+    );
+    var title = '';
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i] === node || headings[i].contains(node)) {
+        title = headings[i].textContent.trim();
+        break;
+      }
+      if (headings[i].compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING) {
+        title = headings[i].textContent.trim();
+      } else {
+        break;
+      }
+    }
+    return title || document.title;
+  }
+
+  function jumpHighlightOrigin(origin) {
+    if (!origin || !origin.linkHref) return;
+    var links = document.querySelectorAll('.post-content a[href]');
+    var fallback = null;
+
+    function mark(link) {
+      link.classList.remove('jump-return-highlight');
+      void link.offsetWidth;
+      link.classList.add('jump-return-highlight');
+      setTimeout(function() {
+        link.classList.remove('jump-return-highlight');
+      }, 2600);
+    }
+
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      if (link.getAttribute('href') !== origin.linkHref) continue;
+      if (link.textContent.trim() === (origin.linkText || '')) {
+        mark(link);
+        return;
+      }
+      if (!fallback) fallback = link;
+    }
+    if (fallback) mark(fallback);
+  }
+
+  var jumpPill = null;
+  var jumpPillLabel = null;
+  var jumpPillShown = false;
+
+  function buildJumpPill() {
+    if (jumpPill) return;
+    jumpPill = document.createElement('div');
+    jumpPill.id = 'jump-back';
+    jumpPill.className = 'jump-back';
+    jumpPill.hidden = true;
+    jumpPill.innerHTML =
+      '<button type="button" class="jump-back-main">' +
+        '<span class="jump-back-arrow" aria-hidden="true">←</span>' +
+        '<span class="jump-back-prefix">返回</span>' +
+        '<span class="jump-back-label"></span>' +
+      '</button>' +
+      '<button type="button" class="jump-back-close" aria-label="关闭返回提示" title="关闭">×</button>';
+    document.body.appendChild(jumpPill);
+    jumpPillLabel = jumpPill.querySelector('.jump-back-label');
+    jumpPill.querySelector('.jump-back-main').addEventListener('click', jumpReturn);
+    jumpPill.querySelector('.jump-back-close').addEventListener('click', jumpDismiss);
+  }
+
+  function jumpShow(origin) {
+    buildJumpPill();
+    var title = (origin.title || '跳转前的位置').replace(/\s+/g, ' ').trim();
+    jumpPillLabel.textContent = title;
+    var main = jumpPill.querySelector('.jump-back-main');
+    main.setAttribute('aria-label', '返回到跳转前的位置：' + title);
+    main.title = '返回到：' + title;
+    jumpPill.hidden = false;
+    window.requestAnimationFrame(function() {
+      window.requestAnimationFrame(function() {
+        jumpPill.classList.add('is-visible');
+      });
+    });
+    jumpPillShown = true;
+  }
+
+  function jumpHide() {
+    if (!jumpPill) return;
+    jumpPill.classList.remove('is-visible');
+    jumpPillShown = false;
+    setTimeout(function() {
+      if (jumpPill && !jumpPillShown) jumpPill.hidden = true;
+    }, 240);
+  }
+
+  function jumpDismiss() {
+    var stack = jumpStack();
+    if (stack.length) {
+      stack.pop();
+      jumpStorageWrite(JUMP_STACK_KEY, stack);
+    }
+    jumpHide();
+  }
+
+  function jumpCheck() {
+    var restore = jumpStorageRead(JUMP_RESTORE_KEY);
+    if (restore) {
+      if (jumpDecode(restore.url) === jumpCurrentPage()) return;
+      jumpStorageRemove(JUMP_RESTORE_KEY);
+    }
+    var stack = jumpStack();
+    if (!stack.length) {
+      jumpHide();
+      return;
+    }
+    var top = stack[stack.length - 1];
+    // Keep the return option available while reading other sections of the
+    // same destination note; only the page matters, not the current anchor.
+    var currentPage = jumpCurrentPage();
+    var targetPage = top.to.split('#')[0];
+    if (targetPage !== currentPage) {
+      jumpHide();
+      return;
+    }
+    jumpShow(top);
+  }
+
+  function jumpReturn() {
+    var stack = jumpStack();
+    if (!stack.length) {
+      jumpHide();
+      return;
+    }
+    var origin = stack.pop();
+    jumpStorageWrite(JUMP_STACK_KEY, stack);
+    var samePage = origin.url === jumpCurrentPage();
+    jumpHide();
+
+    if (samePage) {
+      var target = origin.url + (origin.hash || '');
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, '', target);
+      }
+      var distance = Math.abs((window.scrollY || window.pageYOffset || 0) - (origin.scrollY || 0));
+      window.scrollTo({
+        top: origin.scrollY || 0,
+        behavior: distance > 2400 ? 'auto' : 'smooth'
+      });
+      setTimeout(function() {
+        jumpHighlightOrigin(origin);
+        jumpCheck();
+      }, distance > 2400 ? 80 : 420);
+    } else {
+      jumpStorageWrite(JUMP_RESTORE_KEY, {
+        url: origin.url,
+        hash: origin.hash || '',
+        scrollY: origin.scrollY || 0,
+        linkHref: origin.linkHref,
+        linkText: origin.linkText,
+        ts: Date.now()
+      });
+      window.location.href = origin.url + (origin.hash || '');
+    }
+  }
+
+  function jumpRestore() {
+    var state = jumpStorageRead(JUMP_RESTORE_KEY);
+    if (!state) return false;
+    if (jumpDecode(state.url) !== jumpCurrentPage()) {
+      jumpStorageRemove(JUMP_RESTORE_KEY);
+      return false;
+    }
+    jumpStorageRemove(JUMP_RESTORE_KEY);
+
+    var targetY = state.scrollY || 0;
+    var lastSet = null;
+    var userMoved = false;
+    var events = ['wheel', 'touchstart', 'keydown', 'mousedown'];
+
+    function markUser() {
+      userMoved = true;
+    }
+
+    for (var i = 0; i < events.length; i++) {
+      window.addEventListener(events[i], markUser, { passive: true });
+    }
+
+    function apply() {
+      if (userMoved) return;
+      var current = window.scrollY || window.pageYOffset || 0;
+      if (lastSet !== null && Math.abs(current - lastSet) > 2) {
+        userMoved = true;
+        return;
+      }
+      window.scrollTo(0, targetY);
+      lastSet = window.scrollY || window.pageYOffset || 0;
+    }
+
+    apply();
+    var delays = [120, 400, 800, 1400];
+    for (var d = 0; d < delays.length; d++) {
+      setTimeout(apply, delays[d]);
+    }
+    setTimeout(function() {
+      for (var j = 0; j < events.length; j++) {
+        window.removeEventListener(events[j], markUser);
+      }
+      jumpHighlightOrigin(state);
+      jumpCheck();
+    }, 1600);
+    return true;
+  }
+
+  if (document.querySelector('.post-content')) {
+    document.addEventListener('click', function(e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var link = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!link || !link.closest('.post-content')) return;
+      if (link.target && link.target !== '_self') return;
+      if (link.hasAttribute('download') || link.getAttribute('data-jump-back') === 'off') return;
+
+      var url;
+      try {
+        url = new URL(link.href, window.location.href);
+      } catch (err) {
+        return;
+      }
+      if (url.origin !== window.location.origin) return;
+
+      // Only remember real pages, not images, PDFs and other assets.
+      var lastSegment = url.pathname.slice(url.pathname.lastIndexOf('/') + 1);
+      if (lastSegment.indexOf('.') !== -1 && !/\.html?$/i.test(lastSegment)) return;
+
+      var samePath = url.pathname === window.location.pathname && url.search === window.location.search;
+      if (samePath && !url.hash) return;
+      if (samePath && url.hash === window.location.hash) return;
+
+      jumpPush({
+        url: window.location.pathname + window.location.search,
+        hash: window.location.hash || '',
+        scrollY: window.scrollY || window.pageYOffset || 0,
+        title: jumpSectionTitle(link),
+        linkHref: link.getAttribute('href'),
+        linkText: link.textContent.trim(),
+        to: jumpDecode(url.pathname + url.search + url.hash),
+        ts: Date.now()
+      });
+    }, true);
+
+    window.addEventListener('hashchange', function() {
+      setTimeout(jumpCheck, 150);
+    });
+
+    window.addEventListener('load', function() {
+      if (!jumpRestore()) setTimeout(jumpCheck, 150);
+    });
+
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) {
+        jumpRestore();
+        setTimeout(jumpCheck, 150);
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && jumpPillShown) jumpDismiss();
+    });
+
+    setTimeout(jumpCheck, 120);
+
+    if (document.readyState === 'complete') {
+      if (!jumpRestore()) setTimeout(jumpCheck, 150);
+    }
+  }
+
   // === Site Running Time ===
   var siteStartDate = new Date('2026-05-07T18:36:40+08:00');
   var ageDisplay = document.getElementById('site-age-display');

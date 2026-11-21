@@ -13,7 +13,7 @@ cover_image: /../assets/data_structure.jpg
 
 # 线性表
 
-## 线性表的顺序存储
+## 线性表的顺序存储 {#ds-linear-sequential}
 
 ### 基础补充：计算算法的时间复杂度。
 

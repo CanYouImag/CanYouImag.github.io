@@ -65,7 +65,7 @@ cover_image: /../assets/data_structure.jpg
 
 - **度为$m$，具有$n$个节点的树的最大高度$h$为$n - m + 1$。**
 
-## 二叉树
+## 二叉树 {#ds-tree-binary}
 
 ### 概念
 
