@@ -123,7 +123,10 @@ s.end();                 // 指向尾后位置
 s.rbegin();              // 反向迭代器
 s.rend();
 // 可用范围 for 遍历
-for (char c : s) cout << c;
+for (char c : s)
+{
+    cout << c;
+}
 
 // 与C字符串和整数的类型转换
 const char* p = s.c_str();          // string -> C 字符串

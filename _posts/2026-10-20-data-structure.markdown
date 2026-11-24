@@ -334,7 +334,9 @@ void BFSTraverse(const vector<vector<int>>& adj)
 	for (int i = 0; i < n; i++)
 	{
 		if (!visited[i])
+		{
 			BFS(adj, i, visited);
+		}
 	}
 }
 ```
@@ -397,7 +399,9 @@ void DFS(const vector<vector<int>>& adj, int u, vector<bool>& visited)
 	for (int v : adj[u])
 	{
 		if (!visited[v])
+		{
 			DFS(adj, v, visited);
+		}
 	}
 }
 
@@ -409,7 +413,9 @@ void DFSTraverse(const vector<vector<int>>& adj)
 	for (int i = 0; i < n; i++)
 	{
 		if (!visited[i])
+		{
 			DFS(adj, i, visited);
+		}
 	}
 }
 ```
@@ -432,7 +438,9 @@ void DFS_NonRecursive(const vector<vector<int>>& adj, int start, vector<bool>& v
 		st.pop();
 
 		if (visited[u])
+		{
 			continue;
+		}
 
 		visited[u] = true;
 
@@ -440,7 +448,9 @@ void DFS_NonRecursive(const vector<vector<int>>& adj, int start, vector<bool>& v
 		for (auto it = adj[u].rbegin(); it != adj[u].rend(); ++it)
 		{
 			if (!visited[*it])
+			{
 				st.push(*it);
+			}
 		}
 	}
 }
@@ -473,7 +483,9 @@ void DFS(const vector<vector<int>>& adj, int u, vector<bool>& visited)
 	for (int v : adj[u])
 	{
 		if (!visited[v])
+		{
 			DFS(adj, v, visited);
+		}
 	}
 }
 
@@ -554,7 +566,9 @@ int Prim(const vector<vector<int>>& g)
 {
 	int n = g.size();
 	if (n == 0)
+	{
 		return 0;
+	}
 
 	const int INF = 0x3f3f3f3f;
 	vector<int> lowcost(n, INF);      // 每个顶点到当前生成树的最小边权
@@ -569,11 +583,15 @@ int Prim(const vector<vector<int>>& g)
 		for (int v = 0; v < n; v++)
 		{
 			if (!used[v] && (u == -1 || lowcost[v] < lowcost[u]))
+			{
 				u = v;
+			}
 		}
 
 		if (u == -1 || lowcost[u] == INF)
+		{
 			return INF;               // 图不连通，没有生成树
+		}
 
 		used[u] = true;
 		ans += lowcost[u];
@@ -581,7 +599,9 @@ int Prim(const vector<vector<int>>& g)
 		for (int v = 0; v < n; v++)
 		{
 			if (!used[v] && g[u][v] < lowcost[v])
+			{
 				lowcost[v] = g[u][v];
+			}
 		}
 	}
 
@@ -617,13 +637,17 @@ public:
 	DSU(int n) : parent(n), rnk(n, 0)
 	{
 		for (int i = 0; i < n; i++)
+		{
 			parent[i] = i;
+		}
 	}
 
 	int find(int x)
 	{
 		if (parent[x] != x)
+		{
 			parent[x] = find(parent[x]);   // 路径压缩
+		}
 		return parent[x];
 	}
 
@@ -633,14 +657,20 @@ public:
 		int rb = find(b);
 
 		if (ra == rb)
+		{
 			return false;                  // 已经在同一个集合，加入会成环
+		}
 
 		if (rnk[ra] < rnk[rb])
+		{
 			swap(ra, rb);
+		}
 
 		parent[rb] = ra;
 		if (rnk[ra] == rnk[rb])
+		{
 			rnk[ra]++;
+		}
 
 		return true;
 	}
@@ -649,7 +679,9 @@ public:
 int Kruskal(int n, vector<Edge>& edges)
 {
 	if (n <= 1)
+	{
 		return 0;
+	}
 
 	const int INF = 0x3f3f3f3f;
 
@@ -670,7 +702,9 @@ int Kruskal(int n, vector<Edge>& edges)
 			count++;
 
 			if (count == n - 1)
+			{
 				break;
+			}
 		}
 	}
 
@@ -721,18 +755,24 @@ vector<int> Dijkstra(const vector<vector<int>>& g, int start)
 		for (int v = 0; v < n; v++)
 		{
 			if (!used[v] && (u == -1 || dist[v] < dist[u]))
+			{
 				u = v;
+			}
 		}
 
 		if (u == -1 || dist[u] == INF)
+		{
 			break;                    // 剩下的顶点都不可达
+		}
 
 		used[u] = true;
 
 		for (int v = 0; v < n; v++)
 		{
 			if (!used[v] && g[u][v] < INF && dist[u] + g[u][v] < dist[v])
+			{
 				dist[v] = dist[u] + g[u][v];
+			}
 		}
 	}
 
@@ -774,7 +814,9 @@ vector<vector<int>> Floyd(vector<vector<int>> dist)
 			for (int j = 0; j < n; j++)
 			{
 				if (dist[i][k] < INF && dist[k][j] < INF)
+				{
 					dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+				}
 			}
 		}
 	}
@@ -810,14 +852,18 @@ bool TopologicalSort(const vector<vector<int>>& adj, vector<int>& order)
 	for (int u = 0; u < n; u++)
 	{
 		for (int v : adj[u])
+		{
 			indeg[v]++;
+		}
 	}
 
 	queue<int> q;
 	for (int i = 0; i < n; i++)
 	{
 		if (indeg[i] == 0)
+		{
 			q.push(i);
+		}
 	}
 
 	order.clear();
@@ -831,7 +877,9 @@ bool TopologicalSort(const vector<vector<int>>& adj, vector<int>& order)
 		for (int v : adj[u])
 		{
 			if (--indeg[v] == 0)
+			{
 				q.push(v);
+			}
 		}
 	}
 
@@ -898,20 +946,26 @@ bool CriticalPath(const vector<vector<Edge>>& g, vector<int>& ve, vector<int>& v
 {
 	int n = g.size();
 	if (n == 0)
+	{
 		return true;
+	}
 
 	vector<int> indeg(n, 0);
 	for (int u = 0; u < n; u++)
 	{
 		for (const Edge& edge : g[u])
+		{
 			indeg[edge.to]++;
+		}
 	}
 
 	queue<int> q;
 	for (int i = 0; i < n; i++)
 	{
 		if (indeg[i] == 0)
+		{
 			q.push(i);
+		}
 	}
 
 	vector<int> topo;
@@ -926,15 +980,21 @@ bool CriticalPath(const vector<vector<Edge>>& g, vector<int>& ve, vector<int>& v
 		for (const Edge& edge : g[u])
 		{
 			if (ve[u] + edge.w > ve[edge.to])
+			{
 				ve[edge.to] = ve[u] + edge.w;
+			}
 
 			if (--indeg[edge.to] == 0)
+			{
 				q.push(edge.to);
+			}
 		}
 	}
 
 	if ((int)topo.size() != n)
+	{
 		return false;                  // 有环，不是 AOE 网
+	}
 
 	int sink = topo.back();
 	vl.assign(n, ve[sink]);
@@ -946,7 +1006,9 @@ bool CriticalPath(const vector<vector<Edge>>& g, vector<int>& ve, vector<int>& v
 		for (const Edge& edge : g[u])
 		{
 			if (vl[edge.to] - edge.w < vl[u])
+			{
 				vl[u] = vl[edge.to] - edge.w;
+			}
 		}
 	}
 
@@ -1003,7 +1065,9 @@ vector<vector<int>> MatrixToList(const vector<vector<int>>& matrix)
 		for (int j = 0; j < n; j++)
 		{
 			if (i != j && matrix[i][j] == 1)
+			{
 				adj[i].push_back(j);
+			}
 		}
 	}
 
@@ -1028,7 +1092,9 @@ void DFS(const vector<vector<int>>& adj, int u, vector<bool>& visited)
 	for (int v : adj[u])
 	{
 		if (!visited[v])
+		{
 			DFS(adj, v, visited);
+		}
 	}
 }
 
@@ -1070,14 +1136,18 @@ bool HasCycle(const vector<vector<int>>& adj)
 	for (int u = 0; u < n; u++)
 	{
 		for (int v : adj[u])
+		{
 			indeg[v]++;
+		}
 	}
 
 	queue<int> q;
 	for (int i = 0; i < n; i++)
 	{
 		if (indeg[i] == 0)
+		{
 			q.push(i);
+		}
 	}
 
 	int count = 0;
@@ -1091,7 +1161,9 @@ bool HasCycle(const vector<vector<int>>& adj)
 		for (int v : adj[u])
 		{
 			if (--indeg[v] == 0)
+			{
 				q.push(v);
+			}
 		}
 	}
 
@@ -1125,7 +1197,9 @@ int ShortestPathLength(const vector<vector<int>>& adj, int s, int t)
 		q.pop();
 
 		if (u == t)
+		{
 			return dist[u];
+		}
 
 		for (int v : adj[u])
 		{
@@ -1161,7 +1235,9 @@ bool IsBipartite(const vector<vector<int>>& adj)
 	for (int s = 0; s < n; s++)
 	{
 		if (color[s] != -1)
+		{
 			continue;
+		}
 
 		color[s] = 0;
 		q.push(s);
@@ -1215,7 +1291,9 @@ void FindAllPaths(const vector<vector<int>>& adj, int u, int target,
 		for (int v : adj[u])
 		{
 			if (!visited[v])
+			{
 				FindAllPaths(adj, v, target, visited, path);
+			}
 		}
 	}
 

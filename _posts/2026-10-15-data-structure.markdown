@@ -233,16 +233,22 @@ void LevelOrder(BiTree T)
 {
     queue<BiTree> Q;
     if (T != NULL)
+    {
         Q.push(T);
+    }
     while (!Q.empty())
     {
         BiTree p = Q.front();
         Q.pop();
         visit(p);
         if (p->lchild != NULL)
+        {
             Q.push(p->lchild);
+        }
         if (p->rchild != NULL)
+        {
             Q.push(p->rchild);
+        }
     }
 }
 ```
@@ -392,7 +398,9 @@ void CreateInThread(ThreadTree T)
     {
         InThread(T);
         if (pre->rchild == NULL)                 // 处理中序最后一个节点
+        {
             pre->rtag = 1;
+        }
     }
 }
 ```
@@ -413,7 +421,9 @@ void CreateInThread(ThreadTree T)
 ThreadNode *FirstNode(ThreadNode *p)
 {
     while (p->ltag == 0)      // 一路向左，直到左指针是线索
+    {
         p = p->lchild;
+    }
     return p;
 }
 
@@ -421,16 +431,22 @@ ThreadNode *FirstNode(ThreadNode *p)
 ThreadNode *NextNode(ThreadNode *p)
 {
     if (p->rtag == 1)         // 右指针是线索，它本身就是后继
+    {
         return p->rchild;
+    }
     else                      // 否则后继是右子树中最左下的节点
+    {
         return FirstNode(p->rchild);
+    }
 }
 
 // 中序遍历中序线索二叉树
 void InOrder(ThreadTree T)
 {
     for (ThreadNode *p = FirstNode(T); p != NULL; p = NextNode(p))
+    {
         visit(p);
+    }
 }
 ```
 
@@ -478,7 +494,9 @@ using namespace std;
 int TreeHeight(BiTree T)
 {
     if (T == NULL)
+    {
         return 0;
+    }
     queue<BiTree> Q;
     Q.push(T);
     int level = 0;                 // 记录当前层数
@@ -488,14 +506,20 @@ int TreeHeight(BiTree T)
         BiTree p = Q.front();
         Q.pop();
         if (p->lchild != NULL)     // 左孩子入队
+        {
             Q.push(p->lchild);
+        }
         if (p->rchild != NULL)     // 右孩子入队
+        {
             Q.push(p->rchild);
+        }
         if (p == last)             // 出队的正是本层最右节点，本层结束
         {
             level++;               // 层数加一
             if (!Q.empty())
+            {
                 last = Q.back();   // last 指向下一层的最右节点
+            }
         }
     }
     return level;
@@ -929,16 +953,26 @@ public:
 
 ```c
 void PreOrder(CSTree T) {
-    if (T == NULL) return;
+    if (T == NULL)
+    {
+        return;
+    }
     visit(T);
     for (CSNode *p = T->firstchild; p != NULL; p = p->nextbrother)
+    {
         PreOrder(p);
+    }
 }
 
 void PostOrder(CSTree T) {
-    if (T == NULL) return;
+    if (T == NULL)
+    {
+        return;
+    }
     for (CSNode *p = T->firstchild; p != NULL; p = p->nextbrother)
+    {
         PostOrder(p);
+    }
     visit(T);
 }
 ```
@@ -950,7 +984,10 @@ void PostOrder(CSTree T) {
 using namespace std;
 
 void LevelOrder(CSTree T) {
-    if (T == nullptr) return;
+    if (T == nullptr)
+    {
+        return;
+    }
     queue<CSNode*> q;
     q.push(T);
     while (!q.empty()) {
@@ -958,7 +995,9 @@ void LevelOrder(CSTree T) {
         q.pop();
         visit(p);
         for (CSNode *c = p->firstchild; c != nullptr; c = c->nextbrother)
+        {
             q.push(c);
+        }
     }
 }
 ```

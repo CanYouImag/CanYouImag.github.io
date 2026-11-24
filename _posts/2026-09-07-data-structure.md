@@ -291,13 +291,28 @@ void printCommonSorted(int A[], int B[], int C[], int n)
 		else 
 		{
 			int maxVal = A[i];
-			if (B[j] > maxVal) maxVal = B[j];
-			if (C[k] > maxVal) maxVal = C[k];
+			if (B[j] > maxVal)
+			{
+				maxVal = B[j];
+			}
+			if (C[k] > maxVal)
+			{
+				maxVal = C[k];
+			}
 
 			// 只有小于最大值的指针才移动（追赶最大值）
-			if (A[i] < maxVal) i++;
-			if (B[j] < maxVal) j++;
-			if (C[k] < maxVal) k++;
+			if (A[i] < maxVal)
+			{
+				i++;
+			}
+			if (B[j] < maxVal)
+			{
+				j++;
+			}
+			if (C[k] < maxVal)
+			{
+				k++;
+			}
 		}
 	}
 }
@@ -1068,8 +1083,14 @@ int IsSymmetric(DLinkList L)
 ```c
 LinkList LinkCircular(LinkList h1, LinkList h2) 
 {
-	if (h1 == NULL) return h2;      // h1 为空，合并后头指针为 h2
-	if (h2 == NULL) return h1;      // h2 为空，合并后头指针为 h1
+	if (h1 == NULL)
+	{
+		return h2;      // h1 为空，合并后头指针为 h2
+	}
+	if (h2 == NULL)
+	{
+		return h1;      // h2 为空，合并后头指针为 h1
+	}
 
 	// 1. 找到 h1 的尾结点
 	LNode* p = h1;
@@ -1110,7 +1131,10 @@ typedef struct DNode
 
 DNode* Locate(DLinkList L, int x) 
 {
-	if (L == NULL) return NULL;          // 空表
+	if (L == NULL)
+	{
+		return NULL;          // 空表
+	}
 	DNode* p = L->next;                  // 从第一个实际结点开始
 	while (p != NULL && p->data != x) 
 	{  // 查找值为 x 的结点

@@ -148,8 +148,14 @@ bool checkBrackets(const string& exp)
 // 返回运算符优先级，数字越大优先级越高
 int priority(char op) 
 {
-	if (op == '+' || op == '-') return 1;
-	if (op == '*' || op == '/') return 2;
+	if (op == '+' || op == '-')
+	{
+		return 1;
+	}
+	if (op == '*' || op == '/')
+	{
+		return 2;
+	}
 	return 0;   // '(' 或 ')' 视为最低
 }
 
@@ -164,7 +170,10 @@ string infixToPostfix(const string& infix)
 		char ch = infix[i];
 
 		// 1. 跳过空格
-		if (ch == ' ') continue;
+		if (ch == ' ')
+		{
+			continue;
+		}
 
 		// 2. 如果是数字（支持多位数），直接加入结果
 		if (isdigit(ch)) 
@@ -191,7 +200,10 @@ string infixToPostfix(const string& infix)
 				postfix += ' ';
 				opStack.pop();
 			}
-			if (!opStack.empty()) opStack.pop();    // 弹出左括号，不输出
+			if (!opStack.empty())
+			{
+				opStack.pop();    // 弹出左括号，不输出
+			}
 		}
 		// 5. 运算符：比较优先级
 		else 
@@ -239,10 +251,22 @@ int evaluatePostfix(const string& postfix)
 			int b = st.top(); st.pop();   // 先弹出的是右操作数
 			int a = st.top(); st.pop();   // 后弹出的是左操作数
 			int res = 0;
-			if (token == "+")      res = a + b;
-			else if (token == "-") res = a - b;
-			else if (token == "*") res = a * b;
-			else                   res = a / b;   // 整数除法
+			if (token == "+")
+			{
+				res = a + b;
+			}
+			else if (token == "-")
+			{
+				res = a - b;
+			}
+			else if (token == "*")
+			{
+				res = a * b;
+			}
+			else
+			{
+				res = a / b;   // 整数除法
+			}
 			st.push(res);
 		}
 		// 否则是操作数，转换为整数后入栈

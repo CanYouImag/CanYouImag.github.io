@@ -497,9 +497,13 @@ ret
 
 ```c
 if (test_expr)          // test_expr 为条件测试表达式
+{
     then_statement      // test_expr 为真时执行
+}
 else
+{
     else_statement      // test_expr 为假时执行
+}
 ```
 
 在C语言中，`test_expr` 是整数表达式，值为 $0$ 表示“假”，非 $0$（包括负数）表示“真”。两个分支中只会执行其中一个。
@@ -509,7 +513,9 @@ else
 ```c
 t = test_expr;          // 暂存测试表达式的结果
 if (!t)                 // 若条件为假（t = 0）
+{
     goto false;         // 转到假分支
+}
 then_statement          // 真分支：仅当 t != 0 时执行
 goto done;              // 跳过假分支
 false:                  // 假分支入口
@@ -523,9 +529,13 @@ done:                   // if-else 结束点
 int get_cont(int *p1, int *p2)
 {
     if (p1 > p2)
+    {
         return *p2;
+    }
     else
+    {
         return *p1;
+    }
 }
 ```
 
@@ -557,7 +567,9 @@ mov eax, dword ptr [eax]       # eax ← M[eax]，取 *p1
 
 ```c
 do
+{
     body_statement          // 先执行循环体
+}
 while (test_expr);          // 再判断循环条件
 ```
 
@@ -568,7 +580,9 @@ loop:                       // 循环入口
     body_statement          // 执行循环体，首次进入必然执行
     t = test_expr;          // 计算循环条件
     if (t)                  // 若条件为真（t != 0）
+    {
         goto loop;          // 跳回 loop，继续下一轮
+    }
 ```
 
 由于循环体在条件判断之前执行，无论 `test_expr` 的初始值是什么，`body_statement` 至少执行一次。每轮结束后重新计算 `test_expr`：为真（非零）就跳回循环开头，否则顺序执行后续代码，退出循环。
@@ -579,7 +593,9 @@ loop:                       // 循环入口
 
 ```c
 while (test_expr)           // 循环条件
+{
     body_statement          // 条件为真时重复执行
+}
 ```
 
 与 `do-while` 不同，`while` 在第一次执行循环体之前就测试 `test_expr`。如果初始条件为假（`test_expr = 0`），循环体一次都不会执行。
@@ -589,9 +605,13 @@ while (test_expr)           // 循环条件
 ```c
 t = test_expr;              // 计算初始循环条件
 if (!t)                     // 若初始条件为假（t = 0）
+{
     goto done;              // 跳过循环体
+}
 do
+{
     body_statement          // 执行循环体
+}
 while (test_expr);          // 重新测试条件
 done:                       // 循环结束点
 ```
@@ -601,12 +621,16 @@ done:                       // 循环结束点
 ```c
 t = test_expr;              // 计算初始循环条件
 if (!t)                     // 若为假
+{
     goto done;              // 跳过循环
+}
 loop:
     body_statement          // 执行循环体
     t = test_expr;          // 重新计算条件
     if (t)                  // 若仍为真
+    {
         goto loop;          // 继续下一轮
+    }
 done:                       // 循环结束
 ```
 
@@ -618,7 +642,9 @@ done:                       // 循环结束
 
 ```c
 for (init_expr; test_expr; update_expr)
+{
     body_statement
+}
 ```
 
 `init_expr` 是初始化表达式，用于初始化循环计数器（如 `i = 0`）；`test_expr` 是条件判断表达式，每次执行循环体前测试（如 `i < 10`）；`update_expr` 是更新表达式，每次循环体执行完后执行（如 `i++`）。
@@ -639,13 +665,17 @@ while (test_expr) {         // 每次循环前判断
 init_expr;                  // 执行初始化
 t = test_expr;              // 测试初始条件
 if (!t)                     // 若初始条件为假
+{
     goto done;              // 跳过循环
+}
 loop:
     body_statement          // 执行循环体
     update_expr;            // 执行更新
     t = test_expr;          // 重新测试条件
     if (t)                  // 若条件仍为真
+    {
         goto loop;          // 跳回循环体
+    }
 done:
 ```
 
@@ -657,7 +687,9 @@ int nsum_for(int n)
     int i;
     int result = 0;
     for (i = 1; i <= n; i++)
+    {
         result += i;
+    }
     return result;
 }
 ```
@@ -1015,8 +1047,12 @@ $D$．`2DFDFFH`，$1$
 
 ```c
 for (i = 0; i < 10; i++)
+{
     for (j = 0; j < 5; j++)
+    {
         sum += b[i][j];
+    }
+}
 ```
 
 假设执行到 `sum += b[i][j];` 时，`sum` 的值在 `EAX` 中，`b[i][0]` 所在的地址在 `EDX` 中，`j` 在 `ESI` 中，则 `sum += b[i][j];` 所对应的指令（AT&T格式）可以是（ ）。
@@ -1126,9 +1162,13 @@ $$
 int f1(int n)
 {
     if (n > 1)
+    {
         return n * f1(n - 1);
+    }
     else
+    {
         return 1;
+    }
 }
 ```
 
@@ -1199,9 +1239,13 @@ $$
 long long f1(int n)
 {
     if (n > 1)
+    {
         return (long long)n * f1(n - 1);
+    }
     else
+    {
         return 1;
+    }
 }
 ```
 
