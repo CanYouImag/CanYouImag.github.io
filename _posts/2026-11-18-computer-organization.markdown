@@ -144,7 +144,7 @@ $$
 
 ### 7.1.2 $I/O$接口基本结构
 
-![I/O接口的通用结构](https://img-blog.csdnimg.cn/399e217ca5d54b5cb86e9f769d0702fa.png)
+<img src="https://img-blog.csdnimg.cn/399e217ca5d54b5cb86e9f769d0702fa.png" alt="I/O接口的通用结构" referrerpolicy="no-referrer">
 
 I/O接口在主机侧通过I/O总线与CPU和内存相连，其内部包含三类寄存器：
 
@@ -321,7 +321,7 @@ CPU响应中断后，首先在中断响应阶段从数据总线中获取该中�
 
 **（6）中断处理过程**
 
-![中断处理流程](https://i-blog.csdnimg.cn/blog_migrate/13ff940379b0c10c644be0ff898effc3.webp?x-image-process=image/format,png)
+<img src="https://i-blog.csdnimg.cn/blog_migrate/13ff940379b0c10c644be0ff898effc3.webp?x-image-process=image/format,png" alt="中断处理流程" referrerpolicy="no-referrer">
 
 中断处理流程如下：
 
@@ -427,7 +427,7 @@ DMA控制器主要功能如下：
 
 一个简单的DMA控制器的结构如下：
 
-![简单的DMA控制器结构](https://img-blog.csdnimg.cn/5c5e72dc8e0d486faf758063f4fd7eca.png)
+<img src="https://img-blog.csdnimg.cn/5c5e72dc8e0d486faf758063f4fd7eca.png" alt="简单的DMA控制器结构" referrerpolicy="no-referrer">
 
 #### $DMA$传送方式
 
@@ -437,7 +437,7 @@ DMA控制器主要功能如下：
 
 I/O设备发出DMA请求时，DMA控制器向CPU发送停止信号，使CPU放弃总线控制权并暂停访存，直至DMA完成数据传送。当数据传送结束时，DMA控制器通知CPU恢复主存访问，并交还总线控制权。
 
-![停止CPU访存](https://img-blog.csdnimg.cn/27ed5f62b93345818dac3a1a3fcf37e7.png)
+<img src="https://img-blog.csdnimg.cn/27ed5f62b93345818dac3a1a3fcf37e7.png" alt="停止CPU访存" referrerpolicy="no-referrer">
 
 - **优点：**控制逻辑简单，适合数据传输速率很高的I/O设备进行数据传送。
 - **缺点：**DMA工作期间，CPU不工作，资源利用率较低。
@@ -450,7 +450,7 @@ I/O设备发出DMA请求时，DMA控制器向CPU发送停止信号，使CPU放�
 2. CPU正在访存，DMA需等待当前存取周期结束后再占用总线。
 3. CPU与DMA同时请求访存，通常I/O访存优先，CPU延迟一个存取周期。
 
-![周期挪用](https://img2023.cnblogs.com/blog/3161112/202304/3161112-20230407195325573-1933694735.png)
+<img src="https://img2023.cnblogs.com/blog/3161112/202304/3161112-20230407195325573-1933694735.png" alt="周期挪用" referrerpolicy="no-referrer">
 
 - **优点：**既满足了I/O数据传送请求，又较好地发挥了CPU和主存的效率。
 - **缺点：**每次挪用均需申请并释放总线控制权，带来一定开销。
@@ -459,7 +459,7 @@ I/O设备发出DMA请求时，DMA控制器向CPU发送停止信号，使CPU放�
 
 将CPU工作周期划分成两个子周期：一个供CPU访存，另一个供DMA访存。
 
-![DMA和CPU交替访存](https://i-blog.csdnimg.cn/blog_migrate/44b8d78c5b0aa1afd8da02b7d5588942.png)
+<img src="https://i-blog.csdnimg.cn/blog_migrate/44b8d78c5b0aa1afd8da02b7d5588942.png" alt="DMA和CPU交替访存" referrerpolicy="no-referrer">
 
 - **优点：**无需总线控制权的申请与释放过程，数据传送速率高。
 - **缺点：**硬件控制逻辑较为复杂。
@@ -486,7 +486,7 @@ $$
 
 #### $DMA$的传送过程
 
-![DMA传送过程](https://img2018.cnblogs.com/blog/1358881/201906/1358881-20190601104351086-1499682478.png)
+<img src="https://img2018.cnblogs.com/blog/1358881/201906/1358881-20190601104351086-1499682478.png" alt="DMA传送过程" referrerpolicy="no-referrer">
 
 - **预处理：**由CPU完成必要的初始化工作，包括设置DMA控制器中的主存起始地址、传送方向、传送数据个数等，并启动I/O设备。随后CPU继续执行原程序。当I/O设备准备好待发送或接收数据时，会向DMA控制器发出DMA请求；DMA控制器随即向CPU发出总线请求，申请总线控制权。
 - **数据传送：**整个过程CPU不参与。

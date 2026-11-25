@@ -147,7 +147,7 @@ cover_image: /../assets/operating_system.png
 
 系统调用的执行过程：
 
-![系统调用的执行过程](https://img-blog.csdnimg.cn/img_convert/0b99638115fd4dea8221498b928b26af.png)
+<img src="https://img-blog.csdnimg.cn/img_convert/0b99638115fd4dea8221498b928b26af.png" alt="系统调用的执行过程" referrerpolicy="no-referrer">
 
 ## 1.4 操作系统结构
 
@@ -178,7 +178,7 @@ cover_image: /../assets/operating_system.png
 
 将操作系统按功能划分为若干具有一定独立性的模块。每个模块实现特定的管理功能，并明确定义与其他模块的接口，以便通过这些接口进行通信。模块也可以进一步划分。
 
-![操作系统的模块化结构](https://img-blog.csdnimg.cn/img_convert/ffef36ba12aa5901338bc781d2a04600.png)
+<img src="https://img-blog.csdnimg.cn/img_convert/ffef36ba12aa5901338bc781d2a04600.png" alt="操作系统的模块化结构" referrerpolicy="no-referrer">
 
 衡量模块独立性的标准：高内聚、低耦合。即模块内部各组成成分之间的联系要紧密；模块之间要尽量相互独立。
 
@@ -207,7 +207,7 @@ cover_image: /../assets/operating_system.png
 - **第一类虚拟机管理程序**：又称**裸金属架构**，直接运行在物理硬件之上。其中客户操作系统运行于虚拟内核态，客户操作系统的用户进程运行于真正的用户态。
 - **第二类虚拟机管理程序**：以应用程序的形式运行于宿主操作系统之上，依赖宿主进行资源分配和调度，本质上是一个用户级进程。
 
-![虚拟机管理程序](https://img-blog.csdnimg.cn/direct/dea085e9ba674e258ae2484ed464b9b1.png)
+<img src="https://img-blog.csdnimg.cn/direct/dea085e9ba674e258ae2484ed464b9b1.png" alt="虚拟机管理程序" referrerpolicy="no-referrer">
 
 # 第二章 进程与线程
 
@@ -365,7 +365,7 @@ PCB主要包括如表所示的四类信息，各部分的主要说明如下。
 
 进程转换过程如下：
 
-![进程状态转换图](https://img-blog.csdnimg.cn/6f616a99b55f4848987a70203e1837a5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA546L5p2o57Sr5pif,size_20,color_FFFFFF,t_70,g_se,x_16)
+<img src="https://img-blog.csdnimg.cn/6f616a99b55f4848987a70203e1837a5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA546L5p2o57Sr5pif,size_20,color_FFFFFF,t_70,g_se,x_16" alt="进程状态转换图" referrerpolicy="no-referrer">
 
 （不是，这个图片的URL怎么这么长呢）
 
@@ -517,9 +517,9 @@ PCB主要包括如表所示的四类信息，各部分的主要说明如下。
   - **多对多模型**：将$n$个用户级线程映射到$m$个内核级线程，且$n \ge m$。用户级线程由应用程序在用户空间调度，内核级线程由内核调度到多个CPU上执行。
     - **特点**：既克服了多对一模型并发度低的缺陷，又避免了一对一模型资源开销更大的问题，同时兼具两者优点。
 
-![多线程模型](https://img-blog.csdnimg.cn/d94f3c9a50e6463994eb64a9053cf146.jpeg)
+<img src="https://img-blog.csdnimg.cn/d94f3c9a50e6463994eb64a9053cf146.jpeg" alt="多线程模型" referrerpolicy="no-referrer">
 
-![线程模型](https://img2020.cnblogs.com/blog/727485/202107/727485-20210705141640724-1329834976.png)
+<img src="https://img2020.cnblogs.com/blog/727485/202107/727485-20210705141640724-1329834976.png" alt="线程模型" referrerpolicy="no-referrer">
 
 线程库实现：所谓线程库，类似于编程的标准库，程序员通过调用其提供的API来创建和管理线程。有以下两种实现方式：
 
@@ -562,7 +562,7 @@ CPU调度：指CPU按照一定算法，从就绪队列中选择一个进程，�
 
 #### 2.2.2.2 调度程序（调度器）
 
-![调度程序](https://img-blog.csdnimg.cn/img_convert/47bca25dfeda5bf61b5ae6c91043bcda.png)
+<img src="https://img-blog.csdnimg.cn/img_convert/47bca25dfeda5bf61b5ae6c91043bcda.png" alt="调度程序" referrerpolicy="no-referrer">
 
 调度程序用于实现CPU调度和分派，有三个部分：
 
@@ -667,7 +667,7 @@ $$
 
 **先来先服务（FCFS）调度算法**：从后备队列中选择最早进入该队列的一个或多个作业调入内存，分配必要的资源，创建相应的进程，并放入就绪队列。FCFS算法属于非抢占式算法，不适合作为分时系统和实时系统的主要调度策略。对于多个有着相同优先级的进程，通常按照FCFS的原则进行调度。该算法实现简单，但效率较低，对长作业有利，对短作业不利。
 
-![FCFS调度算法性能示例](https://i-blog.csdnimg.cn/direct/d6a91ebcee8f46c6a823467b7bfa48cd.png)
+<img src="https://i-blog.csdnimg.cn/direct/d6a91ebcee8f46c6a823467b7bfa48cd.png" alt="FCFS调度算法性能示例" referrerpolicy="no-referrer">
 
 （网上找的什么人给王道截的图）
 
@@ -677,7 +677,7 @@ $$
 - 未考虑作业的紧迫程度；
 - 作业的长短由用户提交的估计值决定。
 
-![SJF调度算法性能示例](https://i-blog.csdnimg.cn/direct/a8d17f0d7300467abd66067dedf00c70.png)
+<img src="https://i-blog.csdnimg.cn/direct/a8d17f0d7300467abd66067dedf00c70.png" alt="SJF调度算法性能示例" referrerpolicy="no-referrer">
 
 **高响应比优先调度算法**：调度决策同时考虑每个作业的等待时间和估计运行时间。调度时，系统先计算后备作业队列中每个作业的响应比，然后选择响应比最高的作业调入内存并执行。
 
@@ -705,7 +705,7 @@ $$
 
 **多级反馈队列调度算法**：
 
-![多级反馈队列调度算法示意图](https://i-blog.csdnimg.cn/direct/4f390195421d4627bc2752555aa70362.png)
+<img src="https://i-blog.csdnimg.cn/direct/4f390195421d4627bc2752555aa70362.png" alt="多级反馈队列调度算法示意图" referrerpolicy="no-referrer">
 
 通过动态调整进程所处队列（即调整进程优先级）和对应时间片大小，该算法结合了上述算法的所有优点。实现机制如下：
 
@@ -1040,7 +1040,7 @@ P2()
 
 #### 利用信号量实现前驱关系
 
-![前驱关系举例](https://i-blog.csdnimg.cn/direct/0cea56a603bf4535b6ba54275bf668bf.png)
+<img src="https://i-blog.csdnimg.cn/direct/0cea56a603bf4535b6ba54275bf668bf.png" alt="前驱关系举例" referrerpolicy="no-referrer">
 
 如图所示的前驱关系，其中 $S_1,S_2,\cdots,S_6$ 均为只包含一条语句的简单程序段。图中每对前驱关系都对应一个同步问题：后继段必须等待前驱段完成。因此，可为每条前驱边设置一个同步信号量，初值均为 0。前驱段执行完毕后，执行 `V` 操作，通知所有直接后继；后继段开始执行前，执行 `P` 操作，等待所有前驱执行完成。
 
@@ -1489,7 +1489,7 @@ monitor Demo {
 2. 允许死锁发生，但能检测并恢复：检测及解除死锁。
 3. 完全忽略死锁，假定其不会出现。
 
-![死锁预防、死锁避免与死锁检测的对比](https://i-blog.csdnimg.cn/blog_migrate/7c9ce27719b7eadd903e3c5efcc00c1b.png)
+<img src="https://i-blog.csdnimg.cn/blog_migrate/7c9ce27719b7eadd903e3c5efcc00c1b.png" alt="死锁预防、死锁避免与死锁检测的对比" referrerpolicy="no-referrer">
 
 ### 2.4.2 死锁预防
 
@@ -2131,15 +2131,15 @@ $$
 
 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start;margin:16px 0;">
   <figure style="margin:0;text-align:center;">
-    <img src="https://i-blog.csdnimg.cn/blog_migrate/e1558f90d4a95e51ca07decddbf15d4a.png" alt="资源分配图" style="width:100%;height:auto;">
+    <img src="https://i-blog.csdnimg.cn/blog_migrate/e1558f90d4a95e51ca07decddbf15d4a.png" alt="资源分配图" style="width:100%;height:auto;" referrerpolicy="no-referrer">
     <figcaption>（a）资源分配图</figcaption>
   </figure>
   <figure style="margin:0;text-align:center;">
-    <img src="https://i-blog.csdnimg.cn/blog_migrate/2aad401d64cb7c5574ff128870ac3b1c.png" alt="删除P1的请求边和分配边" style="width:100%;height:auto;">
+    <img src="https://i-blog.csdnimg.cn/blog_migrate/2aad401d64cb7c5574ff128870ac3b1c.png" alt="删除P1的请求边和分配边" style="width:100%;height:auto;" referrerpolicy="no-referrer">
     <figcaption>（b）删除 $P_1$ 的边</figcaption>
   </figure>
   <figure style="margin:0;text-align:center;">
-    <img src="https://i-blog.csdnimg.cn/blog_migrate/da830cb90a8e7ed9327cc9ce6136e1a5.png" alt="资源分配图完全可简化" style="width:100%;height:auto;">
+    <img src="https://i-blog.csdnimg.cn/blog_migrate/da830cb90a8e7ed9327cc9ce6136e1a5.png" alt="资源分配图完全可简化" style="width:100%;height:auto;" referrerpolicy="no-referrer">
     <figcaption>（c）完全简化</figcaption>
   </figure>
 </div>
