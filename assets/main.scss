@@ -106,6 +106,11 @@ body:not(.light-mode) .post-content table code {
   color: #4db6ac !important;
 }
 
+// Dark mode only: the theme's default light border makes inline code glow white
+body:not(.light-mode) code {
+  border: none;
+}
+
   .highlight {
     .c { color: #608b4e; }
     .k { color: #569cd6; }
